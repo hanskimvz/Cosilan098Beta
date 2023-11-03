@@ -1,0 +1,239 @@
+{
+    "full_screen": "no",
+    "language": [
+        {
+            "Chinese": "数据库服务器",
+            "English": "DB Server",
+            "Korean": "데이터베이스 서버",
+            "key": "db_server"
+        },
+        {
+            "Chinese": "用户",
+            "English": "User",
+            "Korean": "사용자ID",
+            "key": "user"
+        },
+        {
+            "Chinese": "密码",
+            "English": "Password",
+            "Korean": "비밀번호",
+            "key": "password"
+        },
+        {
+            "Chinese": "Charset",
+            "English": "Charset",
+            "Korean": "Charset",
+            "key": "charset"
+        },
+        {
+            "Chinese": "端口",
+            "English": "Port",
+            "Korean": "포트",
+            "key": "port"
+        },
+        {
+            "Chinese": "数据库名称",
+            "English": "DB Name",
+            "Korean": "DB 이름",
+            "key": "db_name"
+        },
+        {
+            "Chinese": "更新间隔",
+            "English": "Refresh Interval",
+            "Korean": "갱신간격",
+            "key": "refresh_interval"
+        },
+        {
+            "Chinese": "全屏",
+            "English": "Full Screen",
+            "Korean": "전체화면",
+            "key": "full_screen"
+        },
+        {
+            "Chinese": "保存",
+            "English": "Save Changes",
+            "Korean": "저장하기",
+            "key": "save_changes"
+        },
+        {
+            "Chinese": "关闭选项窗",
+            "English": "Close Option",
+            "Korean": "옵션창 닫기",
+            "key": "close_option"
+        },
+        {
+            "Chinese": "关闭程序",
+            "English": "Exit Program",
+            "Korean": "프로그램 종료",
+            "key": "exit_program"
+        },
+        {
+            "Chinese": "更新间隔必要数字",
+            "English": "Refresh Interval should be integer",
+            "Korean": "갱신시간은 정수로만 설정 가능합니다",
+            "key": "refresh_time_error"
+        },
+        {
+            "Chinese": "确认数据库参数",
+            "English": "Check mysql configuration",
+            "Korean": "DB 설정 정보를 확인하세요",
+            "key": "check_mysql_conf"
+        },
+        {
+            "Chinese": "修改画面",
+            "English": "Edit Mode",
+            "Korean": "편집 모드",
+            "key": "edit_mode"
+        },
+        {
+            "Chinese": "名称",
+            "English": "Name",
+            "Korean": "이름",
+            "key": "name"
+        },
+        {
+            "Chinese": "显示",
+            "English": "Display",
+            "Korean": "표시",
+            "key": "display"
+        },
+        {
+            "Chinese": "字体",
+            "English": "Font",
+            "Korean": "폰트",
+            "key": "fontfamily"
+        },
+        {
+            "Chinese": "字体大小",
+            "English": "Font size",
+            "Korean": "폰트 크기",
+            "key": "fontsize"
+        },
+        {
+            "Chinese": "字体效果",
+            "English": "Font shape",
+            "Korean": "폰트효과",
+            "key": "fontshape"
+        },
+        {
+            "Chinese": "颜色",
+            "English": "Color",
+            "Korean": "색깔",
+            "key": "fgcolor"
+        },
+        {
+            "Chinese": "背景颜色",
+            "English": "Bg Color",
+            "Korean": "배경색깔",
+            "key": "bgcolor"
+        },
+        {
+            "Chinese": "宽度",
+            "English": "Width",
+            "Korean": "넓이",
+            "key": "width"
+        },
+        {
+            "Chinese": "高度",
+            "English": "Height",
+            "Korean": "높이",
+            "key": "height"
+        },
+        {
+            "Chinese": "位置",
+            "English": "Position",
+            "Korean": "위치",
+            "key": "position"
+        },
+        {
+            "Chinese": "Padding",
+            "English": "Padding",
+            "Korean": "Padding",
+            "key": "padding"
+        },
+        {
+            "Chinese": "设备",
+            "English": "Device info",
+            "Korean": "장비",
+            "key": "deviceinfo"
+        },
+        {
+            "Chinese": "规则",
+            "English": "Rule",
+            "Korean": "Rule",
+            "key": "rule"
+        },
+        {
+            "Chinese": "使用",
+            "English": "Use",
+            "Korean": "사용",
+            "key": "use"
+        },
+        {
+            "Chinese": "保存",
+            "English": "Apply",
+            "Korean": "적용",
+            "key": "apply"
+        },
+        {
+            "Chinese": "URL",
+            "English": "URL",
+            "Korean": "URL",
+            "key": "url"
+        },
+        {
+            "Chinese": "Template",
+            "English": "Template",
+            "Korean": "Template",
+            "key": "template"
+        },
+        {
+            "Chinese": "大小",
+            "English": "Size",
+            "Korean": "크기",
+            "key": "size"
+        },
+        {
+            "Chinese": "排列",
+            "English": "Align",
+            "Korean": "정렬",
+            "key": "align"
+        },
+        {
+            "Chinese": "使用",
+            "English": "Use",
+            "Korean": "사용",
+            "key": "flag"
+        },
+        {
+            "Chinese": "字体",
+            "English": "Font",
+            "Korean": "폰트",
+            "key": "fontfamily"
+        }
+    ],
+    "mysql": {
+        "charset": "utf8",
+        "db": "cnt_demo",
+        "host": "124.61.244.239",
+        "password": "13579",
+        "port": "3306",
+        "user": "rt_user"
+    },
+    "ref_end_time": {
+        "hour": 18,
+        "min": 0
+    },
+    "ref_start_time": {
+        "hour": 4,
+        "min": 0
+    },
+    "refresh_interval": 5,
+    "template": "template10.json",
+    "constant": [
+        {
+            "name": "limited_number",
+            "value": 6000
+        }
+    ]
+}

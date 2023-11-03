@@ -1,0 +1,406 @@
+[
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "title0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            570,
+            40
+        ],
+        "size": [
+            0,
+            1
+        ],
+        "text": "景区客流统计系统"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label0",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            50,
+            210
+        ],
+        "size": [
+            16,
+            1
+        ],
+        "text": "今日进:      人"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label1",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            50,
+            400
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "今日出:      人"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label2",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            960,
+            210
+        ],
+        "size": [
+            16,
+            1
+        ],
+        "text": "场内人数:     人"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label3",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            960,
+            400
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "限制人数:     人"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label4",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            50,
+            600
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "累计进:      人"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label5",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            50,
+            800
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "累计出:      人"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label6",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            960,
+            600
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "可进人数:     人"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number3",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1500,
+            410
+        ],
+        "rule": "number(6000)",
+        "size": [
+            4,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            222
+        ],
+        "rule": "today:entrance",
+        "size": [
+            5,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            410
+        ],
+        "rule": "today:exit",
+        "size": [
+            5,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number2",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1500,
+            222
+        ],
+        "rule": "diff(today:entrance, today:exit)",
+        "size": [
+            4,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number4",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            610
+        ],
+        "rule": "thisyear:entrance",
+        "size": [
+            5,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number5",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            810
+        ],
+        "rule": "thisyear:exit",
+        "size": [
+            5,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number6",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1500,
+            610
+        ],
+        "rule": "margin(today:entrance, today:exit)",
+        "size": [
+            4,
+            1
+        ],
+        "text": ""
+    }
+]

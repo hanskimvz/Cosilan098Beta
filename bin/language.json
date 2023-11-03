@@ -1,0 +1,4436 @@
+{
+    "install":[
+        {
+            "key":"txt_version_bin",
+            "English":"VERSION BIN",
+            "Korean" :"Binary",
+            "Chinese":"程序"
+        },
+        {
+            "key":"txt_version_webpage",
+            "English":"VERSION WEBPAGE",
+            "Korean" :"Webpage",
+            "Chinese":"网页"
+        },
+        {
+            "key":"txt_version_param",
+            "English":"VERSION PARAM",
+            "Korean" :"Param",
+            "Chinese":"参数"
+        },
+        {
+            "key":"txt_version_code",
+            "English":"VERSION CODE",
+            "Korean" :"Code",
+            "Chinese":"代码"
+        },
+        {
+            "key":"txt_server_state",
+            "English":"SERVER STATUS",
+            "Korean":"서버상태",
+            "Chinese":"服务器状态"
+        },        
+        {
+            "key":"main_title",
+            "English":"Setup Cosilan Tool",
+            "Korean" :"Coilan 설치 프로그램",
+            "Chinese":"Cosilan 安装程序"
+        },        
+        {
+            "key":"start",
+            "English":"Start",
+            "Korean" :"시작",
+            "Chinese":"开始"
+        },        
+        {
+            "key":"cancel",
+            "English":"Cancel",
+            "Korean" :"취소",
+            "Chinese":"取消"
+        },
+        {
+            "key":"close",
+            "English":"Close",
+            "Korean" :"닫기",
+            "Chinese":"关闭"
+        },
+        {
+            "key":"Running",
+            "English":"Running",
+            "Korean" :"동작중",
+            "Chinese":"运行中"
+        },
+        {
+            "key":"Stopped",
+            "English":"Stopped",
+            "Korean" :"정지",
+            "Chinese":"已停止"
+        },               
+        {
+            "key":"path",
+            "English":"Path",
+            "Korean" :"경로",
+            "Chinese":"径路"
+        },
+        {
+            "key":"root_pw",
+            "English":"Root password",
+            "Korean" :"관리자 암호",
+            "Chinese":"管理者 密码"
+        }        
+    ],
+	"admin": [
+		{
+			"key": "language",
+			"eng": "Language",
+			"chi": "语言",
+			"kor": "언어"
+		},
+		{
+			"key": "database",
+			"eng": "Database",
+			"chi": "数据库",
+			"kor": "데이터베이스"
+		},
+		{
+			"key": "Camera",
+			"eng": "Camera",
+			"chi": "设备",
+			"kor": "카메라"
+		},
+		{
+			"key": "Account",
+			"eng": "Account",
+			"chi": "用户",
+			"kor": "계정"
+		},
+		{
+			"key": "Store",
+			"eng": "Store",
+			"chi": "店铺",
+			"kor": "상점"
+		},
+		{
+			"key": "Square",
+			"eng": "Square",
+			"chi": "商场",
+			"kor": "쇼핑몰"
+		},
+		{
+			"key": "Device Tree",
+			"eng": "Device Tree",
+			"chi": "设备树",
+			"kor": "장비구조"
+		},
+		{
+			"key": "Business Intelligence",
+			"eng": "Business Intelligence",
+			"chi": "商业智能",
+			"kor": "상업지능"
+		},
+		{
+			"key": "Face Setting",
+			"eng": "Face Set",
+			"chi": "人脸设置",
+			"kor": "얼굴인식설정"
+		},
+		{
+			"key": "Face Detect",
+			"eng": "Face Detect",
+			"chi": "人脸检测",
+			"kor": "얼굴인식"
+		},
+		{
+			"key": "Face Set",
+			"eng": "Face Set",
+			"chi": "人脸模版",
+			"kor": "기준얼굴"
+		},
+		{
+			"key": "Confirm Delete",
+			"eng": "Confirm Delete",
+			"chi": "确认删除",
+			"kor": "삭제 확인"
+		},
+		{
+			"key": "Close",
+			"eng": "Close",
+			"chi": "关闭",
+			"kor": "닫기"
+		},
+		{
+			"key": "Are you sure to delete this record?",
+			"eng": "Are you sure to delete this record?",
+			"chi": "确定要删除此记录吗？",
+			"kor": "삭제하시겠습니까?"
+		},
+		{
+			"key": "Local Device Setup",
+			"eng": "Local Device Setup",
+			"chi": "局域网设备设置",
+			"kor": "장비설정"
+		},
+		{
+			"key": "SIDWAY Business Intelligence",
+			"eng": "Business Intelligence",
+			"chi": "平方和商业智能",
+			"kor": "상업지능"
+		},
+		{
+			"key": "messagesetup",
+			"eng": "Message Setup",
+			"chi": "信息设置",
+			"kor": "메세지 설정"
+		},
+		{
+			"key": "web_update",
+			"eng": "Update",
+			"chi": "升级网页",
+			"kor": "업데이트"
+		},
+		{
+			"key": "system",
+			"eng": "System",
+			"chi": "系统",
+			"kor": "시스템"
+		},
+		{
+			"key": "webconfig",
+			"eng": "Webpage Config",
+			"chi": "网页设置",
+			"kor": "웹페이지설정"
+		},
+		{
+			"key": "sidemenu",
+			"eng": "Submenu",
+			"chi": "主页菜单",
+			"kor": "Sub Menu"
+		},
+		{
+			"key": "dashboardconfig",
+			"eng": "Dashboard config",
+			"chi": "预览牌设置",
+			"kor": "게시판 설정"
+		},
+		{
+			"key": "Counter Label",
+			"eng": "Counter Label",
+			"chi": "计数器标签",
+			"kor": "카운터 라벨"
+		},
+		{
+			"key": "analysis",
+			"eng": "Analysis Menu",
+			"chi": "数据分析菜单",
+			"kor": "데이터분석메뉴"
+		},
+		{
+			"key": "Report",
+			"eng": "Report",
+			"chi": "报告书",
+			"kor": "보고서"
+		},
+		{
+			"key": "basic",
+			"eng": "Basic",
+			"chi": "基本信息",
+			"kor": "기본정보"
+		},
+		{
+			"key": "document_title",
+			"eng": "Document Title",
+			"chi": "平台标题",
+			"kor": "타이틀"
+		},
+		{
+			"key": "host_title",
+			"eng": "host Title",
+			"chi": "网页标题",
+			"kor": "웹페이지 타이틀"
+		},
+		{
+			"key": "logo_path",
+			"eng": "Logo",
+			"chi": "标志",
+			"kor": "로고"
+		},
+		{
+			"key": "developer",
+			"eng": "Developer",
+			"chi": "开发者",
+			"kor": "개발자"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "realtime_screen",
+			"eng": "Realtime Counting",
+			"chi": "实时计数全屏",
+			"kor": "실시간화면"
+		}
+	],
+	"register": [
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "姓名",
+			"kor": "이름"
+		},
+		{
+			"key": "Email",
+			"eng": "Emal",
+			"chi": "邮箱",
+			"kor": "이메일"
+		},
+		{
+			"key": "ID",
+			"eng": "ID",
+			"chi": "帐号",
+			"kor": "계정"
+		},
+		{
+			"key": "Password",
+			"eng": "Password",
+			"chi": "密码",
+			"kor": "암호"
+		},
+		{
+			"key": "Re-Password",
+			"eng": "Re-Password",
+			"chi": "再输入密码",
+			"kor": "암호"
+		},
+		{
+			"key": "Accept Terms & Conditions",
+			"eng": "Accept Terms & Conditions",
+			"chi": "接受条款和条件",
+			"kor": "약관에 동의"
+		},
+		{
+			"key": "Register",
+			"eng": "Register",
+			"chi": "注册",
+			"kor": "등록"
+		},
+		{
+			"key": "Reset",
+			"eng": "Reset",
+			"chi": "初始化",
+			"kor": "초기화"
+		},
+		{
+			"key": "View Terms & Conditions",
+			"eng": "View Terms & Conditions",
+			"chi": "条件与条件",
+			"kor": "약관보기"
+		},
+		{
+			"key": "Login",
+			"eng": "Login",
+			"chi": "登录",
+			"kor": "로그인"
+		},
+		{
+			"key": "Already Registred?",
+			"eng": "Already Registered?",
+			"chi": "已有帐号？",
+			"kor": "계정이 있다면"
+		},
+		{
+			"key": "Verify password",
+			"eng": "Verify password",
+			"chi": "再输入密码",
+			"kor": "비빌번호 확인"
+		},
+		{
+			"key": "Korean",
+			"eng": "한국어",
+			"chi": "한국어",
+			"kor": "한국어"
+		},
+		{
+			"key": "Favorite Language",
+			"eng": "Favorite Language",
+			"chi": "语言",
+			"kor": "선호 언어"
+		},
+		{
+			"key": "Chinese",
+			"eng": "中文",
+			"chi": "中文",
+			"kor": "中文"
+		},
+		{
+			"key": "English",
+			"eng": "English",
+			"chi": "English",
+			"kor": "English"
+		},
+		{
+			"key": "Sign up",
+			"eng": "Sign Up",
+			"chi": "开帐号",
+			"kor": "계좌열기"
+		},
+		{
+			"key": "Sign here",
+			"eng": "Sign here",
+			"chi": "按这里登录",
+			"kor": "로그인하기"
+		},
+		{
+			"key": "Welcome",
+			"eng": "Welcome",
+			"chi": "欢迎",
+			"kor": "환영합니다"
+		},
+		{
+			"key": "Register new id",
+			"eng": "Register new ID",
+			"chi": "开通新帐号",
+			"kor": "계좌개설하기"
+		},
+		{
+			"key": "wrongemailaddress",
+			"eng": "Wrong email address",
+			"chi": "邮箱错误",
+			"kor": "이메일이 정확하지 않습니다."
+		},
+		{
+			"key": "idemailalreadyused",
+			"eng": "ID or Email already registerd",
+			"chi": "账号或者邮箱已使用",
+			"kor": "계정 또는 이메일이 이미 사용중입니다."
+		},
+		{
+			"key": "checkid",
+			"eng": "Check ID",
+			"chi": "确认帐号",
+			"kor": "계정확인"
+		},
+		{
+			"key": "checkemail",
+			"eng": "Check Emal",
+			"chi": "确认邮箱",
+			"kor": "이메일 확인하세요"
+		},
+		{
+			"key": "checkpassword",
+			"eng": "Verify password, no less than 5 letters",
+			"chi": "再输入密码, 长度要5子以上",
+			"kor": "비빌번호 확인, 5글짜 이상"
+		},
+		{
+			"key": "registersucceed",
+			"eng": "Succeed, Wait for Admininistrator confirm",
+			"chi": "成功！等到管理人确认",
+			"kor": "성공하였습니다. 관리자 확인을 기다리세요"
+		}
+	],
+	"login": [
+		{
+			"key": "Login",
+			"eng": "Login",
+			"chi": "登录",
+			"kor": "로그인"
+		},
+		{
+			"key": "Email or ID",
+			"eng": "Email or ID",
+			"chi": "帐号或邮箱",
+			"kor": "계정 또는 이메일"
+		},
+		{
+			"key": "Password",
+			"eng": "Password",
+			"chi": "密码",
+			"kor": "암호"
+		},
+		{
+			"key": "Sign in",
+			"eng": "Sign in",
+			"chi": "进入",
+			"kor": "로그인"
+		},
+		{
+			"key": "Reset",
+			"eng": "Reset",
+			"chi": "初始化",
+			"kor": "초기화"
+		},
+		{
+			"key": "Not Registred?",
+			"eng": "Not Registred?",
+			"chi": "没有帐号？",
+			"kor": "계정이 없다면"
+		},
+		{
+			"key": "Register here",
+			"eng": "Register here",
+			"chi": "用户注册",
+			"kor": "계정만들기"
+		},
+		{
+			"key": "language",
+			"eng": "Language",
+			"chi": "语言",
+			"kor": "언어"
+		},
+		{
+			"key": "Theme",
+			"eng": "Theme",
+			"chi": "Theme",
+			"kor": "테마"
+		},
+		{
+			"key": "Welcome",
+			"eng": "Welcome",
+			"chi": "欢迎",
+			"kor": "환영합니다"
+		},
+		{
+			"key": "Chinese",
+			"eng": "中文",
+			"chi": "中文",
+			"kor": "中文"
+		},
+		{
+			"key": "Korean",
+			"eng": "한국어",
+			"chi": "한국어",
+			"kor": "한국어"
+		},
+		{
+			"key": "English",
+			"eng": "English",
+			"chi": "English",
+			"kor": "English"
+		},
+		{
+			"key": "welcome_message",
+			"eng": "Welcome",
+			"chi": "欢迎",
+			"kor": "환영합니다"
+		},
+		{
+			"key": "forgotpassword",
+			"eng": "Forget password?",
+			"chi": "忘记密码？",
+			"kor": "암호를 잊으셨습니까?"
+		},
+		{
+			"key": "passworderror",
+			"eng": "ID or password not match",
+			"chi": "账号或者密码不对",
+			"kor": "계정 또는 비밀번호가 틀렸습니다."
+		},
+		{
+			"key": "notreadytouse",
+			"eng": "Wait for Admininistrator confirm",
+			"chi": "等到管理人确认",
+			"kor": "관리자 확인을 기다리세요"
+		}
+	],
+	"index": [
+		{
+			"key": "Sensors",
+			"eng": "Sensors",
+			"chi": "设备",
+			"kor": "장비"
+		},
+		{
+			"key": "Footfall",
+			"eng": "Footfall",
+			"chi": "客流活动",
+			"kor": "방문객수"
+		},
+		{
+			"key": "Report",
+			"eng": "Report",
+			"chi": "报告书",
+			"kor": "보고서"
+		},
+		{
+			"key": "heatmap",
+			"eng": "Heatmap",
+			"chi": "热力图",
+			"kor": "히트맵"
+		},
+		{
+			"key": "Gender",
+			"eng": "Gender",
+			"chi": "性别",
+			"kor": "성별"
+		},
+		{
+			"key": "Age group",
+			"eng": "Age Group",
+			"chi": "年龄",
+			"kor": "연령"
+		},
+		{
+			"key": "Mac Sniff",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "맥스티프"
+		},
+		{
+			"key": "dashboard",
+			"eng": "Dashboard",
+			"chi": "预览牌",
+			"kor": "게시판"
+		},
+		{
+			"key": "Summary",
+			"eng": "Summary",
+			"chi": "汇总",
+			"kor": "요약"
+		},
+		{
+			"key": "Standard",
+			"eng": "Standard",
+			"chi": "标准",
+			"kor": "일반"
+		},
+		{
+			"key": "Premium",
+			"eng": "Premium",
+			"chi": "高级",
+			"kor": "고급"
+		},
+		{
+			"key": "SIDWAY Business Intelligence",
+			"eng": "Business Intelligence",
+			"chi": "平方和商业智能",
+			"kor": "상업지능"
+		},
+		{
+			"key": "Gender and Age",
+			"eng": "Gender / Age",
+			"chi": "性别、年龄",
+			"kor": "성별 / 연령"
+		},
+		{
+			"key": "Export",
+			"eng": "Query Database",
+			"chi": "导出数据库",
+			"kor": "데이터베이스 가져오기"
+		},
+		{
+			"key": "Sitemap",
+			"eng": "Sitemap",
+			"chi": "设备机构",
+			"kor": "장비 구조"
+		},
+		{
+			"key": "Version",
+			"eng": "Version",
+			"chi": "版本",
+			"kor": "버전"
+		},
+		{
+			"key": "Feedback",
+			"eng": "Feedback",
+			"chi": "反馈",
+			"kor": "의견"
+		},
+		{
+			"key": "dataGlunt",
+			"eng": "Data Glunt",
+			"chi": "数据分布",
+			"kor": "데이터 분포"
+		},
+		{
+			"key": "weatherAnalysis",
+			"eng": "Weather",
+			"chi": "天气温度",
+			"kor": "날씨분석"
+		},
+		{
+			"key": "latestFlow",
+			"eng": "Recent Data",
+			"chi": "近期数据",
+			"kor": "최근 데이터"
+		},
+		{
+			"key": "trendAnalysis",
+			"eng": "Trend Analysis",
+			"chi": "同比环比趋势",
+			"kor": "트렌드 분석"
+		},
+		{
+			"key": "promotionAnalysis",
+			"eng": "Promotion Analysis",
+			"chi": "促销日分析",
+			"kor": "기획일 분석"
+		},
+		{
+			"key": "brandOverview",
+			"eng": "Brand Overview",
+			"chi": "业态品牌",
+			"kor": "브랜드"
+		},
+		{
+			"key": "dataCompare",
+			"eng": "Data Compare",
+			"chi": "对比分析",
+			"kor": "비교분석"
+		},
+		{
+			"key": "compareByTime",
+			"eng": "Compare By time",
+			"chi": "时间段对比",
+			"kor": "시간별 비교"
+		},
+		{
+			"key": "compareByPlace",
+			"eng": "Compare By Place",
+			"chi": "地点对比",
+			"kor": "장소별 비교"
+		},
+		{
+			"key": "trafficDistribution",
+			"eng": "Traffic Distribution",
+			"chi": "时段流量分布",
+			"kor": "방문자분포"
+		},
+		{
+			"key": "Business Intelligence",
+			"eng": "Business Intelligence",
+			"chi": "商业智能",
+			"kor": "상업지능"
+		},
+		{
+			"key": "kpioverview",
+			"eng": "KPI Overview",
+			"chi": "KPI 统计",
+			"kor": "KPI 분석"
+		},
+		{
+			"key": "advancedAnalysis",
+			"eng": "Advanced Analysis",
+			"chi": "高级客流分析",
+			"kor": "고급 분석"
+		},
+		{
+			"key": "compareByLabel",
+			"eng": "Compare By Label",
+			"chi": "标签对比",
+			"kor": "표식별 비교"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		}
+	],
+	"language": [
+		{
+			"key": "language",
+			"eng": "Language",
+			"chi": "语言",
+			"kor": "언어"
+		},
+		{
+			"key": "Search",
+			"eng": "Search",
+			"chi": "查找",
+			"kor": "검색"
+		},
+		{
+			"key": "Add",
+			"eng": "Add",
+			"chi": "添加",
+			"kor": "추가"
+		},
+		{
+			"key": "Modify",
+			"eng": "Modify",
+			"chi": "更改",
+			"kor": "갱신"
+		},
+		{
+			"key": "Total",
+			"eng": "Total",
+			"chi": "总",
+			"kor": "총"
+		},
+		{
+			"key": "Copy",
+			"eng": "Copy",
+			"chi": "复制",
+			"kor": "복사"
+		}
+	],
+	"store": [
+		{
+			"key": "date_am",
+			"eng": "AM",
+			"chi": "上午",
+			"kor": "오전"
+		},
+		{
+			"key": "date_pm",
+			"eng": "PM",
+			"chi": "下午",
+			"kor": "오후"
+		},
+		{
+			"key": "Store",
+			"eng": "Store",
+			"chi": "店铺",
+			"kor": "상점"
+		},
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "名称",
+			"kor": "이름"
+		},
+		{
+			"key": "CODE",
+			"eng": "Code",
+			"chi": "编码",
+			"kor": "코드"
+		},
+		{
+			"key": "Square Name",
+			"eng": "Square Name",
+			"chi": "广场名称",
+			"kor": "광장 이름"
+		},
+		{
+			"key": "address",
+			"eng": "Address",
+			"chi": "地址",
+			"kor": "주소"
+		},
+		{
+			"key": "Total",
+			"eng": "Total",
+			"chi": "总",
+			"kor": "총"
+		},
+		{
+			"key": "Search",
+			"eng": "Search",
+			"chi": "查找",
+			"kor": "검색"
+		},
+		{
+			"key": "Store List",
+			"eng": "Store List",
+			"chi": "店铺目录",
+			"kor": "점포 목록"
+		},
+		{
+			"key": "Open Hour",
+			"eng": "Open Hour",
+			"chi": "营业时间",
+			"kor": "영업시간"
+		},
+		{
+			"key": "comment",
+			"eng": "Comment",
+			"chi": "备注",
+			"kor": "비고"
+		},
+		{
+			"key": "Store Info",
+			"eng": "Store Info",
+			"chi": "店铺信息",
+			"kor": "점포 정보"
+		},
+		{
+			"key": "Address Detail",
+			"eng": "Address Detail",
+			"chi": "详细地址",
+			"kor": "상세주소"
+		},
+		{
+			"key": "Addr City",
+			"eng": "Addr City",
+			"chi": "城市",
+			"kor": "도시"
+		},
+		{
+			"key": "Square Group",
+			"eng": "Square Group",
+			"chi": "广场组合",
+			"kor": "광장 그룹"
+		},
+		{
+			"key": "Working Hour",
+			"eng": "Open Hour",
+			"chi": "营业时间",
+			"kor": "영업시간"
+		},
+		{
+			"key": "Add Store",
+			"eng": "Add  Store",
+			"chi": "添加店铺",
+			"kor": "점포 추가하기"
+		},
+		{
+			"key": "Tel",
+			"eng": "Telephone",
+			"chi": "电话",
+			"kor": "전화번호"
+		},
+		{
+			"key": "Phone",
+			"eng": "Phone",
+			"chi": "电话",
+			"kor": "전화"
+		},
+		{
+			"key": "Contact",
+			"eng": "Contact",
+			"chi": "联系人",
+			"kor": "연락처"
+		},
+		{
+			"key": "Fax",
+			"eng": "Fax",
+			"chi": "传真",
+			"kor": "팩스"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "Delete",
+			"eng": "Delete",
+			"chi": "删除",
+			"kor": "삭제"
+		},
+		{
+			"key": "Confirm Delete",
+			"eng": "Confirm Delete",
+			"chi": "确认删除",
+			"kor": "삭제 확인"
+		},
+		{
+			"key": "Are you sure to delete this record?",
+			"eng": "Are you sure to delete this record?",
+			"chi": "确定要删除此记录吗？",
+			"kor": "삭제하시겠습니까?"
+		},
+		{
+			"key": "Close",
+			"eng": "Close",
+			"chi": "关闭",
+			"kor": "닫기"
+		},
+		{
+			"key": "type Admin password",
+			"eng": "Type Admin password",
+			"chi": "输入管理者密码",
+			"kor": "관리자 비밀번호를 입력하세요"
+		},
+		{
+			"key": "name_cannot_be_blank",
+			"eng": "Name cannot be blank",
+			"chi": "名称不能空白",
+			"kor": "이름을 지정해주세요"
+		},
+		{
+			"key": "area",
+			"eng": "Area",
+			"chi": "面积",
+			"kor": "면적"
+		},
+		{
+			"key": "sqmt",
+			"eng": "sqmt",
+			"chi": "平方米",
+			"kor": "평방미터"
+		},
+		{
+			"key": "sniffing_mac",
+			"eng": "Sniffing Mac Address",
+			"chi": "探针手机MAC地址",
+			"kor": "Sniffing Mac Address"
+		}
+	],
+	"account": [
+		{
+			"key": "Accounts",
+			"eng": "Accounts",
+			"chi": "帐号",
+			"kor": "계정"
+		},
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "姓名",
+			"kor": "이름"
+		},
+		{
+			"key": "ID",
+			"eng": "ID",
+			"chi": "帐号",
+			"kor": "ID"
+		},
+		{
+			"key": "Email",
+			"eng": "Email",
+			"chi": "电子邮箱",
+			"kor": "전자우편"
+		},
+		{
+			"key": "Role",
+			"eng": "Role",
+			"chi": "角色",
+			"kor": "역할"
+		},
+		{
+			"key": "Account List",
+			"eng": "Account list",
+			"chi": "帐号目录",
+			"kor": "계정목록"
+		},
+		{
+			"key": "Floating Account",
+			"eng": "Floating Account",
+			"chi": "无位帐号",
+			"kor": "설정 안 된 계정"
+		},
+		{
+			"key": "Account Info",
+			"eng": "Account Info",
+			"chi": "帐号详情",
+			"kor": "계정정보"
+		},
+		{
+			"key": "Password",
+			"eng": "Password",
+			"chi": "密码",
+			"kor": "암호"
+		},
+		{
+			"key": "Grade",
+			"eng": "Grade",
+			"chi": "等级",
+			"kor": "등급"
+		},
+		{
+			"key": "language",
+			"eng": "Language",
+			"chi": "语言",
+			"kor": "언어"
+		},
+		{
+			"key": "database",
+			"eng": "Database",
+			"chi": "数据库",
+			"kor": "데이터베이스"
+		},
+		{
+			"key": "Activate",
+			"eng": "Activate",
+			"chi": "使用",
+			"kor": "사용"
+		},
+		{
+			"key": "Apply",
+			"eng": "Apply",
+			"chi": "更新",
+			"kor": "적용"
+		},
+		{
+			"key": "Search",
+			"eng": "Search",
+			"chi": "查找",
+			"kor": "검색"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "Total",
+			"eng": "Total",
+			"chi": "总",
+			"kor": "총"
+		},
+		{
+			"key": "Telephone",
+			"eng": "Telephone",
+			"chi": "电话",
+			"kor": "전화번호"
+		},
+		{
+			"key": "CODE",
+			"eng": "Code",
+			"chi": "编码",
+			"kor": "코드"
+		},
+		{
+			"key": "address",
+			"eng": "Address",
+			"chi": "地址",
+			"kor": "주소"
+		},
+		{
+			"key": "Profile Settings",
+			"eng": "Profile Settings",
+			"chi": "简介",
+			"kor": "프로필 설정"
+		},
+		{
+			"key": "Account",
+			"eng": "Account",
+			"chi": "帐号",
+			"kor": "계정"
+		},
+		{
+			"key": "My data",
+			"eng": "My data",
+			"chi": "我的资料",
+			"kor": "내 자료"
+		},
+		{
+			"key": "Delete Account",
+			"eng": "Delete Account",
+			"chi": "删除帐号",
+			"kor": "계정 삭제"
+		},
+		{
+			"key": "Public info",
+			"eng": "Public info",
+			"chi": "公开信息",
+			"kor": "공개자료"
+		},
+		{
+			"key": "db_name",
+			"eng": "Database",
+			"chi": "数据库",
+			"kor": "데이터베이스"
+		},
+		{
+			"key": "Private info",
+			"eng": "Private info",
+			"chi": "个人信息",
+			"kor": "개인정보"
+		},
+		{
+			"key": "English name",
+			"eng": "English Name",
+			"chi": "英文姓名",
+			"kor": "영어 이름"
+		},
+		{
+			"key": "Address Detail",
+			"eng": "Address Detail",
+			"chi": "详细地址",
+			"kor": "상세주소"
+		},
+		{
+			"key": "Admin",
+			"eng": "Admin",
+			"chi": "管理者",
+			"kor": "관리자"
+		},
+		{
+			"key": "Power User",
+			"eng": "Power User",
+			"chi": "高级用户",
+			"kor": "고급사용자"
+		},
+		{
+			"key": "User",
+			"eng": "User",
+			"chi": "用户",
+			"kor": "사용자"
+		},
+		{
+			"key": "Guest",
+			"eng": "Guest",
+			"chi": "客人",
+			"kor": "손님"
+		},
+		{
+			"key": "Disable",
+			"eng": "Disabled",
+			"chi": "未使用",
+			"kor": "미사용"
+		},
+		{
+			"key": "Flag",
+			"eng": "Flag",
+			"chi": "旗子",
+			"kor": "Flag"
+		},
+		{
+			"key": "Current password",
+			"eng": "Current password",
+			"chi": "目前密码",
+			"kor": "현재 비밀번호"
+		},
+		{
+			"key": "New password",
+			"eng": "New password",
+			"chi": "新密码",
+			"kor": "새 비빌번호"
+		},
+		{
+			"key": "Verify password",
+			"eng": "Verify password",
+			"chi": "再输入密码",
+			"kor": "비빌번호 확인"
+		},
+		{
+			"key": "Chinese",
+			"eng": "中文",
+			"chi": "中文",
+			"kor": "中文"
+		},
+		{
+			"key": "English",
+			"eng": "English",
+			"chi": "English",
+			"kor": "English"
+		},
+		{
+			"key": "Korean",
+			"eng": "한국어",
+			"chi": "한국어",
+			"kor": "한국어"
+		},
+		{
+			"key": "Date In",
+			"eng": "Date In",
+			"chi": "加入日期",
+			"kor": "가입 일자"
+		},
+		{
+			"key": "Date Out",
+			"eng": "Date Out",
+			"chi": "脱离日期",
+			"kor": "탈퇴 일자"
+		},
+		{
+			"key": "comment",
+			"eng": "Comment",
+			"chi": "备注",
+			"kor": "비고"
+		},
+		{
+			"key": "Image File",
+			"eng": "Image File",
+			"chi": "相片",
+			"kor": "사진"
+		},
+		{
+			"key": "Theme",
+			"eng": "Theme",
+			"chi": "题目",
+			"kor": "테마"
+		},
+		{
+			"key": "Are you sure to delete this record?",
+			"eng": "Are you sure to delete this record?",
+			"chi": "确定要删除此记录吗？",
+			"kor": "삭제하시겠습니까?"
+		},
+		{
+			"key": "type Admin password",
+			"eng": "Type Admin password",
+			"chi": "输入管理者密码",
+			"kor": "관리자 비밀번호를 입력하세요"
+		},
+		{
+			"key": "Forgot your password?",
+			"eng": "Forgot your password?",
+			"chi": "忘记密码了？ 笨蛋！",
+			"kor": "비밀번호를 잊으셨나요?"
+		},
+		{
+			"key": "checkid",
+			"eng": "Check ID",
+			"chi": "确认帐号",
+			"kor": "계정확인"
+		},
+		{
+			"key": "checkpassword",
+			"eng": "Verify password",
+			"chi": "再输入密码",
+			"kor": "비빌번호 확인"
+		},
+		{
+			"key": "french",
+			"eng": "French",
+			"chi": "French",
+			"kor": "French"
+		}
+	],
+	"logout": [
+		{
+			"key": "Contact us",
+			"eng": "Contact us",
+			"chi": "联系我们",
+			"kor": "연락처"
+		},
+		{
+			"key": "Thank you for using",
+			"eng": "Thank you for using",
+			"chi": "感谢您使用",
+			"kor": "이용해 주셔서 감사합니다"
+		},
+		{
+			"key": "Relogin",
+			"eng": "Relogin",
+			"chi": "再登录",
+			"kor": "다시 로그인 하기"
+		},
+		{
+			"key": "About us",
+			"eng": "About us",
+			"chi": "关于我们",
+			"kor": "About us"
+		},
+		{
+			"key": "faq",
+			"eng": "FAQ",
+			"chi": "常见问题",
+			"kor": "자주 물어보는 질문"
+		},
+		{
+			"key": "If you have any inquiry, please let us know",
+			"eng": "If you have any inquiry, please let us know",
+			"chi": "如果您有任何疑问，请告诉我们",
+			"kor": "요구사항이 있으면 알려주세요"
+		},
+		{
+			"key": "It can be very helpful to develop the site",
+			"eng": "It can be very helpful to develop the site",
+			"chi": "有帮助开发这个网站",
+			"kor": "개발에 도움이 될 것입니다."
+		}
+	],
+	"summary": [
+		{
+			"key": "lastweek",
+			"eng": "Lastweek",
+			"chi": "上星期",
+			"kor": "저번주"
+		},
+		{
+			"key": "Sat",
+			"eng": "Sat",
+			"chi": "周六",
+			"kor": "토"
+		},
+		{
+			"key": "2 day before",
+			"eng": "2 days before",
+			"chi": "前两天",
+			"kor": "2일전"
+		},
+		{
+			"key": "yesterday",
+			"eng": "Yesterday",
+			"chi": "昨天",
+			"kor": "어제"
+		},
+		{
+			"key": "2weekbefore",
+			"eng": "2 Weeks before",
+			"chi": "前两周",
+			"kor": "2주전"
+		},
+		{
+			"key": "comparing to",
+			"eng": "Comparing to",
+			"chi": "比",
+			"kor": ""
+		},
+		{
+			"key": "this week total",
+			"eng": "This week total",
+			"chi": "本周总数",
+			"kor": "금주 총방문자수"
+		},
+		{
+			"key": "Last week Total",
+			"eng": "Last week Total",
+			"chi": "上周",
+			"kor": "지난주 총 방문자수"
+		},
+		{
+			"key": "3 week average",
+			"eng": "Last 3 weeks average",
+			"chi": "最近3周平均",
+			"kor": "최근3주평균"
+		},
+		{
+			"key": "Visitors/Yesterday",
+			"eng": "Visitors/Yesterday",
+			"chi": "访问者数/昨天",
+			"kor": "방문자수/어제"
+		},
+		{
+			"key": "Visitors/Today",
+			"eng": "Visitors/Today",
+			"chi": "访问者数/今天",
+			"kor": "방문자수/오늘"
+		},
+		{
+			"key": "Recent 7day Average",
+			"eng": "Recent 7 days Average",
+			"chi": "最近7天平均",
+			"kor": "최근7일 평균"
+		},
+		{
+			"key": "Recent 7day Total",
+			"eng": "Recent 7 days Total",
+			"chi": "最近7天合计",
+			"kor": "최근7일 합계"
+		},
+		{
+			"key": "Recent 7 Days",
+			"eng": "Recent 7 days",
+			"chi": "最近 7天",
+			"kor": "최근 7일"
+		},
+		{
+			"key": "Daily Comparison",
+			"eng": "Daily Comparision",
+			"chi": "日间比较",
+			"kor": "일일 비교"
+		},
+		{
+			"key": "Weekly Comparison",
+			"eng": "Weekly Comparison",
+			"chi": "周间比较",
+			"kor": "주간비교"
+		},
+		{
+			"key": "This Week",
+			"eng": "This week",
+			"chi": "本周",
+			"kor": "금주"
+		},
+		{
+			"key": "Last week",
+			"eng": "Last Week",
+			"chi": "上周",
+			"kor": "지난주"
+		},
+		{
+			"key": "2WeeksBefore",
+			"eng": "2 Weeks before",
+			"chi": "前两周",
+			"kor": "2주전"
+		},
+		{
+			"key": "Mon",
+			"eng": "Mon",
+			"chi": "周一",
+			"kor": "월"
+		},
+		{
+			"key": "Sun",
+			"eng": "Sun",
+			"chi": "周日",
+			"kor": "일"
+		},
+		{
+			"key": "Tue",
+			"eng": "Tue",
+			"chi": "周二",
+			"kor": "화"
+		},
+		{
+			"key": "Wed",
+			"eng": "Wed",
+			"chi": "周三",
+			"kor": "수"
+		},
+		{
+			"key": "Thu",
+			"eng": "Thu",
+			"chi": "周四",
+			"kor": "목"
+		},
+		{
+			"key": "Fri",
+			"eng": "Fri",
+			"chi": "周五",
+			"kor": "금"
+		},
+		{
+			"key": "3WeeksBefore",
+			"eng": "3WeeksBefore",
+			"chi": "前三周",
+			"kor": "3주전"
+		},
+		{
+			"key": "Today",
+			"eng": "Today",
+			"chi": "今日",
+			"kor": "오늘"
+		},
+		{
+			"key": "Recent 7days",
+			"eng": "Recent 7days",
+			"chi": "最近 7天",
+			"kor": "최근 7일"
+		},
+		{
+			"key": "Gender",
+			"eng": "Gender",
+			"chi": "性别",
+			"kor": ""
+		},
+		{
+			"key": "Age Group",
+			"eng": "Age Group",
+			"chi": "年龄组",
+			"kor": ""
+		},
+		{
+			"key": "A day before",
+			"eng": "A day before",
+			"chi": "前一天",
+			"kor": "전일"
+		},
+		{
+			"key": "A day After",
+			"eng": "A day after",
+			"chi": "后一天",
+			"kor": "후일"
+		},
+		{
+			"key": "Max Visit Day",
+			"eng": "Max Visit day",
+			"chi": "最大客流量日期",
+			"kor": "방문객최대일자"
+		},
+		{
+			"key": "Footfall",
+			"eng": "Footfall",
+			"chi": "客流活动",
+			"kor": "방문객"
+		},
+		{
+			"key": "genderandagegroup",
+			"eng": "Gender and Age Group",
+			"chi": "年龄、性别组",
+			"kor": "성별 연령"
+		},
+		{
+			"key": "7 Days Average",
+			"eng": "7 days average",
+			"chi": "7天平均",
+			"kor": "7일간 평균"
+		},
+		{
+			"key": "~17",
+			"eng": "under 17",
+			"chi": "17岁一下",
+			"kor": "17세 이하"
+		},
+		{
+			"key": "18~29",
+			"eng": "18~29",
+			"chi": "18~29岁",
+			"kor": "18~29세"
+		},
+		{
+			"key": "30~44",
+			"eng": "30~40",
+			"chi": "30~44岁",
+			"kor": "30~44세"
+		},
+		{
+			"key": "45~64",
+			"eng": "45~64",
+			"chi": "45~64岁",
+			"kor": "45~64세"
+		},
+		{
+			"key": "65~",
+			"eng": "above 65",
+			"chi": "65岁以上",
+			"kor": "65세 이상"
+		},
+		{
+			"key": "male",
+			"eng": "Male",
+			"chi": "男",
+			"kor": "남자"
+		},
+		{
+			"key": "female",
+			"eng": "Female",
+			"chi": "女",
+			"kor": "여자"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "agegroup0",
+			"eng": "under 17",
+			"chi": "17岁一下",
+			"kor": "17세 이하"
+		},
+		{
+			"key": "agegroup1",
+			"eng": "18~29",
+			"chi": "18~29岁",
+			"kor": "18~29세"
+		},
+		{
+			"key": "agegroup2",
+			"eng": "30~40",
+			"chi": "30~44岁",
+			"kor": "30~44세"
+		},
+		{
+			"key": "agegroup3",
+			"eng": "45~64",
+			"chi": "45~64岁",
+			"kor": "45~64세"
+		},
+		{
+			"key": "agegroup4",
+			"eng": "above 65",
+			"chi": "65岁以上",
+			"kor": "65세 이상"
+		}
+	],
+	"dashboard": [
+		{
+			"key": "Footfall",
+			"eng": "Footfall",
+			"chi": "客流活动",
+			"kor": "고객 유동량"
+		},
+		{
+			"key": "Gender",
+			"eng": "Gender",
+			"chi": "性别",
+			"kor": "성별"
+		},
+		{
+			"key": "Last week",
+			"eng": "Last Week",
+			"chi": "上周",
+			"kor": "지난주"
+		},
+		{
+			"key": "This Week",
+			"eng": "This Week",
+			"chi": "本周",
+			"kor": "이번주"
+		},
+		{
+			"key": "Male",
+			"eng": "Male",
+			"chi": "男",
+			"kor": "남자"
+		},
+		{
+			"key": "Female",
+			"eng": "Female",
+			"chi": "女",
+			"kor": "여자"
+		},
+		{
+			"key": "Average",
+			"eng": "Average",
+			"chi": "平均",
+			"kor": "평균"
+		},
+		{
+			"key": "Today",
+			"eng": "Today",
+			"chi": "今日",
+			"kor": "오늘"
+		},
+		{
+			"key": "Age Group",
+			"eng": "Age Group",
+			"chi": "年龄组",
+			"kor": "연령대"
+		},
+		{
+			"key": "Flow",
+			"eng": "Flow",
+			"chi": "客流量",
+			"kor": "유동량"
+		},
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "名称",
+			"kor": "이름"
+		},
+		{
+			"key": "Store List",
+			"eng": "Store List",
+			"chi": "商店列表",
+			"kor": "상점리스트"
+		},
+		{
+			"key": "Last 12 Weeks",
+			"eng": "Last 12 weeks",
+			"chi": "前12周",
+			"kor": "12주"
+		},
+		{
+			"key": "Average12Weeks",
+			"eng": "12 Weeks Average",
+			"chi": "12周平均",
+			"kor": "12주 평균"
+		},
+		{
+			"key": "Yesterday",
+			"eng": "Yesterday",
+			"chi": "昨日",
+			"kor": "어제"
+		},
+		{
+			"key": "Visitors",
+			"eng": "Visitors",
+			"chi": "访问者数",
+			"kor": "방문자수"
+		},
+		{
+			"key": "Total12Weeks",
+			"eng": "12 Weeks Total",
+			"chi": "12周总共",
+			"kor": "12주 합계"
+		},
+		{
+			"key": "~17",
+			"eng": "under 17",
+			"chi": "17岁一下",
+			"kor": "17세 이하"
+		},
+		{
+			"key": "Fri",
+			"eng": "Fri",
+			"chi": "周五",
+			"kor": "금"
+		},
+		{
+			"key": "Sat",
+			"eng": "Sat",
+			"chi": "周六",
+			"kor": "토"
+		},
+		{
+			"key": "Sun",
+			"eng": "Sun",
+			"chi": "周日",
+			"kor": "일"
+		},
+		{
+			"key": "Mon",
+			"eng": "Mon",
+			"chi": "周一",
+			"kor": "월"
+		},
+		{
+			"key": "Tue",
+			"eng": "Tue",
+			"chi": "周二",
+			"kor": "화"
+		},
+		{
+			"key": "Wed",
+			"eng": "Wed",
+			"chi": "周三",
+			"kor": "수"
+		},
+		{
+			"key": "Thu",
+			"eng": "Thu",
+			"chi": "周四",
+			"kor": "목"
+		},
+		{
+			"key": "18~29",
+			"eng": "18~29",
+			"chi": "18~29岁",
+			"kor": "18~29세"
+		},
+		{
+			"key": "30~44",
+			"eng": "30~40",
+			"chi": "30~44岁",
+			"kor": "30~44세"
+		},
+		{
+			"key": "45~64",
+			"eng": "45~64",
+			"chi": "45~64岁",
+			"kor": "45~64세"
+		},
+		{
+			"key": "65~",
+			"eng": "above 65",
+			"chi": "65岁以上",
+			"kor": "65세 이상"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "4 Weeks Average",
+			"eng": "4 Weeks Average",
+			"chi": "四周平均",
+			"kor": "4주 평균"
+		},
+		{
+			"key": "agegroup0",
+			"eng": "under 17",
+			"chi": "17岁一下",
+			"kor": "17세 이하"
+		},
+		{
+			"key": "agegroup1",
+			"eng": "18~29",
+			"chi": "18~29岁",
+			"kor": "18~29세"
+		},
+		{
+			"key": "agegroup2",
+			"eng": "30~40",
+			"chi": "30~44岁",
+			"kor": "30~44세"
+		},
+		{
+			"key": "agegroup3",
+			"eng": "45~64",
+			"chi": "45~64岁",
+			"kor": "45~64세"
+		},
+		{
+			"key": "agegroup4",
+			"eng": "above 65",
+			"chi": "65岁以上",
+			"kor": "65세 이상"
+		},
+		{
+			"key": "today_visit",
+			"eng": "Today",
+			"chi": "今日",
+			"kor": "오늘"
+		},
+		{
+			"key": "yesterday_visit",
+			"eng": "Yesterday",
+			"chi": "昨日",
+			"kor": "어제"
+		},
+		{
+			"key": "average_visit",
+			"eng": "12 Weeks Average",
+			"chi": "12周平均",
+			"kor": "12주 평균"
+		},
+		{
+			"key": "total_visit",
+			"eng": "12 Weeks Total",
+			"chi": "12周总共",
+			"kor": "12주 합계"
+		},
+		{
+			"key": "average_flow",
+			"eng": "12 Weeks Average",
+			"chi": "12周平均",
+			"kor": "12주 평균"
+		},
+		{
+			"key": "today_flow",
+			"eng": "Today",
+			"chi": "今日",
+			"kor": "오늘"
+		},
+		{
+			"key": "yesterday_flow",
+			"eng": "Yesterday",
+			"chi": "昨日",
+			"kor": "어제"
+		},
+		{
+			"key": "total_flow",
+			"eng": "12 Weeks Total",
+			"chi": "12周总共",
+			"kor": "12주 합계"
+		},
+		{
+			"key": "Counter Label",
+			"eng": "Counter Label",
+			"chi": "计数器标签",
+			"kor": "카운터 라벨"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "display",
+			"eng": "Display",
+			"chi": "显示",
+			"kor": "표시"
+		},
+		{
+			"key": "card_banner0_display",
+			"eng": "Today",
+			"chi": "今日",
+			"kor": "오늘"
+		},
+		{
+			"key": "card_banner1_display",
+			"eng": "Yesterday",
+			"chi": "昨日",
+			"kor": "어제"
+		},
+		{
+			"key": "card_banner2_display",
+			"eng": "12Weeks Average",
+			"chi": "12周平均",
+			"kor": "12주평균"
+		},
+		{
+			"key": "card_banner3_display",
+			"eng": "12Weeks Total",
+			"chi": "12周总共",
+			"kor": "12주전체"
+		},
+		{
+			"key": "card_banner0_badge",
+			"eng": "Visitors",
+			"chi": "访问者数",
+			"kor": "방문자수"
+		},
+		{
+			"key": "card_banner1_badge",
+			"eng": "Visitors",
+			"chi": "访问者数",
+			"kor": "방문자수"
+		},
+		{
+			"key": "card_banner2_badge",
+			"eng": "Visitors",
+			"chi": "访问者数",
+			"kor": "방문자수"
+		},
+		{
+			"key": "card_banner3_badge",
+			"eng": "Visitors",
+			"chi": "访问者数",
+			"kor": "방문자수"
+		},
+		{
+			"key": "footfall_title",
+			"eng": "Footfall",
+			"chi": "客流活动",
+			"kor": "유동량"
+		},
+		{
+			"key": "footfall_A_display",
+			"eng": "Last Week",
+			"chi": "上周",
+			"kor": "저번주"
+		},
+		{
+			"key": "footfall_B_display",
+			"eng": "This Week",
+			"chi": "本周",
+			"kor": "이번주"
+		},
+		{
+			"key": "footfall_c_display",
+			"eng": "Last 12 weeks",
+			"chi": "前12周",
+			"kor": "지난12주"
+		},
+		{
+			"key": "footfall_d_display",
+			"eng": "Last 12 weeks",
+			"chi": "前12周",
+			"kor": "지난12주"
+		},
+		{
+			"key": "curve_by_label0_display",
+			"eng": "curve_by_label0_display",
+			"chi": "curve_by_label0_display",
+			"kor": "curve_by_label0_display"
+		},
+		{
+			"key": "curve_by_label1_display",
+			"eng": "curve_by_label1_display",
+			"chi": "curve_by_label1_display",
+			"kor": "curve_by_label1_display"
+		},
+		{
+			"key": "curve_by_label2_display",
+			"eng": "curve_by_label2_display",
+			"chi": "curve_by_label2_display",
+			"kor": "curve_by_label2_display"
+		},
+		{
+			"key": "curve_by_label3_display",
+			"eng": "curve_by_label3_display",
+			"chi": "curve_by_label3_display",
+			"kor": "curve_by_label3_display"
+		},
+		{
+			"key": "curve_by_label4_display",
+			"eng": "curve_by_label4_display",
+			"chi": "curve_by_label4_display",
+			"kor": "curve_by_label4_display"
+		},
+		{
+			"key": "curve_by_label5_display",
+			"eng": "curve_by_label5_display",
+			"chi": "curve_by_label5_display",
+			"kor": "curve_by_label5_display"
+		},
+		{
+			"key": "third_block_display",
+			"eng": "third_block_display",
+			"chi": "third_block_display",
+			"kor": "third_block_display"
+		},
+		{
+			"key": "none",
+			"eng": "None",
+			"chi": "无",
+			"kor": "없슴"
+		},
+		{
+			"key": "Curve by label",
+			"eng": "Curve by label",
+			"chi": "标签别统计",
+			"kor": "레이블별 통계"
+		},
+		{
+			"key": "Age & Gender",
+			"eng": "Gender / Age",
+			"chi": "性别、年龄",
+			"kor": "성별 / 연령"
+		},
+		{
+			"key": "TABLE",
+			"eng": "TABLE",
+			"chi": "表格",
+			"kor": "표"
+		},
+		{
+			"key": "footfall_0_display",
+			"eng": "None",
+			"chi": "上周",
+			"kor": "None"
+		},
+		{
+			"key": "footfall_1_display",
+			"eng": "None",
+			"chi": "本周",
+			"kor": "None"
+		},
+		{
+			"key": "footfall_2_display",
+			"eng": "None",
+			"chi": "前12周",
+			"kor": "None"
+		},
+		{
+			"key": "footfall_3_display",
+			"eng": "None",
+			"chi": "D",
+			"kor": "None"
+		},
+		{
+			"key": "footfall_0_display",
+			"eng": "None",
+			"chi": "上周",
+			"kor": "저번주"
+		},
+		{
+			"key": "footfall_1_display",
+			"eng": "None",
+			"chi": "本周",
+			"kor": "이번주"
+		},
+		{
+			"key": "footfall_2_display",
+			"eng": "None",
+			"chi": "前12周",
+			"kor": "12주 유동량"
+		},
+		{
+			"key": "footfall_3_display",
+			"eng": "None",
+			"chi": "D",
+			"kor": ""
+		}
+	],
+	"standard": [
+		{
+			"key": "7 days Comparison",
+			"eng": "7 days Comparison",
+			"chi": "7日 比对",
+			"kor": ""
+		},
+		{
+			"key": "Last week",
+			"eng": "Last Week",
+			"chi": "前一周",
+			"kor": "지난주"
+		},
+		{
+			"key": "This Week",
+			"eng": "This Week",
+			"chi": "本周",
+			"kor": ""
+		},
+		{
+			"key": "Fri",
+			"eng": "Fri",
+			"chi": "周五",
+			"kor": "금"
+		},
+		{
+			"key": "Sat",
+			"eng": "Sat",
+			"chi": "周六",
+			"kor": "토"
+		},
+		{
+			"key": "Sun",
+			"eng": "Sun",
+			"chi": "周日",
+			"kor": "일"
+		},
+		{
+			"key": "Mon",
+			"eng": "Mon",
+			"chi": "周一",
+			"kor": "월"
+		},
+		{
+			"key": "Tue",
+			"eng": "Tue",
+			"chi": "周二",
+			"kor": "화"
+		},
+		{
+			"key": "Wed",
+			"eng": "Wed",
+			"chi": "周三",
+			"kor": "수"
+		},
+		{
+			"key": "Thu",
+			"eng": "Thu",
+			"chi": "周四",
+			"kor": "목"
+		},
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "名称",
+			"kor": "이름"
+		},
+		{
+			"key": "Total",
+			"eng": "Total",
+			"chi": "总",
+			"kor": "총"
+		},
+		{
+			"key": "Daily Avg.",
+			"eng": "Daily Average",
+			"chi": "日间平均",
+			"kor": "일간평균"
+		},
+		{
+			"key": "Growth",
+			"eng": "Growth",
+			"chi": "成长率",
+			"kor": ""
+		},
+		{
+			"key": "footfallhourly",
+			"eng": "Footfall: Hourly",
+			"chi": "客流活动：小时",
+			"kor": "방문객: 시간별"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "Footfall Rising Ranks",
+			"eng": "Footfall Rising Ranks",
+			"chi": "客流情况",
+			"kor": "방문객 상황"
+		},
+		{
+			"key": "The day vs 1 week before",
+			"eng": "The day vs 1 week before",
+			"chi": "比一星期前",
+			"kor": "1주일 전과 비교"
+		},
+		{
+			"key": "Store Name",
+			"eng": "Store Name",
+			"chi": "店铺名称",
+			"kor": "점포 명청"
+		},
+		{
+			"key": "2 Weeks Before",
+			"eng": "2 Weeks Before",
+			"chi": "两周前",
+			"kor": "2주전"
+		},
+		{
+			"key": "last 7days",
+			"eng": "Last 7 days",
+			"chi": "前7日",
+			"kor": "전7일"
+		},
+		{
+			"key": "these 7 days",
+			"eng": "These 7 days",
+			"chi": "本7日",
+			"kor": "최근7일"
+		},
+		{
+			"key": "versus",
+			"eng": "V.S.",
+			"chi": "-",
+			"kor": "V.S."
+		},
+		{
+			"key": "Device v.s. Counting",
+			"eng": "Device v.s. Counting",
+			"chi": "设备对计数",
+			"kor": "장비"
+		}
+	],
+	"footfall": [
+		{
+			"key": "Datetime",
+			"eng": "Datetime",
+			"chi": "时间段",
+			"kor": "날짜 시간"
+		},
+		{
+			"key": "By Hour",
+			"eng": "By Hour",
+			"chi": "按小时",
+			"kor": "시간별"
+		},
+		{
+			"key": "By Day",
+			"eng": "By Day",
+			"chi": "按日",
+			"kor": "날짜별"
+		},
+		{
+			"key": "By 10 min",
+			"eng": "By 10 min",
+			"chi": "按十分钟",
+			"kor": "10분단위"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "By Month",
+			"eng": "By Month",
+			"chi": "按月",
+			"kor": "월별"
+		},
+		{
+			"key": "recent7days",
+			"eng": "Recent 7 days",
+			"chi": "最近7天",
+			"kor": "최근 7일"
+		},
+		{
+			"key": "recent30days",
+			"eng": "Recent 30 days",
+			"chi": "最近30天",
+			"kor": "최근 30일"
+		},
+		{
+			"key": "Footfall",
+			"eng": "Footfall",
+			"chi": "客流量",
+			"kor": "방문객"
+		},
+		{
+			"key": "mon",
+			"eng": "Mon",
+			"chi": "周一",
+			"kor": "월"
+		},
+		{
+			"key": "tue",
+			"eng": "Tue",
+			"chi": "周二",
+			"kor": "화"
+		},
+		{
+			"key": "wed",
+			"eng": "Wed",
+			"chi": "周三",
+			"kor": "수"
+		},
+		{
+			"key": "thu",
+			"eng": "Thu",
+			"chi": "周四",
+			"kor": "목"
+		},
+		{
+			"key": "fri",
+			"eng": "Fri",
+			"chi": "周五",
+			"kor": "금"
+		},
+		{
+			"key": "sat",
+			"eng": "Sat",
+			"chi": "周六",
+			"kor": "토"
+		},
+		{
+			"key": "sun",
+			"eng": "Sun",
+			"chi": "周日",
+			"kor": "일"
+		},
+		{
+			"key": "startcompare",
+			"eng": "Start Compare",
+			"chi": "开始对比分析",
+			"kor": "비교분석시작"
+		},
+		{
+			"key": "recent4weeks",
+			"eng": "Recent 4 weeks",
+			"chi": "最近4周",
+			"kor": "최근 4주"
+		},
+		{
+			"key": "recent12weeks",
+			"eng": "Recent 12  weeks",
+			"chi": "最近12周",
+			"kor": "최근 12주"
+		},
+		{
+			"key": "current",
+			"eng": "Current",
+			"chi": "本期",
+			"kor": "현재"
+		},
+		{
+			"key": "last",
+			"eng": "Last",
+			"chi": "环比",
+			"kor": "최근"
+		},
+		{
+			"key": "before",
+			"eng": "Before",
+			"chi": "同比",
+			"kor": "예전"
+		},
+		{
+			"key": "occupy",
+			"eng": "Occupy",
+			"chi": "占据量",
+			"kor": "잔류고객"
+		},
+		{
+			"key": "entrance",
+			"eng": "Entrance",
+			"chi": "入",
+			"kor": "입구"
+		},
+		{
+			"key": "exit",
+			"eng": "Exit",
+			"chi": "出",
+			"kor": "출구"
+		},
+		{
+			"key": "outside",
+			"eng": "Outside",
+			"chi": "外部",
+			"kor": "외부"
+		},
+		{
+			"key": "none",
+			"eng": "None",
+			"chi": "未设定",
+			"kor": "미설정"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "Counter Label",
+			"eng": "Counter Label",
+			"chi": "计数器标签",
+			"kor": "카운터 라벨"
+		},
+		{
+			"key": "display",
+			"eng": "Display",
+			"chi": "显示",
+			"kor": "표시"
+		},
+		{
+			"key": "analysis_dataglunt",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		},
+		{
+			"key": "analysis_latestflow",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		},
+		{
+			"key": "analysis_trendanalysis",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		},
+		{
+			"key": "analysis_advancedanalysis",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		},
+		{
+			"key": "analysis_comparebytime",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		},
+		{
+			"key": "analysis_comparebyplace",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		},
+		{
+			"key": "analysis_comparebylabel",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		},
+		{
+			"key": "analysis_trafficdistribution",
+			"eng": "None",
+			"chi": "客流活动",
+			"kor": "None"
+		}
+	],
+	"sensors": [
+		{
+			"key": "Square Name",
+			"eng": "Square Name",
+			"chi": "广场名称",
+			"kor": "광장이름"
+		},
+		{
+			"key": "Store Name",
+			"eng": "Store Name",
+			"chi": "店铺名称",
+			"kor": "상점이름"
+		},
+		{
+			"key": "Device Info",
+			"eng": "Device Info.",
+			"chi": "设备信息",
+			"kor": "장비정보"
+		},
+		{
+			"key": "Camera Code",
+			"eng": "Camera Code",
+			"chi": "摄像机编码",
+			"kor": "카메라 코드"
+		},
+		{
+			"key": "Camera Name",
+			"eng": "Camera Name",
+			"chi": "摄像机名称",
+			"kor": "카메라 이름"
+		},
+		{
+			"key": "MAC",
+			"eng": "MAC",
+			"chi": "MAC",
+			"kor": "MAC"
+		},
+		{
+			"key": "Brand",
+			"eng": "Brand",
+			"chi": "品牌",
+			"kor": "브랜드"
+		},
+		{
+			"key": "Model",
+			"eng": "Model",
+			"chi": "型号",
+			"kor": "모델"
+		},
+		{
+			"key": "USN",
+			"eng": "USN",
+			"chi": "序列号",
+			"kor": "시리얼"
+		},
+		{
+			"key": "Product ID",
+			"eng": "Product ID",
+			"chi": "产品编号",
+			"kor": "제품번호"
+		},
+		{
+			"key": "Install Date",
+			"eng": "Install Date",
+			"chi": "安装日期",
+			"kor": "설치일자"
+		},
+		{
+			"key": "Last Access",
+			"eng": "Last Access",
+			"chi": "最近连接日期",
+			"kor": "최근접속일자"
+		},
+		{
+			"key": "License",
+			"eng": "License",
+			"chi": "算法许可证",
+			"kor": "라이선스"
+		},
+		{
+			"key": "Function",
+			"eng": "Function",
+			"chi": "设备功能",
+			"kor": "장비기능"
+		},
+		{
+			"key": "Feature",
+			"eng": "Feature",
+			"chi": "功能设定",
+			"kor": "기능설정"
+		},
+		{
+			"key": "Detail",
+			"eng": "Detail",
+			"chi": "详细",
+			"kor": "자세히보기"
+		},
+		{
+			"key": "Count DB",
+			"eng": "Counting DB",
+			"chi": "计数数据库",
+			"kor": "카운팅 데이터"
+		},
+		{
+			"key": "Heatmap",
+			"eng": "Heatmap",
+			"chi": "热力图",
+			"kor": "Heatmap"
+		},
+		{
+			"key": "Face",
+			"eng": "Face Detect",
+			"chi": "人脸检测",
+			"kor": "얼굴감지"
+		},
+		{
+			"key": "Mac Sniff",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "Mac Sniff"
+		},
+		{
+			"key": "Count Line",
+			"eng": "Counting",
+			"chi": "计数",
+			"kor": "카운팅"
+		},
+		{
+			"key": "Age and Gender",
+			"eng": "Age and Gender",
+			"chi": "性别、年龄",
+			"kor": "성별 연령"
+		},
+		{
+			"key": "Search",
+			"eng": "Search",
+			"chi": "查找",
+			"kor": "검색"
+		},
+		{
+			"key": "comment",
+			"eng": "Comment",
+			"chi": "备注",
+			"kor": "비고"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		}
+	],
+	"agegender": [
+		{
+			"key": "Gender",
+			"eng": "Gender",
+			"chi": "性别",
+			"kor": "성별"
+		},
+		{
+			"key": "Age",
+			"eng": "Age",
+			"chi": "年龄",
+			"kor": "연령"
+		},
+		{
+			"key": "GENDER TOTAL",
+			"eng": "Gender Total",
+			"chi": "性别综合",
+			"kor": "성별종합"
+		},
+		{
+			"key": "Age & Gender",
+			"eng": "Gender / Age",
+			"chi": "性别、年龄",
+			"kor": "성별 / 연령"
+		},
+		{
+			"key": "AGE TOTAL",
+			"eng": "Age Total",
+			"chi": "年龄综合",
+			"kor": "연령종합"
+		},
+		{
+			"key": "Male",
+			"eng": "Male",
+			"chi": "男",
+			"kor": "남자"
+		},
+		{
+			"key": "Female",
+			"eng": "Female",
+			"chi": "女",
+			"kor": "여자"
+		},
+		{
+			"key": "Datetime",
+			"eng": "Datetime",
+			"chi": "时间段",
+			"kor": "날짜 시간"
+		},
+		{
+			"key": "Fri",
+			"eng": "Fri",
+			"chi": "周五",
+			"kor": "금"
+		},
+		{
+			"key": "Wed",
+			"eng": "Wed",
+			"chi": "周三",
+			"kor": "수"
+		},
+		{
+			"key": "18~29",
+			"eng": "18~29",
+			"chi": "18~29岁",
+			"kor": "18~29세"
+		},
+		{
+			"key": "Mon",
+			"eng": "Mon",
+			"chi": "周一",
+			"kor": "월"
+		},
+		{
+			"key": "Sat",
+			"eng": "Sat",
+			"chi": "周六",
+			"kor": "토"
+		},
+		{
+			"key": "Sun",
+			"eng": "Sun",
+			"chi": "周日",
+			"kor": "일"
+		},
+		{
+			"key": "Thu",
+			"eng": "Thu",
+			"chi": "周四",
+			"kor": "목"
+		},
+		{
+			"key": "Tue",
+			"eng": "Tue",
+			"chi": "周二",
+			"kor": "화"
+		},
+		{
+			"key": "30~44",
+			"eng": "30~40",
+			"chi": "30~44岁",
+			"kor": "30~44세"
+		},
+		{
+			"key": "45~64",
+			"eng": "45~64",
+			"chi": "45~64岁",
+			"kor": "45~64세"
+		},
+		{
+			"key": "65~79",
+			"eng": "65~79",
+			"chi": "65~79岁",
+			"kor": "65~79세"
+		},
+		{
+			"key": "By 10 min",
+			"eng": "By 10 min",
+			"chi": "按十分钟",
+			"kor": "10분단위"
+		},
+		{
+			"key": "By Day",
+			"eng": "By Day",
+			"chi": "按日",
+			"kor": "날짜별"
+		},
+		{
+			"key": "By Hour",
+			"eng": "By Hour",
+			"chi": "按小时",
+			"kor": "시간별"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "By Month",
+			"eng": "By Month",
+			"chi": "按月",
+			"kor": "월별"
+		}
+	],
+	"premium": [
+		{
+			"key": "Tue",
+			"eng": "Tue",
+			"chi": "周二",
+			"kor": "화"
+		},
+		{
+			"key": "Wed",
+			"eng": "Wed",
+			"chi": "周三",
+			"kor": "수"
+		},
+		{
+			"key": "Thu",
+			"eng": "Thu",
+			"chi": "周四",
+			"kor": "목"
+		},
+		{
+			"key": "Sun",
+			"eng": "Sun",
+			"chi": "周日",
+			"kor": "일"
+		},
+		{
+			"key": "Sat",
+			"eng": "Sat",
+			"chi": "周六",
+			"kor": "토"
+		},
+		{
+			"key": "Fri",
+			"eng": "Fri",
+			"chi": "周五",
+			"kor": "금"
+		},
+		{
+			"key": "Mon",
+			"eng": "Mon",
+			"chi": "周一",
+			"kor": "월"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "Date",
+			"eng": "Date",
+			"chi": "日期",
+			"kor": "일자"
+		},
+		{
+			"key": "Footfall",
+			"eng": "Footfall",
+			"chi": "客流活动",
+			"kor": "방문객"
+		},
+		{
+			"key": "footfalltotal",
+			"eng": "Footfall: Total",
+			"chi": "客流：全体",
+			"kor": "방문객: 전체"
+		},
+		{
+			"key": "footfallstore",
+			"eng": "Footfall: Store",
+			"chi": "客流：店铺",
+			"kor": "방문객: 점포별"
+		},
+		{
+			"key": "footfallcamera",
+			"eng": "Footfall: Camera",
+			"chi": "客流：设备",
+			"kor": "방문객: 장비별"
+		},
+		{
+			"key": "footfallsquare",
+			"eng": "Footfall: Square",
+			"chi": "客流：广场",
+			"kor": "방문객: 광장별"
+		}
+	],
+	"export": [
+		{
+			"key": "DB Query",
+			"eng": "Query Database",
+			"chi": "导出数据库",
+			"kor": "데이터베이스 가져오기"
+		},
+		{
+			"key": "Group By",
+			"eng": "Group By",
+			"chi": "分割",
+			"kor": "분류"
+		},
+		{
+			"key": "ALL",
+			"eng": "All",
+			"chi": "全部",
+			"kor": "전부"
+		},
+		{
+			"key": "Square",
+			"eng": "Square",
+			"chi": "广场",
+			"kor": "광장"
+		},
+		{
+			"key": "Store",
+			"eng": "Store",
+			"chi": "店铺",
+			"kor": "점포"
+		},
+		{
+			"key": "Camera",
+			"eng": "Device",
+			"chi": "设备",
+			"kor": "장비"
+		},
+		{
+			"key": "entrance",
+			"eng": "Entrance",
+			"chi": "入",
+			"kor": "입구"
+		},
+		{
+			"key": "exit",
+			"eng": "Exit",
+			"chi": "出",
+			"kor": "출구"
+		},
+		{
+			"key": "outside",
+			"eng": "Outside",
+			"chi": "外部",
+			"kor": "외부"
+		},
+		{
+			"key": "none",
+			"eng": "None",
+			"chi": "未设定",
+			"kor": "미설정"
+		},
+		{
+			"key": "Date and Time",
+			"eng": "Date and Time",
+			"chi": "日期和时间",
+			"kor": "날짜 시간"
+		},
+		{
+			"key": "TABLE",
+			"eng": "TABLE",
+			"chi": "表格",
+			"kor": "표"
+		},
+		{
+			"key": "tenmin",
+			"eng": "Every 10 minute",
+			"chi": "每十分种",
+			"kor": "10분간격"
+		},
+		{
+			"key": "Hourly",
+			"eng": "Hourly",
+			"chi": "每小时别",
+			"kor": "매시간별"
+		},
+		{
+			"key": "Daily",
+			"eng": "Daily",
+			"chi": "每日别",
+			"kor": "매일별"
+		},
+		{
+			"key": "Monthly",
+			"eng": "Monthly",
+			"chi": "每月别",
+			"kor": "매월별"
+		},
+		{
+			"key": "Yearly",
+			"eng": "Yearly",
+			"chi": "每年别",
+			"kor": "매년별"
+		},
+		{
+			"key": "CSV",
+			"eng": "CSV",
+			"chi": "CSV",
+			"kor": "CSV"
+		},
+		{
+			"key": "JSON",
+			"eng": "JSON",
+			"chi": "JSON",
+			"kor": "JSON"
+		},
+		{
+			"key": "Order",
+			"eng": "Order",
+			"chi": "排列",
+			"kor": "정렬"
+		},
+		{
+			"key": "Asc",
+			"eng": "Ascending",
+			"chi": "升序",
+			"kor": "오름차순"
+		},
+		{
+			"key": "Desc",
+			"eng": "Descending",
+			"chi": "降序",
+			"kor": "내림차순"
+		},
+		{
+			"key": "Format",
+			"eng": "Format",
+			"chi": "格式",
+			"kor": "격식"
+		},
+		{
+			"key": "Label",
+			"eng": "Label",
+			"chi": "计数器标号",
+			"kor": "레이블"
+		},
+		{
+			"key": "API",
+			"eng": "API",
+			"chi": "API",
+			"kor": "API"
+		},
+		{
+			"key": "API Key",
+			"eng": "API Key",
+			"chi": "API Key",
+			"kor": "API Key"
+		},
+		{
+			"key": "No group",
+			"eng": "None",
+			"chi": "无分割",
+			"kor": "무분할"
+		},
+		{
+			"key": "Time Table",
+			"eng": "Timely",
+			"chi": "时间粒度",
+			"kor": "시간간격"
+		},
+		{
+			"key": "Query",
+			"eng": "Query",
+			"chi": "导出",
+			"kor": "내보내기"
+		},
+		{
+			"key": "weekly",
+			"eng": "Weekly",
+			"chi": "每周别",
+			"kor": "매주별"
+		},
+		{
+			"key": "curve",
+			"eng": "Chart",
+			"chi": "图表",
+			"kor": "도표"
+		},
+		{
+			"key": "Place",
+			"eng": "Place",
+			"chi": "地点",
+			"kor": "장소"
+		}
+	],
+	"sitemap": [
+		{
+			"key": "Device Tree",
+			"eng": "Device Tree",
+			"chi": "设备机构",
+			"kor": "장비 구조"
+		},
+		{
+			"key": "Square",
+			"eng": "Square",
+			"chi": "广场",
+			"kor": "광장"
+		},
+		{
+			"key": "Store",
+			"eng": "Store",
+			"chi": "店铺",
+			"kor": "점포"
+		},
+		{
+			"key": "Camera",
+			"eng": "Device",
+			"chi": "设备",
+			"kor": "장비"
+		},
+		{
+			"key": "Counting",
+			"eng": "Counting",
+			"chi": "计数数据",
+			"kor": "카운팅"
+		},
+		{
+			"key": "Heatmap",
+			"eng": "Heatmap",
+			"chi": "热力图",
+			"kor": "Heatmap"
+		},
+		{
+			"key": "Age&Gender",
+			"eng": "Age & Gender",
+			"chi": "性别、年龄",
+			"kor": "성별/연령"
+		},
+		{
+			"key": "Mac Sniff",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "Mac Sniff"
+		}
+	],
+	"common": [
+		{
+			"key": "Profile",
+			"eng": "Profile",
+			"chi": "个人信息",
+			"kor": "개인정보"
+		},
+		{
+			"key": "Admin Page",
+			"eng": "Admin Page",
+			"chi": "管理者项目",
+			"kor": "관리자"
+		},
+		{
+			"key": "Sign out",
+			"eng": "Log Out",
+			"chi": "退出",
+			"kor": "로그아웃"
+		},
+		{
+			"key": "Help",
+			"eng": "Help",
+			"chi": "帮助",
+			"kor": "도움말"
+		},
+		{
+			"key": "Fri",
+			"eng": "Fri",
+			"chi": "周五",
+			"kor": "금"
+		},
+		{
+			"key": "Mon",
+			"eng": "Mon",
+			"chi": "周一",
+			"kor": "월"
+		},
+		{
+			"key": "Tue",
+			"eng": "Tue",
+			"chi": "周二",
+			"kor": "화"
+		},
+		{
+			"key": "Wed",
+			"eng": "Wed",
+			"chi": "周三",
+			"kor": "수"
+		},
+		{
+			"key": "Thu",
+			"eng": "Thu",
+			"chi": "周四",
+			"kor": "목"
+		},
+		{
+			"key": "Sat",
+			"eng": "Sat",
+			"chi": "周六",
+			"kor": "토"
+		},
+		{
+			"key": "Sun",
+			"eng": "Sun",
+			"chi": "周日",
+			"kor": "일"
+		},
+		{
+			"key": "Chinese",
+			"eng": "中文",
+			"chi": "中文",
+			"kor": "中文"
+		},
+		{
+			"key": "Korean",
+			"eng": "한국어",
+			"chi": "한국어",
+			"kor": "한국어"
+		},
+		{
+			"key": "English",
+			"eng": "English",
+			"chi": "English",
+			"kor": "English"
+		},
+		{
+			"key": "_host_title",
+			"eng": "Business Inteligence",
+			"chi": "商业智能",
+			"kor": "상업지능"
+		},
+		{
+			"key": "_document_title",
+			"eng": "Business Inteligence",
+			"chi": "商业智能",
+			"kor": "상업지능"
+		},
+		{
+			"key": "_title_logo",
+			"eng": "",
+			"chi": "/libs/pfh_logo.png",
+			"kor": ""
+		},
+		{
+			"key": "_developer",
+			"eng": "hanskim",
+			"chi": "hanskim",
+			"kor": "hanskim"
+		}
+	],
+	"square": [
+		{
+			"key": "CODE",
+			"eng": "Code",
+			"chi": "编码",
+			"kor": "코드"
+		},
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "名称",
+			"kor": "이름"
+		},
+		{
+			"key": "address",
+			"eng": "Address",
+			"chi": "地址",
+			"kor": "주소"
+		},
+		{
+			"key": "comment",
+			"eng": "Comment",
+			"chi": "备注",
+			"kor": "비고"
+		},
+		{
+			"key": "Square List",
+			"eng": "Square List",
+			"chi": "广场目录",
+			"kor": "광장 목록"
+		},
+		{
+			"key": "Total",
+			"eng": "Total",
+			"chi": "总",
+			"kor": "총"
+		},
+		{
+			"key": "Square Info",
+			"eng": "Square Info",
+			"chi": "广场信息",
+			"kor": "광장 정보"
+		},
+		{
+			"key": "Address Detail",
+			"eng": "Address Detail",
+			"chi": "详细地址",
+			"kor": "상세주소"
+		},
+		{
+			"key": "Addr City",
+			"eng": "Addr City",
+			"chi": "城市",
+			"kor": "도시"
+		},
+		{
+			"key": "Search",
+			"eng": "Search",
+			"chi": "查找",
+			"kor": "검색"
+		},
+		{
+			"key": "Add Square",
+			"eng": "Add Square",
+			"chi": "添加广场",
+			"kor": "광장 추가하기"
+		},
+		{
+			"key": "Delete",
+			"eng": "Delete",
+			"chi": "删除",
+			"kor": "삭제"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "Confirm Delete",
+			"eng": "Confirm Delete",
+			"chi": "确认删除",
+			"kor": "삭제 확인"
+		},
+		{
+			"key": "Are you sure to delete this record?",
+			"eng": "Are you sure to delete this record?",
+			"chi": "确定要删除此记录吗？",
+			"kor": "삭제하시겠습니까?"
+		},
+		{
+			"key": "Close",
+			"eng": "Close",
+			"chi": "关闭",
+			"kor": "닫기"
+		},
+		{
+			"key": "type Admin password",
+			"eng": "Type Admin password",
+			"chi": "输入管理者密码",
+			"kor": "관리자 비밀번호를 입력하세요"
+		}
+	],
+	"macsniff": [
+		{
+			"key": "By 10 min",
+			"eng": "By 10 min",
+			"chi": "按十分钟",
+			"kor": "10분단위"
+		},
+		{
+			"key": "By Day",
+			"eng": "By Day",
+			"chi": "按日",
+			"kor": "날짜별"
+		},
+		{
+			"key": "By Hour",
+			"eng": "By Hour",
+			"chi": "按小时",
+			"kor": "시간별"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "By Month",
+			"eng": "By Month",
+			"chi": "按月",
+			"kor": "월별"
+		}
+	],
+	"camera": [
+		{
+			"key": "Device List",
+			"eng": "Device List",
+			"chi": "设备目录",
+			"kor": "장비 목록"
+		},
+		{
+			"key": "Floating Device List",
+			"eng": "Floating Device List",
+			"chi": "未设定设备目录",
+			"kor": "미설정 장비 목록"
+		},
+		{
+			"key": "Snapshot",
+			"eng": "Snapshot",
+			"chi": "画面",
+			"kor": "화면"
+		},
+		{
+			"key": "Mac",
+			"eng": "MAC",
+			"chi": "MAC",
+			"kor": "MAC"
+		},
+		{
+			"key": "deviceinfo",
+			"eng": "Device Info",
+			"chi": "设备信息",
+			"kor": "장비 정보"
+		},
+		{
+			"key": "USN",
+			"eng": "USN",
+			"chi": "序列号",
+			"kor": "USN"
+		},
+		{
+			"key": "Brand",
+			"eng": "Brand",
+			"chi": "品牌",
+			"kor": "제조사"
+		},
+		{
+			"key": "model",
+			"eng": "Model",
+			"chi": "型号",
+			"kor": "모델"
+		},
+		{
+			"key": "Product ID",
+			"eng": "Product ID",
+			"chi": "产品编号",
+			"kor": "제품번호"
+		},
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "名称",
+			"kor": "이름"
+		},
+		{
+			"key": "Store Group",
+			"eng": "Store Group",
+			"chi": "店铺组合",
+			"kor": "점포그룹"
+		},
+		{
+			"key": "Search",
+			"eng": "Search",
+			"chi": "查找",
+			"kor": "검색"
+		},
+		{
+			"key": "Initial Access",
+			"eng": "Initial Access",
+			"chi": "最初连接",
+			"kor": "최초 연결"
+		},
+		{
+			"key": "Last Access",
+			"eng": "Last Access",
+			"chi": "最近连接日期",
+			"kor": "최근접속일자"
+		},
+		{
+			"key": "db_name",
+			"eng": "Database",
+			"chi": "数据库",
+			"kor": "데이터베이스"
+		},
+		{
+			"key": "CODE",
+			"eng": "Code",
+			"chi": "编码",
+			"kor": "코드"
+		},
+		{
+			"key": "Install Date",
+			"eng": "Install Date",
+			"chi": "安装日期",
+			"kor": "설치일자"
+		},
+		{
+			"key": "Database",
+			"eng": "Database",
+			"chi": "数据库",
+			"kor": "데이터베이스"
+		},
+		{
+			"key": "Store",
+			"eng": "Store",
+			"chi": "店铺",
+			"kor": "점포"
+		},
+		{
+			"key": "License",
+			"eng": "License",
+			"chi": "算法许可证",
+			"kor": "라이선스"
+		},
+		{
+			"key": "Function",
+			"eng": "Function",
+			"chi": "设备功能",
+			"kor": "장비기능"
+		},
+		{
+			"key": "Feature",
+			"eng": "Feature",
+			"chi": "功能设定",
+			"kor": "기능설정"
+		},
+		{
+			"key": "Count DB",
+			"eng": "Counting DB",
+			"chi": "计数数据库",
+			"kor": "카운팅 데이터"
+		},
+		{
+			"key": "Heatmap",
+			"eng": "Heatmap",
+			"chi": "热力图",
+			"kor": "Heatmap"
+		},
+		{
+			"key": "Counting Line",
+			"eng": "Counting",
+			"chi": "计数",
+			"kor": "카운팅"
+		},
+		{
+			"key": "Mac Sniff",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "Mac Sniff"
+		},
+		{
+			"key": "Mac Sniffing",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "Mac Sniff"
+		},
+		{
+			"key": "Face",
+			"eng": "Face Detect",
+			"chi": "人脸检测",
+			"kor": "얼굴감지"
+		},
+		{
+			"key": "Age and Gender",
+			"eng": "Age and Gender",
+			"chi": "性别、年龄",
+			"kor": "성별 연령"
+		},
+		{
+			"key": "Activate",
+			"eng": "Activate",
+			"chi": "使用",
+			"kor": "사용"
+		},
+		{
+			"key": "comment",
+			"eng": "Comment",
+			"chi": "备注",
+			"kor": "비고"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "Parameter",
+			"eng": "Parameter",
+			"chi": "设备参数",
+			"kor": "파라미터"
+		},
+		{
+			"key": "Total",
+			"eng": "Total",
+			"chi": "总",
+			"kor": "총"
+		},
+		{
+			"key": "outside",
+			"eng": "Outside",
+			"chi": "外部",
+			"kor": "외부"
+		},
+		{
+			"key": "entrance",
+			"eng": "Entrance",
+			"chi": "入",
+			"kor": "입구"
+		},
+		{
+			"key": "exit",
+			"eng": "Exit",
+			"chi": "出",
+			"kor": "출구"
+		},
+		{
+			"key": "none",
+			"eng": "None",
+			"chi": "未设定",
+			"kor": "미설정"
+		},
+		{
+			"key": "Counter Label",
+			"eng": "Counter Label",
+			"chi": "计数器标签",
+			"kor": "카운터 라벨"
+		},
+		{
+			"key": "Counter Name",
+			"eng": "Counter Name",
+			"chi": "计数器名称",
+			"kor": "카운터 이름"
+		},
+		{
+			"key": "Delete",
+			"eng": "Delete",
+			"chi": "删除",
+			"kor": "삭제"
+		},
+		{
+			"key": "Confirm Delete",
+			"eng": "Confirm Delete",
+			"chi": "确认删除",
+			"kor": "삭제 확인"
+		},
+		{
+			"key": "Are you sure to delete this record?",
+			"eng": "Are you sure to delete this record?",
+			"chi": "确定要删除此记录吗？",
+			"kor": "삭제하시겠습니까?"
+		},
+		{
+			"key": "type Admin password",
+			"eng": "Type Admin password",
+			"chi": "输入管理者密码",
+			"kor": "관리자 비밀번호를 입력하세요"
+		},
+		{
+			"key": "Close",
+			"eng": "Close",
+			"chi": "关闭",
+			"kor": "닫기"
+		},
+		{
+			"key": "addtostore",
+			"eng": "Add to Store",
+			"chi": "添加",
+			"kor": "추가하기"
+		},
+		{
+			"key": "display",
+			"eng": "Display",
+			"chi": "显示",
+			"kor": "표시"
+		},
+		{
+			"key": "addnew",
+			"eng": "Add New Label",
+			"chi": "添加标签",
+			"kor": "라벨 추가"
+		},
+		{
+			"key": "manage",
+			"eng": "Manage Counter Label",
+			"chi": "计数器标签管理",
+			"kor": "카운터라벨관리"
+		},
+		{
+			"key": "addmanual",
+			"eng": "Add by manual",
+			"chi": "手动添加",
+			"kor": "수동 추가"
+		}
+	],
+	"faceset": [
+		{
+			"key": "Total",
+			"eng": "Total",
+			"chi": "总",
+			"kor": "총"
+		}
+	],
+	"heatmap": [
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		},
+		{
+			"key": "By Hour",
+			"eng": "By Hour",
+			"chi": "按小时",
+			"kor": "시간별"
+		},
+		{
+			"key": "By Day",
+			"eng": "By Day",
+			"chi": "按日",
+			"kor": "날짜별"
+		},
+		{
+			"key": "By Month",
+			"eng": "By Month",
+			"chi": "按月",
+			"kor": "월별"
+		}
+	],
+	"device_tree": [
+		{
+			"key": "CODE",
+			"eng": "Code",
+			"chi": "编码",
+			"kor": "코드"
+		},
+		{
+			"key": "Name",
+			"eng": "Name",
+			"chi": "名称",
+			"kor": "이름"
+		},
+		{
+			"key": "MAC",
+			"eng": "MAC",
+			"chi": "MAC",
+			"kor": "MAC"
+		},
+		{
+			"key": "Brand",
+			"eng": "Brand",
+			"chi": "品牌",
+			"kor": "제조사"
+		},
+		{
+			"key": "model",
+			"eng": "Model",
+			"chi": "型号",
+			"kor": "모델"
+		},
+		{
+			"key": "Product ID",
+			"eng": "Product ID",
+			"chi": "产品编号",
+			"kor": "제품번호"
+		},
+		{
+			"key": "USN",
+			"eng": "USN",
+			"chi": "序列号",
+			"kor": "USN"
+		},
+		{
+			"key": "Install Date",
+			"eng": "Install Date",
+			"chi": "安装日期",
+			"kor": "설치일자"
+		},
+		{
+			"key": "Last Access",
+			"eng": "Last Access",
+			"chi": "最近连接日期",
+			"kor": "최근접속일자"
+		},
+		{
+			"key": "License",
+			"eng": "License",
+			"chi": "算法许可证",
+			"kor": "라이선스"
+		},
+		{
+			"key": "Count DB",
+			"eng": "Counting DB",
+			"chi": "计数数据库",
+			"kor": "카운팅 데이터"
+		},
+		{
+			"key": "Heatmap",
+			"eng": "Heatmap",
+			"chi": "热力图",
+			"kor": "Heatmap"
+		},
+		{
+			"key": "Face",
+			"eng": "Face Detect",
+			"chi": "人脸检测",
+			"kor": "얼굴감지"
+		},
+		{
+			"key": "Mac Sniff",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "Mac Sniff"
+		},
+		{
+			"key": "Count Line",
+			"eng": "Counting",
+			"chi": "计数",
+			"kor": "카운팅"
+		},
+		{
+			"key": "Age and Gender",
+			"eng": "Age and Gender",
+			"chi": "性别、年龄",
+			"kor": "성별 연령"
+		},
+		{
+			"key": "Function",
+			"eng": "Function",
+			"chi": "设备功能",
+			"kor": "장비기능"
+		},
+		{
+			"key": "Feature",
+			"eng": "Feature",
+			"chi": "功能设定",
+			"kor": "기능설정"
+		},
+		{
+			"key": "Add Store",
+			"eng": "Add  Store",
+			"chi": "添加店铺",
+			"kor": "점포 추가하기"
+		},
+		{
+			"key": "Add Square",
+			"eng": "Add Square",
+			"chi": "添加广场",
+			"kor": "광장 추가하기"
+		},
+		{
+			"key": "Add Camera",
+			"eng": "Add Device",
+			"chi": "添加设备",
+			"kor": "장비 추가하기"
+		},
+		{
+			"key": "Device Tree",
+			"eng": "Device Tree",
+			"chi": "设备树",
+			"kor": "장비구조"
+		},
+		{
+			"key": "Modify Camera information",
+			"eng": "Modify Camera information",
+			"chi": "更改设备参数",
+			"kor": "장비 설정하기"
+		},
+		{
+			"key": "View Parameter",
+			"eng": "View Parameter",
+			"chi": "查看设备参数",
+			"kor": "설정보기"
+		},
+		{
+			"key": "Are you sure to delete this record?",
+			"eng": "Are you sure to delete this record?",
+			"chi": "确定要删除此记录吗？",
+			"kor": "삭제하시겠습니까?"
+		},
+		{
+			"key": "Confirm Delete",
+			"eng": "Confirm Delete",
+			"chi": "确认删除",
+			"kor": "삭제 확인"
+		},
+		{
+			"key": "Close",
+			"eng": "Close",
+			"chi": "关闭",
+			"kor": "닫기"
+		},
+		{
+			"key": "type Admin password",
+			"eng": "Type Admin password",
+			"chi": "输入管理者密码",
+			"kor": "관리자 비밀번호를 입력하세요"
+		}
+	],
+	"local_device_setup": [
+		{
+			"key": "Device IP Address",
+			"eng": "Device IP Address",
+			"chi": "设备IP地址",
+			"kor": "장비 IP 주소"
+		},
+		{
+			"key": "TLSS IP Address",
+			"eng": "TLSS IP Address",
+			"chi": "托管服务器地址",
+			"kor": "TLSS IP 주소"
+		},
+		{
+			"key": "TLSS Interval",
+			"eng": "Interval",
+			"chi": "时间间隔",
+			"kor": "접속시간간격"
+		},
+		{
+			"key": "Function",
+			"eng": "Function",
+			"chi": "设备功能",
+			"kor": "장비기능"
+		},
+		{
+			"key": "Counting Camera",
+			"eng": "Counting Camera",
+			"chi": "计数摄像机",
+			"kor": "카운팅카메라"
+		},
+		{
+			"key": "facedet",
+			"eng": "Face Detect Camera",
+			"chi": "人脸识别摄像机",
+			"kor": "얼굴인식카메라"
+		},
+		{
+			"key": "Mac Sniff",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "Mac Sniff"
+		},
+		{
+			"key": "setup",
+			"eng": "Setup",
+			"chi": "设定",
+			"kor": "설정"
+		},
+		{
+			"key": "TLSS PORT",
+			"eng": "TLSS Port",
+			"chi": "端口",
+			"kor": "포트"
+		}
+	],
+	"system": [
+		{
+			"key": "TLSS",
+			"eng": "TLSS",
+			"chi": "托管服务",
+			"kor": "TLSS"
+		},
+		{
+			"key": "basic",
+			"eng": "Basic",
+			"chi": "基本信息",
+			"kor": "기본정보"
+		},
+		{
+			"key": "host_title",
+			"eng": "host Title",
+			"chi": "网页标题",
+			"kor": "웹페이지 타이틀"
+		},
+		{
+			"key": "document_title",
+			"eng": "Document Title",
+			"chi": "平台标题",
+			"kor": "타이틀"
+		},
+		{
+			"key": "logo_path",
+			"eng": "Logo",
+			"chi": "标志",
+			"kor": "로고"
+		},
+		{
+			"key": "developer",
+			"eng": "Developer",
+			"chi": "开发者",
+			"kor": "개발자"
+		},
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "service",
+			"eng": "Service",
+			"chi": "程序",
+			"kor": "소프트웨어"
+		},
+		{
+			"key": "application",
+			"eng": "Application",
+			"chi": "应用",
+			"kor": "응용분야"
+		},
+		{
+			"key": "Counting",
+			"eng": "Counting",
+			"chi": "计数",
+			"kor": "카운팅"
+		},
+		{
+			"key": "Face",
+			"eng": "Face Detect",
+			"chi": "人脸检测",
+			"kor": "얼굴감지"
+		},
+		{
+			"key": "Snapshot",
+			"eng": "Snapshot",
+			"chi": "抓拍",
+			"kor": "화면캡쳐"
+		},
+		{
+			"key": "Mac Sniff",
+			"eng": "Mac Sniff",
+			"chi": "手机探针",
+			"kor": "Mac Sniff"
+		},
+		{
+			"key": "people",
+			"eng": "People",
+			"chi": "客流",
+			"kor": "인원"
+		},
+		{
+			"key": "traffic",
+			"eng": "Traffic",
+			"chi": "车流",
+			"kor": "교통"
+		},
+		{
+			"key": "no",
+			"eng": "NO",
+			"chi": "否",
+			"kor": "미사용"
+		},
+		{
+			"key": "HTTP",
+			"eng": "HTTP",
+			"chi": "HTTP",
+			"kor": "HTTP"
+		},
+		{
+			"key": "TCP",
+			"eng": "TCP",
+			"chi": "TCP",
+			"kor": "TCP"
+		},
+		{
+			"key": "active",
+			"eng": "ACTIVE",
+			"chi": "ACTIVE",
+			"kor": "ACTIVE"
+		},
+		{
+			"key": "mode",
+			"eng": "Mode",
+			"chi": "模式",
+			"kor": "모드"
+		},
+		{
+			"key": "count_event",
+			"eng": "Realtime Counting",
+			"chi": "实时计数",
+			"kor": "실시간"
+		},
+		{
+			"key": "port",
+			"eng": "Port",
+			"chi": "端口",
+			"kor": "포트"
+		},
+		{
+			"key": "database",
+			"eng": "Database",
+			"chi": "数据库",
+			"kor": "데이터베이스"
+		},
+		{
+			"key": "network",
+			"eng": "Network",
+			"chi": "网路",
+			"kor": "네트워크"
+		},
+		{
+			"key": "License",
+			"eng": "License",
+			"chi": "许可证",
+			"kor": "라이선스"
+		},
+		{
+			"key": "external",
+			"eng": "External",
+			"chi": "外部",
+			"kor": "외부"
+		},
+		{
+			"key": "host",
+			"eng": "Host",
+			"chi": "服务器",
+			"kor": "Host"
+		},
+		{
+			"key": "api_key",
+			"eng": "API KEY",
+			"chi": "API KEY",
+			"kor": "API KEY"
+		},
+		{
+			"key": "api_srct",
+			"eng": "API SRCT",
+			"chi": "API SRCT",
+			"kor": "API SRCT"
+		},
+		{
+			"key": "fpp",
+			"eng": "Face++",
+			"chi": "旷视",
+			"kor": "Face++"
+		},
+		{
+			"key": "weather",
+			"eng": "Weather",
+			"chi": "天气",
+			"kor": "날씨"
+		},
+		{
+			"key": "tools",
+			"eng": "Tools",
+			"chi": "工具",
+			"kor": "도구"
+		},
+		{
+			"key": "startonboot",
+			"eng": "Start on boot",
+			"chi": "系统启动自动启动",
+			"kor": "시스템시작시 시작"
+		},
+		{
+			"key": "autobackup",
+			"eng": "Database Auto Backup",
+			"chi": "自动备份数据",
+			"kor": "데이터베이스 자동 백업"
+		},
+		{
+			"key": "interval",
+			"eng": "Interval",
+			"chi": "间隔时间",
+			"kor": "간격시간"
+		},
+		{
+			"key": "autoupdate",
+			"eng": "Auto Update",
+			"chi": "自动升级",
+			"kor": "자동 업데이트"
+		}
+	],
+	"dataGlunt": [
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		}
+	],
+	"kpi": [
+		{
+			"key": "comeinrate",
+			"eng": "Come In Rate",
+			"chi": "入店率",
+			"kor": "입점율"
+		},
+		{
+			"key": "getcustomerability",
+			"eng": "Get Customer Ability(people/sqmt)",
+			"chi": "集客力(人/平米)",
+			"kor": "집객률(인/평방미터)"
+		},
+		{
+			"key": "customerunitprice",
+			"eng": "Customer Unit Price (Yuan/Person)",
+			"chi": "客单价(元/人)",
+			"kor": "객단가(원/인)"
+		},
+		{
+			"key": "shoppingrate",
+			"eng": "Shopping Rate",
+			"chi": "提袋率",
+			"kor": "제공률"
+		},
+		{
+			"key": "squaremetereffect",
+			"eng": "Square Meter Effect (Yuan/sqmt)",
+			"chi": "坪效(元/平米)",
+			"kor": "면적당 영업액(원/평방미터)"
+		},
+		{
+			"key": "All Square",
+			"eng": "All Square",
+			"chi": "所有地点",
+			"kor": "모든 광장"
+		},
+		{
+			"key": "All Store",
+			"eng": "All Store",
+			"chi": "所有商店",
+			"kor": "모든 점포"
+		}
+	],
+	"web_update": [
+		{
+			"key": "update",
+			"eng": "Update",
+			"chi": "升级",
+			"kor": "패치하기"
+		}
+	],
+	"None": [
+		{
+			"key": "Age group",
+			"eng": "Age Group",
+			"chi": "年龄",
+			"kor": "연령"
+		},
+		{
+			"key": "Age group",
+			"eng": "Age Group",
+			"chi": "年龄",
+			"kor": "연령"
+		},
+		{
+			"key": "Age group",
+			"eng": "Age Group",
+			"chi": "年龄",
+			"kor": "연령"
+		},
+		{
+			"key": "Age group",
+			"eng": "Age Group",
+			"chi": "年龄",
+			"kor": "연령"
+		},
+		{
+			"key": "footfall_B_display",
+			"eng": "This Week",
+			"chi": "本周",
+			"kor": "이번주"
+		}
+	],
+	"database": [
+		{
+			"key": "Search",
+			"eng": "Search",
+			"chi": "查找",
+			"kor": "검색"
+		}
+	],
+	"message": [
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		}
+	],
+	"feedback": [
+		{
+			"key": "Feedback",
+			"eng": "Feedback",
+			"chi": "反馈",
+			"kor": "의견"
+		},
+		{
+			"key": "write",
+			"eng": "Write",
+			"chi": "写文",
+			"kor": "쓰기"
+		}
+	],
+	"report": [
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "yesterday",
+			"eng": "Yesterday",
+			"chi": "昨日",
+			"kor": "어제"
+		},
+		{
+			"key": "today",
+			"eng": "Today",
+			"chi": "今日",
+			"kor": "오늘"
+		},
+		{
+			"key": "recent7days",
+			"eng": "Recent 7 days",
+			"chi": "最近7天",
+			"kor": "최근 7일"
+		},
+		{
+			"key": "peakday",
+			"eng": "Peak Day",
+			"chi": "高峰日期",
+			"kor": "최고치 날짜"
+		},
+		{
+			"key": "weakday",
+			"eng": "Weak day",
+			"chi": "最低日期",
+			"kor": "최저치 날짜"
+		},
+		{
+			"key": "Footfall",
+			"eng": "Footfall",
+			"chi": "客流活动",
+			"kor": "방문객"
+		},
+		{
+			"key": "display",
+			"eng": "Display",
+			"chi": "显示",
+			"kor": "표시"
+		},
+		{
+			"key": "counterlabel",
+			"eng": "Counter Label",
+			"chi": "计数器标签",
+			"kor": "카운터 라벨"
+		}
+	],
+	"realtime": [
+		{
+			"key": "save_changes",
+			"eng": "Save",
+			"chi": "保存",
+			"kor": "저장"
+		},
+		{
+			"key": "display",
+			"eng": "Display",
+			"chi": "显示",
+			"kor": "표시"
+		},
+		{
+			"key": "font",
+			"eng": "Font",
+			"chi": "字体",
+			"kor": "폰트"
+		},
+		{
+			"key": "position",
+			"eng": "Position",
+			"chi": "坐标",
+			"kor": "좌표"
+		},
+		{
+			"key": "counterlabel",
+			"eng": "Counter Label",
+			"chi": "计数器标签",
+			"kor": "카운터 라벨"
+		},
+		{
+			"key": "rule",
+			"eng": "Rule",
+			"chi": "规格",
+			"kor": "규갹"
+		},
+		{
+			"key": "width",
+			"eng": "Width",
+			"chi": "宽度",
+			"kor": "넓이"
+		},
+		{
+			"key": "height",
+			"eng": "Height",
+			"chi": "高度",
+			"kor": "높이"
+		},
+		{
+			"key": "foreground",
+			"eng": "Fg",
+			"chi": "字体色",
+			"kor": "글자색"
+		},
+		{
+			"key": "background",
+			"eng": "Bg",
+			"chi": "背景色",
+			"kor": "배경색"
+		},
+		{
+			"key": "enable",
+			"eng": "enable",
+			"chi": "使用",
+			"kor": "사용"
+		},
+		{
+			"key": "padding",
+			"eng": "Padding",
+			"chi": "内边距",
+			"kor": "내부마진"
+		}
+	]
+}

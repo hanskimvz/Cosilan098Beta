@@ -1,0 +1,271 @@
+[
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "italic"
+        ],
+        "name": "title0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            600,
+            40
+        ],
+        "size": [
+            0,
+            1
+        ],
+        "text": "客流报表"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            90,
+            "bold"
+        ],
+        "name": "label0",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            106,
+            204
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今日进客流"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            90,
+            "bold"
+        ],
+        "name": "label1",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            980,
+            200
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今日出客流"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            90,
+            "bold"
+        ],
+        "name": "label2",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            100,
+            600
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "滞留人数"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            90,
+            "bold"
+        ],
+        "name": "label3",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            980,
+            600
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "昨日访问客"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            123,
+            "bold"
+        ],
+        "name": "number0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            100,
+            370
+        ],
+        "rule": "today:entrance",
+        "size": [
+            8,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            120,
+            "bold"
+        ],
+        "name": "number1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            980,
+            370
+        ],
+        "rule": "today:exit",
+        "size": [
+            8,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            120,
+            "bold"
+        ],
+        "name": "number2",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            100,
+            770
+        ],
+        "rule": "diff(today:entrance, today:exit)",
+        "size": [
+            8,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            120,
+            "bold"
+        ],
+        "name": "number3",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            980,
+            770
+        ],
+        "rule": "yesterday:entrance",
+        "size": [
+            8,
+            1
+        ]
+    },
+    {
+        "color": [
+            "blue",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            68,
+            "bold"
+        ],
+        "name": "number4",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1274,
+            910
+        ],
+        "rule": "percent(today:entrance, yesterday:entrance)",
+        "size": [
+            8,
+            1
+        ],
+        "text": ""
+    }
+]

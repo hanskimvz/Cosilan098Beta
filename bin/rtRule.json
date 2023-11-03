@@ -1,0 +1,51 @@
+[
+    {
+        "role": "variable",
+        "name": "limited_entries",
+        "flag": "y",
+        "sql": " select 600 as val"
+    },
+    {
+        "role": "variable",
+        "name": "yesterday",
+        "devices": [
+            "all"
+        ],
+        "counter_label": [
+            "entrance",
+            "exit"
+        ],
+        "time_ref": "yesterday",
+        "flag": "y",
+        "sql": " select counter_label, sum(counter_val) as val from cnt_demo.count_tenmin where (counter_label='entrance' or counter_label='exit') and year = year(date_sub(curdate(), interval 1 day)) and month=month(date_sub(curdate(), interval 1 day)) and day = dayofmonth(date_sub(curdate(), interval 1 day)) group by counter_label"
+    },
+
+    {
+        "role": "variable",
+        "name": "today",
+        "devices": [
+            "all"
+        ],
+        "counter_label": [
+            "entrance",
+            "exit"
+        ],
+        "time_ref": "today",
+        "flag": "y",
+        "sql": "select counter_label, sum(counter_val) as val from cnt_demo.count_tenmin where (counter_label='entrance' or counter_label='exit') and  year = year(curdate()) and month=month(curdate()) and day= dayofmonth(curdate()) group by counter_label"
+    },
+    {
+        "role": "variable",
+        "name": "by_day",
+        "devices": [
+            "all"
+        ],
+        "counter_label": [
+            "entrance",
+            "exit"
+        ],
+        "time_ref": "today",
+        "flag": "n",
+        "sql": "select concat(year, '-', month, '-', day) as date, device_info, counter_label, sum(counter_val) as val from cnt_demo.count_tenmin where (counter_label='entrance' or counter_label='exit') and  year = year(curdate()) and (month=month(curdate()) or month=month(date_sub(curdate(), interval 1 month))) group by counter_label, day, month, year, device_info order by timestamp asc"
+    }    
+]

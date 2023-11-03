@@ -1,0 +1,6 @@
+.
+Lib\site-packages
+..\bin
+
+# Uncomment to run site.main() automatically
+#import site

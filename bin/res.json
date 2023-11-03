@@ -1,0 +1,14 @@
+--2023-02-05 01:08:31--  https://github.com/hanskimvz/Cosilan097Beta/blob/main/bin/filelist.json
+Resolving github.com (github.com)... 20.200.245.247
+Connecting to github.com (github.com)|20.200.245.247|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'filelist.json.3'
+
+     0K .......... .......... .......... .......... .......... 6.74M
+    50K .......... .......... .......... .......... .......... 13.5M
+   100K .......... .......... .......... .......... .......... 11.0M
+   150K .......... .......... .......... ...                   12.0M=0.02s
+
+2023-02-05 01:08:32 (9.93 MB/s) - 'filelist.json.3' saved [188092]
+

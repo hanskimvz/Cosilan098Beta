@@ -1,0 +1,60 @@
+
+.easy-tree{
+	min-height:30px;
+	margin-bottom:20px;
+	color:#000;border:0;
+	border-top:0;
+	padding-bottom:15px
+}
+.easy-tree>ul{
+	padding-left:10px;
+}
+.easy-tree li{
+	list-style-type:none;
+	margin:0;
+	padding:15px 20px 0;
+	position:relative
+}
+.easy-tree li::after,.easy-tree li::before{
+	content:'';
+	left:-30px;
+	position:absolute;
+	right:auto
+}
+.easy-tree li::before{
+	border-left:3px solid #add;
+	bottom:50px;
+	height:100%;
+	top:0;
+	width:1px
+}
+.easy-tree li::after{
+	border-top:3px solid #add;
+	height:20px;
+	top:25px;
+	width:50px;
+}
+.easy-tree li>span, .easy-tree li>div {
+	border:1px solid #add;
+	border-radius:3px;
+	display:inline-block;
+	padding:5px;
+	min-width:200px;
+	min-height:50px;
+	text-decoration:none;
+	background-color:#add;
+}
+.easy-tree li.parent_li>span{
+	cursor:pointer
+}
+.easy-tree>ul>li::after,.easy-tree>ul>li::before{
+	border:0
+}
+.easy-tree li:last-child::before{
+	height:26px
+}
+
+.easy-tree li>span>a{
+	color:#111;
+	text-decoration:none
+}

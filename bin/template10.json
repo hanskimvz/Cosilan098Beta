@@ -1,0 +1,473 @@
+[
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "title0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            570,
+            40
+        ],
+        "size": [
+            0,
+            1
+        ],
+        "align": "center",
+        "text": "景区客流统计系统",
+        "role": "label"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label0",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            56,
+            210
+        ],
+        "size": [
+            16,
+            1
+        ],
+        "text": "今日进:      人",
+        "role": "label",
+        "align": "left"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            79,
+            "bold"
+        ],
+        "name": "label1",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            54,
+            399
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "今日出:      人",
+        "role": "label",
+        "align": "right"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label2",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            940,
+            210
+        ],
+        "size": [
+            16,
+            1
+        ],
+        "text": "场内人数:     人",
+        "role": "label",
+        "align": "left"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label3",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            960,
+            400
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "限制人数:     人",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label4",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            47,
+            594
+        ],
+        "size": [
+            15,
+            0
+        ],
+        "text": "累计进:      人",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label5",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            50,
+            800
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "累计出:      人",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            80,
+            "bold"
+        ],
+        "name": "label6",
+        "padding": [
+            30,
+            20
+        ],
+        "position": [
+            970,
+            600
+        ],
+        "size": [
+            15,
+            1
+        ],
+        "text": "可进人数:     人",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number3",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1500,
+            410
+        ],
+        "rule": "limited_number",
+        "size": [
+            4,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            222
+        ],
+        "rule": "today:all:entrance",
+        "size": [
+            5,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            410
+        ],
+        "rule": "today:all:exit",
+        "size": [
+            5,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "devices": [
+            "all"
+        ],
+        "counter_labels": [
+            ""
+        ],
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number2",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1465,
+            222
+        ],
+        "rule": "today:all:entrance-today:all:exit",
+        "size": [
+            4,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "right"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number4",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            610
+        ],
+        "rule": "thisyear:all:entrance",
+        "size": [
+            5,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "right"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "number5",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            450,
+            810
+        ],
+        "rule": "thisyear:all:exit",
+        "size": [
+            5,
+            1
+        ],
+        "text": "0000",
+        "role": "number",
+        "align": "right"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            100,
+            "bold"
+        ],
+        "name": "num",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1500,
+            610
+        ],
+        "rule": "limited_number-today:all:entrance + today:all:exit",
+        "size": [
+            4,
+            1
+        ],
+        "text": "32581",
+        "role": "number",
+        "align": "right"
+    },
+    {
+        "format": "%Y-%m-%d %H:%M:%S %wc",
+        "color": [
+            "blue",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "arial",
+            64,
+            "bold"
+        ],
+        "name": "date",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            689,
+            795
+        ],
+        "rule": "",
+        "size": [
+            0,
+            1
+        ],
+        "text": "",
+        "role": "datetime",
+        "align": "left"
+    }
+]

@@ -1,0 +1,85 @@
+{
+    "language":[
+        {
+            "key":"txt_version_bin",
+            "English":"VERSION BIN",
+            "Korean" :"Binary",
+            "Chinese":"VERSION BIN"
+        },
+        {
+            "key":"txt_version_webpage",
+            "English":"VERSION WEBPAGE",
+            "Korean" :"Webpage",
+            "Chinese":"VERSION WEBPAGE"
+        },
+        {
+            "key":"txt_version_param",
+            "English":"VERSION PARAM",
+            "Korean" :"Param",
+            "Chinese":"VERSION PARAM"
+        },
+        {
+            "key":"txt_version_code",
+            "English":"VERSION CODE",
+            "Korean" :"Code",
+            "Chinese":"VERSION CODE"
+        },
+        {
+            "key":"txt_server_state",
+            "English":"SERVER STATUS",
+            "Korean":"SERVER STATUS",
+            "Chinese":"SERVER STATUS"
+        },        
+        {
+            "key":"main_title",
+            "English":"Setup Cosilan Tool",
+            "Korean" :"Coilan 설치 프로그램",
+            "Chinese":"Cosilan 安装程序"
+        },        
+        {
+            "key":"start",
+            "English":"Start",
+            "Korean" :"시작",
+            "Chinese":"开始"
+        },        
+        {
+            "key":"cancel",
+            "English":"Cancel",
+            "Korean" :"취소",
+            "Chinese":"取消"
+        },
+        {
+            "key":"close",
+            "English":"Close",
+            "Korean" :"닫기",
+            "Chinese":"关闭"
+        },
+        {
+            "key":"Running",
+            "English":"Running",
+            "Korean" :"동작중",
+            "Chinese":"运行中"
+        },
+        {
+            "key":"Stopped",
+            "English":"Stopped",
+            "Korean" :"정지",
+            "Chinese":"已停止"
+        },               
+        {
+            "key":"path",
+            "English":"Path",
+            "Korean" :"경로",
+            "Chinese":"径路"
+        },
+        {
+            "key":"root_pw",
+            "English":"Root password",
+            "Korean" :"관리자 암호",
+            "Chinese":"管理者 密码"
+        }        
+
+
+
+    ]
+}

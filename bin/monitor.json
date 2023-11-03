@@ -1,0 +1,95 @@
+{
+    "language":[
+        {
+            "key": "main_title",
+            "English": "BI Monitor",
+            "Chinese" : "COSILAN 控制软件",
+            "Korean": "BI 관리프로그램"
+        },
+        {
+            "key": "scv_service",
+            "English": "Process",
+            "Chinese" : "程序",
+            "Korean": "프로그램"
+        },
+        {
+            "key": "svc_status",
+            "English": "Status",
+            "Chinese" : "状态",
+            "Korean": "상태"
+        },
+        {
+            "key": "svc_path",
+            "English": "Path",
+            "Chinese" : "路径",
+            "Korean": "경로"
+        },
+        {
+            "key": "svc_operation",
+            "English": "Operation",
+            "Chinese" : "操作",
+            "Korean": "조작"
+        },
+
+        {
+            "key": "btn_status",
+            "English": "Status",
+            "Chinese" : "状态",
+            "Korean": "상태갱신"
+        },
+        {
+            "key": "btn_start",
+            "English": "Start",
+            "Chinese" : "开始",
+            "Korean": "시작"
+        },
+        {
+            "key": "btn_stop",
+            "English": "Stop",
+            "Chinese" : "停止",
+            "Korean": "정지"
+        },
+        {
+            "key": "thr_title_name",
+            "English": "Name",
+            "Chinese" : "名称",
+            "Korean": "이름"
+        },
+        {
+            "key": "thr_title_thread",
+            "English": "Thread",
+            "Chinese" : "细线",
+            "Korean": "쓰레드"
+        },
+        {
+            "key": "thr_title_is_alive",
+            "English": "Alive",
+            "Chinese" : "在线",
+            "Korean": "얼라이브"
+        },
+        {
+            "key": "thr_title_running",
+            "English": "Running",
+            "Chinese" : "运行时间",
+            "Korean": "러닝"
+        },
+        {
+            "key": "thr_title_last",
+            "English": "Last Access",
+            "Chinese" : "最终运行时间",
+            "Korean": "최종 실행 시간"
+        },
+        {
+            "key": "running",
+            "English": "Running",
+            "Chinese" : "运行中",
+            "Korean": "실행중"
+        },
+        {
+            "key": "stopped",
+            "English": "Stopped",
+            "Chinese" : "已停止",
+            "Korean": "종료됨"
+        }
+    ]
+}

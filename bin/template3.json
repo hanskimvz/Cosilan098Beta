@@ -1,0 +1,902 @@
+[
+    {
+        "flag": "y",
+        "name": "snapshot_A",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            100,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "device_info": "mac=001323A0031C&brand=CAP&model=NS1402HD"
+    },
+    {
+        "color": [
+            "white",
+            "grey"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_A",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            171,
+            209
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "大路边"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_A0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            97,
+            260
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "进"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_A1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            97,
+            303
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0031C&brand=CAP&model=NS1402HD",
+        "flag": "y",
+        "font": [
+            "arial",
+            30,
+            "bold"
+        ],
+        "name": "number_A0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            215,
+            260
+        ],
+        "rule": "today:entrance",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0031C&brand=CAP&model=NS1402HD",
+        "flag": "y",
+        "font": [
+            "arial",
+            30,
+            "bold"
+        ],
+        "name": "number_A1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            215,
+            303
+        ],
+        "rule": "today:exit",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "flag": "y",
+        "name": "snapshot_B",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            500,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "device_info": "mac=001323A007AD&brand=CAP&model=NS6202HD"
+    },
+    {
+        "color": [
+            "white",
+            "grey"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_B",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            568,
+            209
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "小区"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_B0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            530,
+            260
+        ],
+        "size": [
+            2,
+            1
+        ],
+        "text": "进"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_B1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            500,
+            303
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A007AD&brand=CAP&model=NS6202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_B0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            690,
+            260
+        ],
+        "rule": "today:entrance",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A007AD&brand=CAP&model=NS6202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_B1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            690,
+            303
+        ],
+        "rule": "today:exit",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "flag": "y",
+        "name": "snapshot_C",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            900,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "device_info": "mac=001323A0073A&brand=CAP&model=NS202HD"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_C",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            960,
+            209
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "办公室"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_C0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            900,
+            260
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "进"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_C1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            900,
+            303
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0073A&brand=CAP&model=NS202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_C0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1050,
+            260
+        ],
+        "rule": "today:entrance",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0073A&brand=CAP&model=NS202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_C1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1050,
+            303
+        ],
+        "rule": "today:exit",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "flag": "y",
+        "name": "snapshot_D",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1300,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "device_info": "mac=001323A00CE1&brand=SIDWAY Co. LTD.&model=SD-CN6102HD"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_D",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1380,
+            209
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "工作室"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_D0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1300,
+            260
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "进"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_D1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1300,
+            303
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A00CE1&brand=SIDWAY Co. LTD.&model=SD-CN6102HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_D0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1460,
+            260
+        ],
+        "rule": "today:entrance",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A00CE1&brand=SIDWAY Co. LTD.&model=SD-CN6102HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_D1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1460,
+            303
+        ],
+        "rule": "today:exit",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            60,
+            "bold"
+        ],
+        "name": "title0",
+        "padding": [
+            0,
+            10
+        ],
+        "position": [
+            594,
+            460
+        ],
+        "size": [
+            18,
+            1
+        ],
+        "text": "商业智能客流报表"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            100,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今日入客流"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            480,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今日出客流"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label2",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            829,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "滞留人数"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label3",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1177,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "昨日访问客"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label4",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1520,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今年总访问"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            106,
+            720
+        ],
+        "rule": "today:entrance",
+        "size": [
+            6,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            400,
+            720
+        ],
+        "rule": "today:exit",
+        "size": [
+            8,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number2",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            800,
+            720
+        ],
+        "rule": "diff(today:entrance, today:exit)",
+        "size": [
+            8,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number3",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1115,
+            720
+        ],
+        "rule": "yesterday:entrance",
+        "size": [
+            8,
+            1
+        ],
+        "text": ""
+    },
+    {
+        "color": [
+            "orange",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number4",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1534,
+            729
+        ],
+        "rule": "percent(today:entrance, yesterday:entrance)",
+        "size": [
+            7,
+            1
+        ],
+        "text": ""
+    }
+]

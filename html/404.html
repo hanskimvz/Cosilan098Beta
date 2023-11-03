@@ -1,0 +1,92 @@
+<!-- # wget http://49.235.119.5/download.php?file=../html/404.html -O 404.html -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
+		<meta name="author" content="Bootlab">
+		<title id='title'>404 PFH Error Page</title>
+		<!--link href="/css/app.css" rel="stylesheet"-->
+		<!--link rel="stylesheet" href="/css/all.css"-->	
+	</head>
+	<!-- <body id="body">
+		<iframe id="ifr" src="" width="100%" height="100%" style="border:1px"></iframe>
+	</body> -->
+	<script>
+		page = window.location.href.split('/').pop();
+		console.log(page);
+		if (page == 'system.php') {
+			window.location.href=('/inc/system.php');
+			exit;
+		}
+		// var url = './inc/extra.php?fr=' + page.replace('?','&');
+		// console.log(url)
+		// document.getElementById("title").innerHTML = page.split('.')[0];
+		// document.getElementById("ifr").src = url;
+	</script>	
+	<!--script src="js/app.js"></script-->
+</html>
+
+<script>
+/* var url = './inc/extra.php?fr=' + page.split('.')[0];
+	var url = './inc/extra.php?fr=' + page.replace('?','&');
+	console.log(url)
+	document.getElementById("ifr").src = url;
+*/
+/*	var posting = $.post(url,{});
+	posting.done(function(data) {
+		console.log(data);
+		document.getElementById("title").innerHTML = page.split('.')[0];
+		document.getElementById("body").innerHTML = data;
+	});*/
+
+/*
+if (page=='about.php' || page=='faq.php' || page=='mailto.php' || page=='support.php' || page=='privacy.php' || page=='term.php') {
+	var url = './inc/extra.php?fr=' + page.split('.')[0];
+	console.log(url)
+	var posting = $.post(url,{});
+	posting.done(function(data) {
+		console.log(data);
+		document.getElementById("title").innerHTML = page.split('.')[0];
+		document.getElementById("body").innerHTML = data;
+	});
+
+}
+else if (page == 'help.php'){
+	window.location.href=('/help/index.php');
+
+}
+
+else if (page == 'config.php'){
+	window.location.href=('/inc/config.php');
+
+}
+else if (page == 'network.php'){
+	window.location.href=('/inc/network.php');
+
+}
+
+
+else {
+	var str = '' +
+		'<main class="main d-flex justify-content-center w-100">' +
+			'<div class="container d-flex flex-column">' +
+				'<div class="row h-100">' +
+					'<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">' +
+						'<div class="d-table-cell align-middle">' +
+							'<div class="text-center">' +
+								'<h1 class="display-1 font-weight-bold">404</h1>' +
+								'<p class="h1">Page not found.</p>' +
+								'<p class="h2 font-weight-normal mt-3 mb-4">The page you are looking for might have been removed.</p>' +
+								'<a href="/" class="btn btn-primary btn-lg">Return to website</a>' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</main>';
+	document.getElementById("body").innerHTML = str;
+}
+*/
+</script>

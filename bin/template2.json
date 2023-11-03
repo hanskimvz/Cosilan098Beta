@@ -1,0 +1,996 @@
+[
+    {
+        "flag": "y",
+        "name": "picture_A",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            97,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "url": "D:\\BACKUP\\Codes\\Cosilan\\bin\\a.png",
+        "role": "picture",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "grey"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_A",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            171,
+            184
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "大路边",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_A0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            97,
+            260
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "进",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            60,
+            "bold"
+        ],
+        "name": "label_A1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            97,
+            200
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0031C&brand=CAP&model=NS1402HD",
+        "flag": "y",
+        "font": [
+            "arial",
+            30,
+            "bold"
+        ],
+        "name": "number_A0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            215,
+            260
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0031C&brand=CAP&model=NS1402HD",
+        "flag": "y",
+        "font": [
+            "arial",
+            30,
+            "bold"
+        ],
+        "name": "number_A1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            215,
+            303
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "flag": "y",
+        "name": "picture_B",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            498,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "url": "D:\\BACKUP\\Codes\\Cosilan\\bin\\b.png",
+        "role": "picture",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "grey"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_B",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            568,
+            209
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "小区",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_B0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            500,
+            260
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "进",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_B1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            500,
+            303
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A007AD&brand=CAP&model=NS6202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_B0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            690,
+            260
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A007AD&brand=CAP&model=NS6202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_B1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            690,
+            303
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "flag": "y",
+        "name": "picture_C",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            900,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "url": "D:\\BACKUP\\Codes\\Cosilan\\bin\\c.png",
+        "role": "picture",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_C",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            960,
+            209
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "办公室",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_C0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            900,
+            260
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "进",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_C1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            900,
+            303
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0073A&brand=CAP&model=NS202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_C0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1050,
+            260
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A0073A&brand=CAP&model=NS202HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_C1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1050,
+            303
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "flag": "y",
+        "name": "picture_D",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1300,
+            40
+        ],
+        "size": [
+            320,
+            180
+        ],
+        "url": "D:\\BACKUP\\Codes\\Cosilan\\bin\\d.png",
+        "role": "picture",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "title_D",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1380,
+            209
+        ],
+        "size": [
+            8,
+            1
+        ],
+        "text": "工作室",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_D0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1300,
+            260
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "进",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            30,
+            "bold"
+        ],
+        "name": "label_D1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1300,
+            303
+        ],
+        "size": [
+            5,
+            1
+        ],
+        "text": "出",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A00CE1&brand=SIDWAY Co. LTD.&model=SD-CN6102HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_D0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1460,
+            260
+        ],
+        "rule": "numA-numB",
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "mac=001323A00CE1&brand=SIDWAY Co. LTD.&model=SD-CN6102HD",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            30,
+            "bold"
+        ],
+        "name": "number_D1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1460,
+            303
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            60,
+            "bold"
+        ],
+        "name": "title0",
+        "padding": [
+            0,
+            10
+        ],
+        "position": [
+            594,
+            460
+        ],
+        "size": [
+            18,
+            1
+        ],
+        "text": "商业智能客流报表",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            100,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今日入客流",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            480,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今日出客流",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label2",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            829,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "滞留人数",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label3",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1212,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "昨日访问客",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "white",
+            "black"
+        ],
+        "flag": "y",
+        "font": [
+            "simhei",
+            40,
+            "bold"
+        ],
+        "name": "label4",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1512,
+            650
+        ],
+        "size": [
+            10,
+            1
+        ],
+        "text": "今年总访问",
+        "role": "label",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number0",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            106,
+            720
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            6,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number1",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            400,
+            720
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            8,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number2",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            800,
+            720
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            8,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "red",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            50,
+            "bold"
+        ],
+        "name": "number3",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1200,
+            720
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            8,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    },
+    {
+        "color": [
+            "orange",
+            "black"
+        ],
+        "device_info": "all",
+        "flag": "y",
+        "font": [
+            "ds-digital",
+            40,
+            "bold"
+        ],
+        "name": "number4",
+        "padding": [
+            0,
+            0
+        ],
+        "position": [
+            1601,
+            729
+        ],
+        "rule": {
+            "sql": ""
+        },
+        "size": [
+            7,
+            1
+        ],
+        "text": "",
+        "role": "number",
+        "align": "center"
+    }
+]

@@ -137,6 +137,9 @@ def frame_option(e=None):
         var_option[key] = StringVar()
         var_option[key].set(ARR_CONFIG['mysql'][key])
 
+    if eWin: 
+        closeEdit()
+
     if oWin: 
         oWin.lift()
     else :
@@ -280,23 +283,21 @@ def message(strn):
 #########################################################################################################
 def edit_screen(e):
     global root, eWin
-    # print(e)
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
-    # ths.delay =  1
-    # updateVariables(_editmode=True)
-    # print(e)
-    # print(e.x, e.y)
-    
+
+    if oWin: 
+        closeOption()
+
     if eWin: 
-        eWin.lift()
-    else :
-        eWin = Toplevel(root)		
-        eWin.title("Edit Screen")
-        eWin.geometry("260x600+%d+%d" %(int(screen_width/2-150), int(screen_height/2-200)))
-        eWin.protocol("WM_DELETE_WINDOW", closeEdit)
-        eWin.resizable(True, True)
-        editScreen()
+        closeEdit()
+
+    eWin = Toplevel(root)		
+    eWin.title("Edit Screen")
+    eWin.geometry("260x640+%d+%d" %(int(screen_width/2-150), int(screen_height/2-200)))
+    eWin.protocol("WM_DELETE_WINDOW", closeEdit)
+    eWin.resizable(True, True)
+    editScreen()
     
 
 def closeEdit():
@@ -408,7 +409,8 @@ def updateEntry(e):
                 chk.grid(row=i+2, column=1, sticky="w")
                 chk.select() if x.get('flag')=='y' else chk.deselect()
 
-            elif key == 'fontfamily' or key =='fontshape' or key =='fgcolor' or key == 'bgcolor' or key=='align':
+            # elif key == 'fontfamily' or key =='fontshape' or key =='fgcolor' or key == 'bgcolor' or key=='align':
+            elif key in ['fontfamily', 'fontshape', 'fgcolor', 'bgcolor', 'align']:
                 Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
                 var_screen[key] =  ttk.Combobox(scFrame, width=18, state="readonly", values=listFont[key])
                 var_screen[key].grid(row=i+2, column=1)
@@ -445,9 +447,9 @@ def updateEntry(e):
                     if x.get(key) == ft:
                         var_screen[key].current(j)
 
-            elif key=='sql':
-                Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
-                var_screen[key] = Text(scFrame, width=22, height=5)
+            elif key=='sql' or key == 'rule':
+                Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2, sticky='n')
+                var_screen[key] = Text(scFrame, width=20, height=5)
                 var_screen[key].grid(row=i+2, column=1)
                 var_screen[key].insert(1.0, x.get(key))
 
@@ -464,9 +466,11 @@ def updateEntry(e):
             #         if x.get('device_info') == ft:
             #             ent['device_info'].current(i)
 
+
+
             else : # label, entry
                 Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
-                Entry(scFrame, textvariable = var_screen[key], width=22).grid(row=i+2, column=1)
+                Entry(scFrame, textvariable = var_screen[key], width=22).grid(row=i+2, column=1, columnspan=2)
                 cat = 1
 
             if cat:
@@ -549,7 +553,7 @@ def saveScreen():
                 menus[sel].configure(width=arr_template[i]['size'][0], height=arr_template[i]['size'][1])
             
             if var_screen.get('align'):
-                arr_template[i]['align'] = var_screen['align'].get()
+                arr_template[i]['align'] = var_screen['align'].get().strip()
                 if arr_template[i]['align']  == 'left':
                     menus[sel].configure(anchor='w')
                 elif arr_template[i]['align']  == 'right':
@@ -558,7 +562,7 @@ def saveScreen():
                     menus[sel].configure(anchor='center')
 
             if var_screen.get('url'):
-                arr_template[i]['url'] = var_screen['url'].get()
+                arr_template[i]['url'] = var_screen['url'].get().strip()
                 imgPath = arr_template[i]['url']
                 if not (imgPath and os.path.isfile(imgPath)):
                     imgPath = "cam.jpg"
@@ -570,17 +574,17 @@ def saveScreen():
                 menus[sel].photo=imgtk # phtoimage bug                
 
             if var_screen.get('text'):
-                arr_template[i]['text'] = var_screen['text'].get()
+                arr_template[i]['text'] = var_screen['text'].get().strip()
                 var[sel].set(arr_template[i]['text'])
 
             if var_screen.get('rule'):
-                arr_template[i]['rule'] = var_screen['rule'].get()
+                arr_template[i]['rule'] = var_screen['rule'].get(1.0, "end").strip()
                 # var[sel].set(arr_template[i]['rule'])
 
             if var_screen.get('sql'):
-                arr_template[i]['sql'] = var_screen['sql'].get()
+                arr_template[i]['sql'] = var_screen['sql'].get().strip()
 
-            arr_template[i]['role'] = var_screen['role'].get()
+            arr_template[i]['role'] = var_screen['role'].get().strip()
             arr_template[i]['flag'] = 'y' if int(var_screen['use'].get()) else 'n'
 
             # if sel.startswith('picture') or sel.startswith('video'):

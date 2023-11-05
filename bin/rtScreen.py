@@ -104,31 +104,50 @@ def displayDatetime():
 def numberByRule(rule):
     vars = list()
     oper = list()
+    repl = dict()
+    
+    rule = rule.replace("\n","")
+    rule = rule.replace(" ","")
+
+    regex= re.compile(r"(\w+:[\w+\=\&\-]+:\w+)", re.IGNORECASE)
+    regex_oper = re.compile('[-|+|*|/|%]', re.IGNORECASE)
+
+    for i, m in enumerate(regex.findall(rule)):
+        repl["_variables_%d_" %i] = m
+        rule = rule.replace(m, "_variables_%d_" %i )
+
     ex = re.split('[-|+|*|/|%]', rule)
-    regex = re.compile('[-|+|*|/|%]', re.IGNORECASE)
     for x in ex:
-        vars.append(x.strip())
-    for m in regex.finditer(rule):
+        if repl.get(x):
+            vars.append(repl[x])
+        else :
+            vars.append(x)
+    
+    for m in regex_oper.finditer(rule):
         oper.append(m.group())
 
-    num = ARR_CRPT[vars[0]]
+    num = int(vars[0]) if vars[0].isnumeric() else ARR_CRPT[vars[0]]
     for i, o in enumerate(oper):
         # print (ARR_CRPT[vars[i+1]])
+        n = int(vars[i+1]) if vars[i+1].isnumeric() else ARR_CRPT[vars[i+1]]
         if o == '+' :
-            num += ARR_CRPT[vars[i+1]]
+            num += n
         elif o == '-' :
-            num -= ARR_CRPT[vars[i+1]]
+            num -= n
         elif o == '*' :
-            num *= ARR_CRPT[vars[i+1]]
+            num *= n
         elif o == '/' :
-            num /= ARR_CRPT[vars[i+1]]
+            num /= n
 
     return num
 
 def changeNumbers():
     for scrn in ARR_SCREEN:
+        if scrn.get('flag') == 'n':
+            continue
         if scrn['role'] != 'number':
             continue
+
         num = numberByRule(scrn['rule'])
         # print (num)
         var[scrn['name']].set(num)
@@ -171,11 +190,14 @@ class getDataThread(threading.Thread):
                 if len(e) <3:
                     continue
                 key = e[0] + ':' + e[1] + ':' + e[2]
+                ARR_CRPT[key] = self.arr_crpt[key]
                 if e[0] in ['today', 'thisweek', 'thismonth', 'thisyear']:
                     if self.diff.get(e[1]) and self.diff[e[1]].get(e[2]):
                         ARR_CRPT[key] = self.arr_crpt[key] + self.diff[e[1]][e[2]]
-                else:
-                    ARR_CRPT[key] = self.arr_crpt[key]
+                # else:
+                #     ARR_CRPT[key] = self.arr_crpt[key]
+
+
 
             changeNumbers()
 

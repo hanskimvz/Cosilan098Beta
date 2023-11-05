@@ -1,5 +1,5 @@
 {
-    "full_screen": "no",
+    "full_screen": "yes",
     "language": [
         {
             "Chinese": "数据库服务器",
@@ -215,7 +215,7 @@
     "mysql": {
         "charset": "utf8",
         "db": "cnt_demo",
-        "host": "124.61.244.239",
+        "host": "47.115.219.90",
         "password": "13579",
         "port": "3306",
         "user": "rt_user"
@@ -233,7 +233,23 @@
     "constant": [
         {
             "name": "limited_number",
-            "value": 6000
+            "value": 6000,
+            "flag": "y"
+        },
+        {
+            "name": "limit_AA",
+            "value": 4000,
+            "flag": "y"
+        },
+        {
+            "name": "limit_BB",
+            "value": 6500,
+            "flag": "y"
+        },
+        {
+            "name": "limit_CC",
+            "value": 8000,
+            "flag": "y"
         }
     ]
 }

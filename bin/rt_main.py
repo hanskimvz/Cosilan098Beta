@@ -211,7 +211,12 @@ def loadTemplate(template_file=""):
     return arr
 
 def saveTemplate(template_file, arr):
-    json_str = json.dumps(arr, ensure_ascii=False, indent=4)
+    arr_rs = list()
+    for r in arr:
+        arr_rs.append(json.dumps(r, ensure_ascii=False))
+    json_str = "[\n" + (",\n".join(arr_rs)) + "\n]"
+
+
     with open ("%s\\%s" %(cwd, template_file), 'w', encoding="utf-8") as f:
         f.write(json_str)
 
@@ -220,22 +225,33 @@ def saveTemplate(template_file, arr):
 
 def getVariableNames():
     arr_screen = loadTemplate(ARR_CONFIG['template'])
+    # regex= re.compile(r"(\w+:\w+\s*)", re.IGNORECASE)
+    regex= re.compile(r"(\w+:[\w+\=\&\-]+:\w+)", re.IGNORECASE)
+
     vars = set()
     for scrn in arr_screen:
         if scrn['role'] != 'number':
             continue
-        # print (scrn['rule'])
-        ex = re.split('[-|+|*|/|%]', scrn['rule'])
-        for x in ex:
-            vars.add(x.strip())
+        if scrn['flag'] == 'n':
+            continue
+        scrn['rule'] = scrn['rule'].replace("\n","")
+        for m in regex.findall(scrn['rule']):
+            vars.add(m.strip())
+            # print (m)
+        # ex = re.split('[-|+|*|/|%]', scrn['rule'])
+        # for x in ex:
+        #     vars.add(x.strip())
     
     for v in vars:
         ARR_CRPT[v] = 0
-        for n in ARR_CONFIG['constant']:
-            if v == n['name']:
-                ARR_CRPT[v] = n['value']
-        
+    for n in ARR_CONFIG['constant']:
+        # print (n)
+        if n.get('flag') != 'n':
+            ARR_CRPT[n['name']] = n['value']
 
+
+    # for v in ARR_CRPT:
+    #     print (v, ARR_CRPT[v])
 
 
 
@@ -259,41 +275,53 @@ def getSqls():
         if not e[0] in arr:
             arr[e[0]] = {"device":set(), "ct_label": set()}
         
-        if e[1] != "all":
-            arr[e[0]]['device'].add(e[1])
+        arr[e[0]]['device'].add(e[1])    
         arr[e[0]]['ct_label'].add(e[2])
 
-    for r in arr:
-        sql_dev = list()
-        sql_label = list()
-        grp = set()
-        for s in arr[r]['device']:
-            sql_dev.append("device_info='%s'" %s)
-            grp.add("device_info")
-        for s in arr[r]['ct_label']:
-            sql_label.append("counter_label='%s'" %s)
-            grp.add("counter_label")
+    for date_ref in arr:
+        # print (date_ref, arr[date_ref])
 
-        sql_dev_t = " and ".join(sql_dev)
-        sql_label_t = " or ".join(sql_label)
-        
+        dev = list()
+        label = list()
         arr_w  = list()
-        if sql_ref[r]:
-            arr_w.append(sql_ref[r])
-        if sql_dev_t:
-            arr_w.append(sql_dev_t)
-            s_dev = 'device_info'
-        else :
-            s_dev = "'all'"
-        if sql_label_t:
-            arr_w.append("(" + sql_label_t + ")")
 
-        grp_str = " group by " + ",".join(list(grp))
+        if sql_ref.get(date_ref):
+            arr_w.append(sql_ref[date_ref])
 
-        sqls.append("select '" + r + "', " + s_dev + ", counter_label, sum(counter_val) as value from " + ARR_CONFIG['mysql']['db'] + ".count_tenmin where " + (" and ".join(arr_w)) + grp_str  ) 
+        for s in arr[date_ref]['ct_label']:
+            label.append("counter_label='%s'" %s)
+
+        arr_w.append("(" + (" or ".join(label)) + ")")
+
+        for s in arr[date_ref]['device']:
+            if s == 'all':
+                sqls.append("select '" + date_ref +"', 'all', counter_label, sum(counter_val) as value from " + ARR_CONFIG['mysql']['db'] + ".count_tenmin where " + (" and ".join(arr_w)) + " group by counter_label")
+            else:
+                dev.append("device_info='%s'" %s)
+        if dev:
+            arr_w.append("(" + (" or ".join(dev)) + ")")
+            sqls.append("select '" + date_ref + "', device_info, counter_label, sum(counter_val) as value from " + ARR_CONFIG['mysql']['db'] + ".count_tenmin where " + (" and ".join(arr_w)) + " group by device_info, counter_label")
+
+        # if dev:
+        #     sql_sel += ', device_info'
+        #     arr_w.append("(" + (" or ".join(dev)) + ")")
+
+        # whr_dev   = " or ".join(dev)        
+
+        # if whr_dev:
+        #     arr_w.append("(" + whr_dev + ")")
+        #     sql_sel += ', device_info'
+        # # else :
+        # #     sql_sel += ", 'all'"
+
+            
+
+        # # sql_sel += ', counter_label, sum(counter_val) as value'
+        # sqls.append("select " + sql_sel + " from " + ARR_CONFIG['mysql']['db'] + ".count_tenmin where " + (" and ".join(arr_w)) + " group by " + (", ".join(grp))  ) 
 
     # for sql in sqls:
     #     print (sql)
+    # print()
     return sqls
 
 
@@ -337,7 +365,7 @@ def getRtCounting(cursor, arr_latest):
     return diff
 
 def getRptCounting(cursor):
-    arr_crpt = dict()
+    arr_crpt = ARR_CRPT
     sqls = getSqls()
 
     sq = "select device_info, year, month, day, hour, min, max(timestamp) as latest_ts from %s.count_tenmin where year = year(curdate()) and month=month(curdate()) and day= dayofmonth(curdate()) group by device_info" %( ARR_CONFIG['mysql']['db'])
@@ -364,86 +392,65 @@ def getData():
     with dbcon:
         cursor = dbcon.cursor()
         arr_crpt, latest = getRptCounting(cursor)
+        print (arr_crpt)
         diff = getRtCounting(cursor, latest)
-        # print (diff)
+        print ("diff", diff)
         for exp in ARR_CRPT:
             e = exp.split(":")
             if len(e) <3:
                 continue
+            key = e[0] + ':' + e[1] + ':' + e[2]
+            ARR_CRPT[key] = arr_crpt[key]
             if e[0] in ['today', 'thisweek', 'thismonth', 'thisyear']: 
-                ARR_CRPT[ e[0] + ':' + e[1] + ':' + e[2]] = arr_crpt[ e[0] + ':' + e[1] + ':' + e[2]] + diff[e[1]][e[2]]
+                if diff.get(e[1]) and diff[e[1]].get(e[2]):
+                    ARR_CRPT[key] = arr_crpt[key] + diff[e[1]][e[2]]
+            # else :
+            #     ARR_CRPT[key] = arr_crpt[key]
 
-            else :
-                ARR_CRPT[ e[0] + ':' + e[1] + ':' + e[2]] = arr_crpt[ e[0] + ':' + e[1] + ':' + e[2]]
-
-    print (time.time()-t)
-
-# class getDataThread(threading.Thread):
-#     def __init__(self):
-#         threading.Thread.__init__(self)
-#         self.delay = ARR_CONFIG['refresh_interval']
-#         self.Running = True
-#         self.last = 0
-#         # self.i = 0
-
-#     def run(self):
-#         self.dbcon = dbconMaster()
-#         while self.Running :
-#             self.cur = self.dbcon.cursor()
-#             if int(time.time())-self.last > 300:
-#                 try:
-#                     self.arr_crpt, self.latest = getRptCounting(self.cur)
-#                     self.last = int(time.time())
-#                 except Exception as e:
-#                     print (e)
-#                     time.sleep(5)
-#                     self.dbcon = dbconMaster()
-#                     print ("Reconnected")
-#                     continue
-            
-#             try :
-#                 self.diff = getRtCounting(self.cur, self.latest)
-#                 self.dbcon.commit()
-#             except pymysql.err.OperationalError as e:
-#                 print (e)
-#                 time.sleep(5)
-#                 self.dbcon = dbconMaster()
-#                 print ("Reconnected")
-#                 continue
-
-#             for exp in ARR_CRPT:
-#                 e = exp.split(":")
-#                 if len(e) <3:
-#                     continue
-#                 if e[0] in ['today', 'thisweek', 'thismonth', 'thisyear']: 
-#                     ARR_CRPT[ e[0] + ':' + e[1] + ':' + e[2]] = self.arr_crpt[ e[0] + ':' + e[1] + ':' + e[2]] + self.diff[e[1]][e[2]]
-#                 else:
-#                     ARR_CRPT[ e[0] + ':' + e[1] + ':' + e[2]] = self.arr_crpt[ e[0] + ':' + e[1] + ':' + e[2]]
-
-#             # self.i += 1
-#             # if self.i > self.delay:
-#             #     self.i = 0
-#             print (ARR_CRPT)
-#             time.sleep(self.delay)
-
-#         self.cur.close()
-#         self.dbcon.close()
-                
-#     def stop(self):
-#         self.Running = False    
-
+    # print (time.time()-t)
 
 ARR_CONFIG = loadConfig()
 getVariableNames()
-# getData()
-if __name__ == '__main__':
-    thd = getDataThread()
-    thd.start()
 
-    for i in range(100):
-        time.sleep(1)
+if __name__ == '__main__':
     
-    thd.stop()
+    # for sq in getSqls():
+    #     print (sq)
+    #     print ()
+    getData()
+    print (ARR_CRPT)
+
+
+    # rule = "limit_BB - today:mac=001323A0072F&brand=TSD&model=TSDC32P-12V:Likangcun_IN+today:mac=001323A0072F&brand=TSD&model=TSDC32P-12V:Likangcun_OUT"
+
+    # vars = list()
+    # oper = list()
+    # repl = dict()
+    # regex= re.compile(r"(\w+:[\w+\=\&\-]+:\w+)", re.IGNORECASE)
+    # rule = rule.replace("\n","")
+    # rule = rule.replace(" ","")
+    # for i, m in enumerate(regex.findall(rule)):
+    #     repl["_variables_%d_" %i] = m
+    #     rule = rule.replace(m, "_variables_%d_" %i )
+
+    # print (rule)    
+
+    # ex = re.split('[-|+|*|/|%]', rule)
+    # regex_oper = re.compile('[-|+|*|/|%]', re.IGNORECASE)
+
+    # for x in ex:
+    #     if repl.get(x):
+    #         vars.append(repl[x])
+    #     else :
+    #         vars.append(x)
+    
+    # for m in regex_oper.finditer(rule):
+    #     oper.append(m.group())
+
+    # print (vars) 
+    # print (oper)
+
+    pass
 
 
 # def parseRule(ss):

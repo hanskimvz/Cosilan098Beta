@@ -1,0 +1,13 @@
+[
+{"name": "picture_A", "flag": "y", "padding": [0, 0], "position": [0, 0], "size": [1920, 1080], "url": "D:\\BACKUP\\Codes\\Cosilan\\bin\\a.png", "role": "picture", "align": "center"},
+{"name": "title0", "flag": "y", "color": ["red", "black"], "font": ["simhei", 80, "bold"], "padding": [0, 0], "position": [450, 40], "size": [0, 1], "align": "center", "text": "坑美村车辆统计系统", "role": "label"},
+{"name": "datestr", "flag": "y", "color": ["red", "black"], "font": ["arial", 64, "bold"], "padding": [0, 0], "position": [464, 160], "format": "%Y-%m-%d %H:%M:%S %wc", "size": [0, 1], "text": "", "role": "datetime", "align": "left"},
+{"name": "label11", "flag": "y", "color": ["red", "black"], "font": ["simhei", 70, "bold"], "padding": [0, 0], "position": [380, 470], "size": [0, 1], "text": "今日进村车辆:", "role": "label", "align": "left"},
+{"name": "label12", "flag": "y", "color": ["red", "black"], "font": ["simhei", 70, "bold"], "padding": [0, 0], "position": [380, 610], "size": [0, 1], "text": "今日出村车辆:", "role": "label", "align": "left"},
+{"name": "label13", "flag": "y", "color": ["red", "black"], "font": ["simhei", 70, "bold"], "padding": [0, 0], "position": [380, 330], "size": [0, 1], "text": "可容纳车辆:", "role": "label", "align": "center"},
+{"name": "label14", "flag": "y", "color": ["red", "black"], "font": ["simhei", 70, "bold"], "padding": [0, 0], "position": [380, 750], "size": [0, 1], "text": "可进车辆:", "role": "label", "align": "left"},
+{"name": "number11", "flag": "y", "color": ["red", "black"], "font": ["ds-digital", 90, "bold"], "padding": [0, 0], "position": [1030, 460], "rule": "today:mac=001323A0072E&brand=TSD&model=TSDC32P-12V:Kangmeicun_IN", "size": [0, 1], "text": "0000", "role": "number", "align": "center"},
+{"name": "number12", "flag": "y", "color": ["red", "black"], "font": ["ds-digital", 90, "bold"], "padding": [0, 0], "position": [1030, 600], "rule": "today:mac=001323A0072E&brand=TSD&model=TSDC32P-12V:Kangmeicun_OUT", "size": [0, 1], "text": "0000", "role": "number", "align": "center"},
+{"name": "number13", "flag": "y", "color": ["red", "black"], "font": ["ds-digital", 90, "bold"], "padding": [0, 0], "position": [1030, 310], "rule": "limit_AA", "size": [0, 1], "text": "0000", "role": "number", "align": "center"},
+{"name": "number14", "flag": "y", "color": ["red", "black"], "font": ["ds-digital", 90, "bold"], "padding": [0, 0], "position": [1030, 740], "rule": "limit_AA-today:mac=001323A0072E&brand=TSD&model=TSDC32P-12V:Kangmeicun_IN+today:mac=001323A0072E&brand=TSD&model=TSDC32P-12V:Kangmeicun_OUT", "size": [0, 1], "text": "0000", "role": "number", "align": "center"}
+]

@@ -18,7 +18,7 @@ for ($i=0; $i<3; $i++) {
 	}
 	// chdir("../");    
 }
-$dirname = $ROOT_DIR.'/bin/';
+$dirname = $ROOT_DIR.'//bin/';
 $fname = $ROOT_DIR."/bin/param.db";
 // print $fname;
 

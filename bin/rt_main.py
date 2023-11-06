@@ -39,7 +39,9 @@ import uuid
 cwd = os.path.abspath(os.path.dirname(sys.argv[0]))
 os.chdir(cwd)
 
-TZ_OFFSET = 3600*8
+# TZ_OFFSET = 3600*8
+
+from functions_s import TZ_OFFSET
 ARR_CRPT = dict()
 
 Running = True
@@ -204,7 +206,7 @@ def loadTemplate(template_file=""):
         elif not arr_s.get("align"):
             arr[i]["align"] = "center"
 
-        if arr_s.get("role") == "number":
+        if arr_s.get("role") == "number" or arr_s.get("role") == "number":
             if not arr_s.get("rule"):
                 arr[i]["rule"] = ""
 
@@ -230,18 +232,28 @@ def getVariableNames():
 
     vars = set()
     for scrn in arr_screen:
-        if scrn['role'] != 'number':
+        if scrn['role'] != 'number' and scrn['role'] !='percent':
             continue
         if scrn['flag'] == 'n':
             continue
         scrn['rule'] = scrn['rule'].replace("\n","")
-        for m in regex.findall(scrn['rule']):
-            vars.add(m.strip())
-            # print (m)
-        # ex = re.split('[-|+|*|/|%]', scrn['rule'])
-        # for x in ex:
-        #     vars.add(x.strip())
+        scrn['rule'] = scrn['rule'].replace(" ","")
+        
+        repl=dict()
+        for i, m in enumerate(regex.findall(scrn['rule'])):
+            repl["_variables_%d_" %i] = m
+            scrn['rule'] = scrn['rule'].replace(m, "_variables_%d_" %i )
+
+        # print (scrn['rule'])
+        ex = re.split('[-|+|*|/|%]', scrn['rule'])
+
+        for x in ex:
+            if repl.get(x):
+                vars.add(repl[x].strip())
+            else :
+                vars.add(x.strip())
     
+
     for v in vars:
         ARR_CRPT[v] = 0
     for n in ARR_CONFIG['constant']:
@@ -249,10 +261,10 @@ def getVariableNames():
         if n.get('flag') != 'n':
             ARR_CRPT[n['name']] = n['value']
 
+#     for v in ARR_CRPT:
+#         print (v, ARR_CRPT[v])
 
-    # for v in ARR_CRPT:
-    #     print (v, ARR_CRPT[v])
-
+  
 
 
 def getSqls():
@@ -332,7 +344,7 @@ def getRtCounting(cursor, arr_latest):
         return False
     for lt in arr_latest:
         # print (lt)
-        ct_mask.append("(device_info = '%s' and timestamp > %d)" %(lt['device_info'], lt['ts'] - TZ_OFFSET))
+        ct_mask.append("(device_info = '%s' and timestamp >= %d)" %(lt['device_info'], lt['ts'] - TZ_OFFSET))
 
     if (ct_mask) :
         sq_s = ' or '.join(ct_mask)
@@ -365,7 +377,7 @@ def getRtCounting(cursor, arr_latest):
     return diff
 
 def getRptCounting(cursor):
-    arr_crpt = ARR_CRPT
+    arr_crpt = dict()
     sqls = getSqls()
 
     sq = "select device_info, year, month, day, hour, min, max(timestamp) as latest_ts from %s.count_tenmin where year = year(curdate()) and month=month(curdate()) and day= dayofmonth(curdate()) group by device_info" %( ARR_CONFIG['mysql']['db'])
@@ -381,7 +393,7 @@ def getRptCounting(cursor):
         # columns = cursor.description
         for row in cursor.fetchall():
             # print(row)
-            arr_crpt[ row[0] + ':' + row[1] + ':' + row[2]] = row[3]
+            arr_crpt[ row[0] + ':' + row[1] + ':' + row[2]] = int(row[3])
 
     return arr_crpt, latest
  
@@ -394,16 +406,16 @@ def getData():
         arr_crpt, latest = getRptCounting(cursor)
         print (arr_crpt)
         diff = getRtCounting(cursor, latest)
-        print ("diff", diff)
+        print ("rt_count", diff)
         for exp in ARR_CRPT:
             e = exp.split(":")
             if len(e) <3:
                 continue
-            key = e[0] + ':' + e[1] + ':' + e[2]
-            ARR_CRPT[key] = arr_crpt[key]
+
+            ARR_CRPT[exp] = arr_crpt[exp]
             if e[0] in ['today', 'thisweek', 'thismonth', 'thisyear']: 
                 if diff.get(e[1]) and diff[e[1]].get(e[2]):
-                    ARR_CRPT[key] = arr_crpt[key] + diff[e[1]][e[2]]
+                    ARR_CRPT[exp] = arr_crpt[exp] + diff[e[1]][e[2]]
             # else :
             #     ARR_CRPT[key] = arr_crpt[key]
 
@@ -422,6 +434,7 @@ if __name__ == '__main__':
 
 
     # rule = "limit_BB - today:mac=001323A0072F&brand=TSD&model=TSDC32P-12V:Likangcun_IN+today:mac=001323A0072F&brand=TSD&model=TSDC32P-12V:Likangcun_OUT"
+    # rule = "limit_BB - today:all:entrance+today:mac=001323A0072F&brand=TSD&model=TSDC32P-12V:Likangcun_OUT"
 
     # vars = list()
     # oper = list()
@@ -450,7 +463,7 @@ if __name__ == '__main__':
     # print (vars) 
     # print (oper)
 
-    pass
+    # pass
 
 
 # def parseRule(ss):

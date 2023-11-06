@@ -33,15 +33,56 @@ def exitProgramOpt():
     print ("destroyed root")
     sys.stdout.flush()
 
+# # Import module  
+# from tkinter import *
+  
+# # Create object  
+# root = Tk() 
+  
+# # Adjust size  
+# root.geometry("400x400") 
+  
+# # Add image file 
+# bg = PhotoImage(file = "Your_img.png") 
+  
+# # Create Canvas 
+# canvas1 = Canvas( root, width = 400, 
+#                  height = 400) 
+  
+# canvas1.pack(fill = "both", expand = True) 
+  
+# # Display image 
+# canvas1.create_image( 0, 0, image = bg,  
+#                      anchor = "nw") 
+  
+# # Add Text 
+# canvas1.create_text( 200, 250, text = "Welcome") 
+  
+# # Create Buttons 
+# button1 = Button( root, text = "Exit") 
+# button3 = Button( root, text = "Start") 
+# button2 = Button( root, text = "Reset") 
+  
+# # Display Buttons 
+# button1_canvas = canvas1.create_window( 100, 10,  
+#                                        anchor = "nw", 
+#                                        window = button1) 
+  
+# button2_canvas = canvas1.create_window( 100, 40, 
+#                                        anchor = "nw", 
+#                                        window = button2) 
+  
+# button3_canvas = canvas1.create_window( 100, 70, anchor = "nw", 
+#                                        window = button3) 
+  
+# # Execute tkinter 
+# root.mainloop() 
 
 def mainScreen():
     ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
     for s in ARR_SCREEN:
         name = s.get("name")
         if s.get("role") == 'variable':
-            continue
-        if s.get("flag") == 'n':
-            menus[name].place_forget()
             continue
         
         if not name in menus:
@@ -50,7 +91,13 @@ def mainScreen():
             var[name] = StringVar()
             menus[name].configure(textvariable = var[name])
             print("create label %s" %name)
-        
+
+        if s.get("flag") == 'n':
+            # if menus.get(name):
+            #     menus[name].place_forget()
+            continue
+
+
         if s.get('text'):
             var[name].set(s['text'])
 
@@ -95,7 +142,9 @@ def mainScreen():
                 USE_VIDEO = True
 
         menus[name].configure(width=w, height=h)
+
         menus[name].place(x=posx, y=posy)
+
 
     for m in menus:
         menus[m].configure(borderwidth=0)
@@ -112,12 +161,15 @@ def selBlock():
 
 def movePos():
     name =var_screen['label'].get()
-    menus[name].place(x=var_screen['posX'].get(), y=var_screen['posY'].get())
+    print ("name", name)
+    if menus.get(name):
+        menus[name].place(x=var_screen['posX'].get(), y=var_screen['posY'].get())
 
 def sizeFont():
     name =var_screen['label'].get()
     font = (var_screen['fontfamily'].get(), var_screen['fontsize'].get(), var_screen['fontshape'].get())
-    menus[name].configure(font=font)
+    if menus.get(name):
+        menus[name].configure(font=font)
 
 #########################################################################################################
 ############################################## Option Config ############################################
@@ -356,18 +408,19 @@ def updateEntry(e):
     listFont['fontfamily'] = ['simhei', 'arial', 'fangsong', 'simsun', 'gulim', 'batang', 'ds-digital','bauhaus 93', 'HP Simplified' ]
     listFont['fontshape'] = ['normal', 'bold', 'italic']
     listFont['fgcolor']  = ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink']
-    listFont['bgcolor'] = listFont['fgcolor']
+    listFont['bgcolor'] = ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink','transparent']
     listFont['align'] = ['left', 'right', 'center']
 
     list_keys = dict()
-    list_keys['label'] = ['text', 'fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'use',]
-    list_keys['number'] = ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'rule','use',]
-    list_keys['picture'] = ['width', 'height', 'posX', 'posY', 'padX', 'padY', 'role', 'url','use',]
+    list_keys['label']    = ['text', 'fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'use',]
+    list_keys['number']   = ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'rule','use',]
+    list_keys['percent']  = ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'rule','use',]
+    list_keys['picture']  = ['width', 'height', 'posX', 'posY', 'padX', 'padY', 'role', 'url','use',]
     list_keys['snapshot'] = ['width', 'height', 'posX', 'posY', 'padX', 'padY', 'role', 'device_info','use',]
     list_keys['datetime'] = ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align', 'role', 'use']
     # list_keys['variable'] = ['sql', 'use']
 
-    list_roles= ['label', 'number', 'datetime', 'picture', 'snapshot', 'video']
+    list_roles= ['label', 'number', 'percent', 'datetime', 'picture', 'snapshot', 'video']
 
     sel = var_screen['label'].get()
     # print(sel)
@@ -524,7 +577,10 @@ def saveScreen():
                     message("position type error")
                     return False
                 arr_template[i]['position'] = [int(var_screen['posX'].get()), int(var_screen['posY'].get())]
-                movePos()
+                if r['flag'] == 'y':
+                    movePos()
+                else :
+                   menus[sel].place_forget()
 
             if var_screen.get('padX') and var_screen.get('padY'):
                 if not (var_screen['padX'].get().isnumeric() and var_screen['padY'].get().isnumeric()):
@@ -540,8 +596,13 @@ def saveScreen():
                     message("fontsize type error")
                     return False
                 arr_template[i]['font']  = [var_screen['fontfamily'].get(), int(var_screen['fontsize'].get()), var_screen['fontshape'].get()]
-                arr_template[i]['color'] = [var_screen['fgcolor'].get(), var_screen['bgcolor'].get()]
                 menus[sel].configure(font=tuple(arr_template[i]['font']))
+
+                if var_screen['bgcolor'].get() == 'transparent':
+                    bg_color ='black'
+                else :
+                    bg_color = var_screen['bgcolor'].get()
+                arr_template[i]['color'] = [var_screen['fgcolor'].get(), bg_color]
                 menus[sel].configure(fg=arr_template[i]['color'][0], bg=arr_template[i]['color'][1])
                 
             if var_screen.get('width') and var_screen.get('height'):

@@ -5,6 +5,7 @@ RtScreen.bat
 monitor.bat
 backupDB.bat
 
+.gitignore
 _unused
 Test
 GateController

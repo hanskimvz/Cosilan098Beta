@@ -5,6 +5,6 @@
     2. install: refer to video file: 
 
 2. download Cosilan basic file
-    1. download file: https://codeload.github.com/hanskimvz/Cosilan097Beta/zip/refs/heads/main
+    1. download file: https://github.com/hanskimvz/Cosilan098Beta/archive/refs/heads/main.zip
 
-3. set.bat
+3. setup.bat

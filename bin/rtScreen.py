@@ -48,43 +48,54 @@ thv = None
 Running = True
 
 def exitProgram(event=None):
-    global ths, thd, thv, oWin, eWin, root, Running
-    print ("Exit Program")
+    global Running
     Running = False
-    for i in range(100):
-        r = True
-        s = ""
-        if oWin:
-            closeOption()
-        if eWin:
-            closeEdit()
 
-        if thd:
-            thd.stop()
-            thd.Running = False
-            s += "  thd: alive %s " %(str(thd.is_alive()))
-            r &= not (thd.is_alive())
-
-        if i>10:
-            sys.stdout.flush()
-
-        
-        print (i, r, s)
-
-        if r:
-            break
-        time.sleep(0.5)
-
-    # root.overrideredirect(False)
-    # root.attributes("-fullscreen", False)
-    time.sleep(1)
     root.destroy()
     root.quit()
     print ("destroyed root")
     sys.stdout.flush()
-    # raise SystemExit()
-    # sys.exit()
-    # print ("sys.exit()")
+
+    return False
+
+    # global ths, thd, thv, oWin, eWin, root, Running
+    # print ("Exit Program")
+    # Running = False
+    # for i in range(100):
+    #     r = True
+    #     s = ""
+    #     if oWin:
+    #         closeOption()
+    #     if eWin:
+    #         closeEdit()
+
+    #     if thd:
+    #         thd.stop()
+    #         thd.Running = False
+    #         s += "  thd: alive %s " %(str(thd.is_alive()))
+    #         r &= not (thd.is_alive())
+
+    #     if i>10:
+    #         sys.stdout.flush()
+
+        
+    #     print (i, r, s)
+
+    #     if r:
+    #         break
+    #     time.sleep(0.5)
+
+    # # root.overrideredirect(False)
+    # # root.attributes("-fullscreen", False)
+    # time.sleep(1)
+    # root.destroy()
+    # root.quit()
+    # print ("destroyed root")
+    # sys.stdout.flush()
+
+    # # raise SystemExit()
+    # # sys.exit()
+    # # print ("sys.exit()")
 
 
 def displayDatetime():
@@ -136,8 +147,8 @@ def numberByRule(rule):
             num -= n
         elif o == '*' :
             num *= n
-        elif o == '/' :
-            num /= n
+        elif o == '/':
+            num /= n if n else 0
 
     return num
 
@@ -145,11 +156,12 @@ def changeNumbers():
     for scrn in ARR_SCREEN:
         if scrn.get('flag') == 'n':
             continue
-        if scrn['role'] != 'number':
+        if scrn['role'] == 'number' :
+            num = numberByRule(scrn['rule'])
+        elif scrn['role'] == 'percent':
+            num = "%3.2f %%"  %(numberByRule(scrn['rule']) * 100)
+        else :
             continue
-
-        num = numberByRule(scrn['rule'])
-        # print (num)
         var[scrn['name']].set(num)
 
 class getDataThread(threading.Thread):
@@ -158,16 +170,22 @@ class getDataThread(threading.Thread):
         self.delay = ARR_CONFIG['refresh_interval']
         self.Running = True
         self.last = 0
+        self.arr_crpt = dict()
+        self.diff = dict()
+        self.latest = 0
+        self.dbcon = None
+        self.cur=None
 
     def run(self):
         self.dbcon = dbconMaster()
         while self.Running :
             self.cur = self.dbcon.cursor()
             if int(time.time())-self.last > 300:
+            # if True:
                 try:
+                    print ("get rpt")
                     self.arr_crpt, self.latest = getRptCounting(self.cur)
                     self.last = int(time.time())
-                    print ("get rpt")
                 except Exception as e:
                     print (e)
                     time.sleep(5)
@@ -185,28 +203,57 @@ class getDataThread(threading.Thread):
                 print ("Reconnected")
                 continue
 
+            self.cur.close()
+            # self.diff['all'] = {'entrance':10, 'exit':10}
+            print ("self", self.arr_crpt)
             for exp in ARR_CRPT:
                 e = exp.split(":")
                 if len(e) <3:
                     continue
-                key = e[0] + ':' + e[1] + ':' + e[2]
-                ARR_CRPT[key] = self.arr_crpt[key]
+                
+                if self.arr_crpt.get(exp):
+                    ARR_CRPT[exp] = self.arr_crpt[exp] 
+
                 if e[0] in ['today', 'thisweek', 'thismonth', 'thisyear']:
-                    if self.diff.get(e[1]) and self.diff[e[1]].get(e[2]):
-                        ARR_CRPT[key] = self.arr_crpt[key] + self.diff[e[1]][e[2]]
+                    if self.diff and self.diff.get(e[1]) and self.diff[e[1]].get(e[2]):
+                        ARR_CRPT[exp] = self.arr_crpt[exp] + self.diff[e[1]][e[2]]
+
                 # else:
-                #     ARR_CRPT[key] = self.arr_crpt[key]
+                #     print(e[0])
+                #     ARR_CRPT[exp] = self.arr_crpt[exp]
+                #     arr_crpt[exp] = self.arr_crpt[exp] + 0
 
 
+
+            
 
             changeNumbers()
 
-            print (ARR_CRPT)
+
+            # print ("self", self.arr_crpt)
+            print ("tota", ARR_CRPT)
+            # print ("diff", self.diff)
+            print()
             time.sleep(self.delay)
 
         self.cur.close()
         self.dbcon.close()
-                
+
+    # def run(self):
+    #     while self.Running :
+    #         if int(time.time())-self.last > 300:
+    #             self.a = 1234
+            
+    #         s = self.a +1
+
+    #         print ("a", self.a)
+    #         print ("s", s)
+    #         print ()
+
+    #         time.sleep(5)
+
+
+
     def stop(self):
         self.Running = False 
 
@@ -221,14 +268,12 @@ if __name__ == '__main__':
     root.bind('<Double-Button-1>', edit_screen)
     root.bind('<Button-3>', frame_option)
     root.configure(background="black")
+    # root.wm_attributes("-transparentcolor", 'black')
 
     root.protocol("WM_DELETE_WINDOW", exitProgram)
 
     mainScreen()
     displayDatetime()
-
-    thd = getDataThread()
-    thd.start()
 
     if ARR_CONFIG['full_screen'] == "yes":
         # root.overrideredirect(True)
@@ -237,10 +282,11 @@ if __name__ == '__main__':
     else :
         root.resizable (True, True)
 
-    # while Running:
+
+    thd = getDataThread()
+    thd.start()
     print ("thd alive", thd.is_alive())
-    time.sleep(2)
-    
+   
     root.mainloop()
 
     for i in range(100):
@@ -248,6 +294,7 @@ if __name__ == '__main__':
             thd.stop()
             thd.Running = False
             if not thd.is_alive():
+                print ("thd alive", thd.is_alive())
                 break
             time.sleep(0.5)
 

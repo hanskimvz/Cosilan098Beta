@@ -229,7 +229,7 @@
         "min": 0
     },
     "refresh_interval": 5,
-    "template": "template10.json",
+    "template": "template23.json",
     "constant": [
         {
             "name": "limited_number",

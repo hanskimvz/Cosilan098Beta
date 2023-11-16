@@ -90,6 +90,5 @@ $LOGIN_PAGE = "/admin.php?fr=login";
 $CLOUD_SERVER = "14.6.84.62";
 $DEVELOPER_WEB = "47.56.150.14";
 
-// define(_TZ_OFFSET, 28800); // China
-define(_TZ_OFFSET, 32400); // Korea
+define('TZ_OFFSET', $configVars['system.datetime.timezone.offset']); // Korea
 ?>

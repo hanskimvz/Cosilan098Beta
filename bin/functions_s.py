@@ -649,12 +649,18 @@ modifyConfig("software.service.root_dir", _ROOT_DIR)
 _SERVER = configVars('software.root.update_server.address')
 _SERVER_MAC = configVars('software.root.update_server.mac')
 TZ_OFFSET =  configVars('system.datetime.timezone.offset')
+
+print (TZ_OFFSET)
 try :
     TZ_OFFSET = int(TZ_OFFSET)
 except:
     TZ_OFFSET = 0
 if not TZ_OFFSET:
     TZ_OFFSET = 3600*8
+
+#because local
+TZ_OFFSET = 3600*8
+
 PROBE_INTERVAL = configVars('software.service.probe_interval')
 try:
     PROBE_INTERVAL = int(PROBE_INTERVAL)

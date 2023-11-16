@@ -3,25 +3,30 @@ import time, os, sys
 import json
 from tkinter import *
 from tkinter import ttk
+from tkinter import font
 from tkinter import filedialog
+
 import cv2 as cv
 import numpy as np
 from PIL import ImageTk, Image
 
-from rt_main import loadConfig, saveConfig, loadTemplate, saveTemplate, dbconMaster, getDevices, Running, cwd
+from rt_main import ARR_CONFIG, loadConfig, saveConfig, loadTemplate, saveTemplate, loadLanguage, dbconMaster, getVariableNames, Running, cwd
 
 
 var = dict()
 root = Tk()
+canvas = Canvas(root, width=root.winfo_screenwidth(), height=root.winfo_screenheight(),background='black')
+canvas.pack(padx=0, pady=0, side="top")
 menus = dict()
+bgbox = dict()
+# canvas = None
 
 oWin = None
 eWin = None
-var_option = dict()
-var_screen = dict()
 
 ARR_CONFIG = loadConfig()
 ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
+LANG = loadLanguage()
 # print (ARR_CONFIG)
 
 def exitProgramOpt():
@@ -33,128 +38,111 @@ def exitProgramOpt():
     print ("destroyed root")
     sys.stdout.flush()
 
-# # Import module  
-# from tkinter import *
-  
-# # Create object  
-# root = Tk() 
-  
-# # Adjust size  
-# root.geometry("400x400") 
-  
-# # Add image file 
-# bg = PhotoImage(file = "Your_img.png") 
-  
-# # Create Canvas 
-# canvas1 = Canvas( root, width = 400, 
-#                  height = 400) 
-  
-# canvas1.pack(fill = "both", expand = True) 
-  
-# # Display image 
-# canvas1.create_image( 0, 0, image = bg,  
-#                      anchor = "nw") 
-  
-# # Add Text 
-# canvas1.create_text( 200, 250, text = "Welcome") 
- 
-
 def mainScreen():
+    global ARR_CONFIG, root, canvas
+    canvas.bind('<Double-Button-1>', edit_screen)
     ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
     for s in ARR_SCREEN:
         name = s.get("name")
         if s.get("role") == 'variable':
             continue
-        
+       
         if not name in menus:
-            menus[name] = Label(root)
-            # menus[name] = Button(root)
-            var[name] = StringVar()
-            menus[name].configure(textvariable = var[name])
-            print("create label %s" %name)
-
-        if s.get("flag") == 'n':
-            # if menus.get(name):
-            #     menus[name].place_forget()
+            if s.get('role') in ['picture', 'snapshot', 'video']:
+                menus[name] = canvas.create_image(0, 0, anchor="nw")
+            else :
+                bgbox[name] = canvas.create_rectangle(0, 0, 0, 0)
+                menus[name] = canvas.create_text(0, 0, anchor="nw")
+        if s.get('flag') == 'n':
+            canvas.delete(menus[name])
+            del(menus[name])
             continue
-
-
-        if s.get('text'):
-            var[name].set(s['text'])
-
-        if s.get('font'):
-            menus[name].configure(font=tuple(s['font']))
-        if s.get('color'):
-            menus[name].configure(fg=s['color'][0], bg=s['color'][1])
-
-        if s.get('padding'):
-            menus[name].configure(padx=s['padding'][0], pady=s['padding'][1])
-        
-        if s.get('align'):
-            if s['align'] == 'left':
-                menus[name].configure(anchor='w')
-            elif s['align'] == 'right':
-                menus[name].configure(anchor='e')
-            else:
-                menus[name].configure(anchor='center')
 
         w, h = int(s['size'][0]), int(s['size'][1]) if s.get('size') else (0, 0)
         posx, posy = (int(s['position'][0]), int(s['position'][1])) if s.get('position') else (0, 0)
 
-        if s.get('role') =='number' and s.get("text")=="":
-            var[name].set('0000')
+        if s.get('position'):
+            xo, yo =  canvas.coords(menus[name])
+            canvas.move(menus[name], posx - int(xo), posy- int(yo))
+            # canvas.moveto(menus[name], posx, posy ) # canvas.moveto bug, anchor will be w
 
-        if s.get('role') == 'picture' :
+        if s.get('role') == 'picture':
             imgPath = s.get('url')
             if not (imgPath and os.path.isfile(imgPath)):
                 imgPath = "cam.jpg"
-            img = cv.imread(imgPath)
-            img = Image.fromarray(img)
+
+            # using CV
+            # img = cv.imread(imgPath)
+            # img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+            # img = Image.fromarray(img)
+
+            # using othter
+            img = Image.open(imgPath)
+
             img = img.resize((w, h), Image.LANCZOS)
             imgtk = ImageTk.PhotoImage(image=img)
-            menus[name].configure(image=imgtk)
-            menus[name].photo=imgtk # phtoimage bug
+            canvas.image_names=imgtk # phtoimage bug
+            canvas.itemconfigure(menus[name], image=imgtk)
 
         elif s.get('role') == 'snapshot':
-            if s.get('device_info') :
-                USE_SNAPSHOT = True
+            pass
+
         elif s.get('role') == 'video':
-            if s.get('url') :
-                USE_VIDEO = True
+            pass
+        
+        # if not s.get('role') in ['picture', 'snapshot', 'video']:
+        else:
+            canvas.itemconfigure(menus[name], width=w)
+            if s.get('role') == 'datetime':
+                dow = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"]
+                s['text'] = time.strftime(s.get('format'))
+                for i in range(0,7):
+                    s['text'] = s['text'].replace("%dc" %i, dow[i])
 
-        menus[name].configure(width=w, height=h)
 
-        menus[name].place(x=posx, y=posy)
+            canvas.itemconfigure(menus[name], text=s['text'])
+            ft = font.Font(family=s['font'][0], size=s['font'][1], weight=s['font'][2])
+            canvas.itemconfigure(menus[name], font=ft)
+
+            if s.get('align'):
+                if s['align'] == 'left':
+                    canvas.itemconfigure(menus[name], anchor='nw')
+                elif s['align'] == 'right':
+                    canvas.itemconfigure(menus[name], anchor='ne')
+                else:
+                    canvas.itemconfigure(menus[name], anchor='center')
+
+            if s.get('color'):
+                canvas.itemconfigure(menus[name], fill=s['color'][0])
+                if s['color'][1] == 'transparent':
+                    canvas.coords(bgbox[name], (0,0,0,0))
+                else:
+                    canvas.itemconfigure(bgbox[name], fill=s['color'][1])
+                    canvas.itemconfigure(bgbox[name], outline=s['color'][1])
+                    x0,y0,x1,y1 = canvas.bbox(menus[name])
+                    x0 -= int(s['padding'][0])
+                    x1 += int(s['padding'][0])
+                    y0 -= int(s['padding'][1])
+                    y1 += int(s['padding'][1])
+
+                    canvas.coords(bgbox[name], (x0,y0,x1,y1))
+
+        if s.get('role') =='number' and s.get("text")=="":
+            canvas.itemconfigure(menus[name], text= '0000')
+
+    # for m in menus:
+    #     print(m, 'bbox',canvas.bbox(menus[m]))
+
+    if eWin:
+        selBlock()
 
 
-    for m in menus:
-        menus[m].configure(borderwidth=0)
 
-
-
-def selBlock():
-    for m in menus:
-        menus[m].configure(borderwidth=0)
-    name =var_screen['label'].get()
-    if menus.get(name):
-        menus[name].configure(borderwidth=2, relief="groove")
-    
-
-def movePos():
-    name =var_screen['label'].get()
-    print ("name", name)
-    if menus.get(name):
-        menus[name].place(x=var_screen['posX'].get(), y=var_screen['posY'].get())
-
-def sizeFont():
-    name =var_screen['label'].get()
-    font = (var_screen['fontfamily'].get(), var_screen['fontsize'].get(), var_screen['fontshape'].get())
-    if menus.get(name):
-        menus[name].configure(font=font)
 
 #########################################################################################################
 ############################################## Option Config ############################################
 #########################################################################################################
+var_option = dict()
 def frame_option(e=None):
     global root, oWin, var
     # print(e)
@@ -182,13 +170,11 @@ def frame_option(e=None):
         oWin.protocol("WM_DELETE_WINDOW", closeOption)
         oWin.resizable(False, False)
         optionMenu()
-    # ths.delay =  ARR_CONFIG['refresh_interval']
 
 def closeOption():
     global oWin
     oWin.destroy()
     oWin = None
-
 
 def saveOption():
     global ARR_CONFIG, root, var_option
@@ -215,7 +201,7 @@ def saveOption():
         except Exception as e:
             print ("MYSQL Error")
             print (e)
-            message (ARR_CONFIG['language'].get("check_mysql_conf"))
+            message (LANG.get("check_mysql_conf"))
             return False
 
         for key in ARR_CONFIG['mysql']:
@@ -224,7 +210,7 @@ def saveOption():
     try:
         ARR_CONFIG['refresh_interval'] = int(var_option['refresh_interval'].get())
     except:
-        message (ARR_CONFIG['language'].get("refresh_time_error"))
+        message (LANG.get("refresh_time_error"))
         return False
 
     if ARR_CONFIG['template'] != var_option['template'].get().strip():
@@ -237,15 +223,15 @@ def saveOption():
     fx = "yes" if var_option['full_screen'].get() else "no"
     if ARR_CONFIG['full_screen'] != fx:
         ARR_CONFIG['full_screen'] = fx
-        need_restart = True
-        # if ARR_CONFIG['full_screen'] == "yes":
-        #     root.overrideredirect(True)
-        #     root.attributes("-fullscreen", True)
-        #     root.resizable (False, False)
-        # else :
-        #     root.overrideredirect(False)
-        #     root.attributes("-fullscreen", False)
-        #     root.resizable (True, True)
+        # need_restart = True
+        if ARR_CONFIG['full_screen'] == "yes":
+            # root.overrideredirect(True)
+            root.attributes("-fullscreen", True)
+            root.resizable (False, False)
+        else :
+            # root.overrideredirect(False)
+            root.attributes("-fullscreen", False)
+            root.resizable (True, True)
 
     saveConfig("rtScreen.json", ARR_CONFIG)
     message("saved")
@@ -260,21 +246,21 @@ def optionMenu():
     # print (sys.executable)
     btnFrame = Frame(oWin)
     btnFrame.pack(side="bottom", pady=10)
-    Button(btnFrame, text=ARR_CONFIG['language']['close_option'], command=closeOption, width=16).pack(side="left", padx=5)
-    Button(btnFrame, text=ARR_CONFIG['language']['exit_program'], command=exitProgramOpt, width=16).pack(side="right", padx=5)
+    Button(btnFrame, text=LANG['close_option'], command=closeOption, width=16).pack(side="left", padx=5)
+    Button(btnFrame, text=LANG['exit_program'], command=exitProgramOpt, width=16).pack(side="right", padx=5)
 
     dbFrame = Frame(oWin)
     dbFrame.pack(side="top", pady=10)
 
-    Label(dbFrame, text=ARR_CONFIG['language']['db_server']).grid(row=0, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['user']).grid(row=1, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['password']).grid(row=2, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['charset']).grid(row=3, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['port']).grid(row=4, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['db_name']).grid(row=5, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['refresh_interval']).grid(row=6, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['full_screen']).grid(row=7, column=0, sticky="w", pady=2, padx=4)
-    Label(dbFrame, text=ARR_CONFIG['language']['template']).grid(row=8, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['db_server']).grid(row=0, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['user']).grid(row=1, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['password']).grid(row=2, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['charset']).grid(row=3, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['port']).grid(row=4, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['db_name']).grid(row=5, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['refresh_interval']).grid(row=6, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['full_screen']).grid(row=7, column=0, sticky="w", pady=2, padx=4)
+    Label(dbFrame, text=LANG['template']).grid(row=8, column=0, sticky="w", pady=2, padx=4)
 
     Entry(dbFrame, textvariable=var_option['host']).grid(row=0, column=1, ipadx=3)
     Entry(dbFrame, textvariable=var_option['user']).grid(row=1, column=1, ipadx=3)
@@ -292,7 +278,7 @@ def optionMenu():
             listTemplates.append(x)
     var_option['template'] = ttk.Combobox(dbFrame, width=16, values=listTemplates)
     var_option['template'].grid(row=8, column=1, ipadx=3)
-    Button(dbFrame, text=ARR_CONFIG['language']['save_changes'], command=saveOption, width=16).grid(row=9, column=0, columnspan=2)
+    Button(dbFrame, text=LANG['save_changes'], command=saveOption, width=16).grid(row=9, column=0, columnspan=2)
 
     var_option['refresh_interval'].set(ARR_CONFIG['refresh_interval'])
     for i, x in enumerate(listTemplates):
@@ -314,8 +300,53 @@ def message(strn):
 #########################################################################################################
 ############################################## Screen Edit ##############################################
 #########################################################################################################
+var_screen = dict()
+sel_box = None
+
+def selBlock(x=0, y=0):
+    global sel_box
+    if sel_box:
+        canvas.delete(sel_box)
+
+    if eWin:
+        sel = var_screen['label'].get()
+    else :
+        d_min = 3000
+        for m in menus:
+            pos = canvas.bbox(menus[m])
+            if pos and pos[0] < x <pos[2] and pos[1] <y <pos[3]:
+                if min(x - pos[0], pos[2]-x, y-pos[1], pos[3]-y) < d_min:
+                    d_min = min(x - pos[0], pos[2]-x, y-pos[1], pos[3]-y)
+                    sel = m
+        # print (sel, canvas.bbox(menus[sel]))
+    if menus.get(sel):
+        sel_box = canvas.create_rectangle(canvas.bbox(menus[sel]), outline="yellow", dash=(10,10), width=2)
+    return sel
+    
+
+def movePos():
+    global sel_box
+    name = var_screen['label'].get()
+    x, y = var_screen['posX'].get(), var_screen['posY'].get()
+    if menus.get(name):
+        xo, yo =  canvas.coords(menus[name])
+        canvas.move(menus[name], int(x) - int(xo), int(y)- int(yo))
+        canvas.move(sel_box, int(x) - int(xo), int(y)- int(yo))
+        # canvas.moveto(menus[name], int(x), int(y)) # canvas.moveto bug 
+        # canvas.moveto(sel_box, int(x), int(y)) # canvas.moveto bug 
+        
+def sizeFont():
+    global sel_box
+    name =var_screen['label'].get()
+    if menus.get(name):
+        ft = font.Font(family=var_screen['fontfamily'].get(), size=var_screen['fontsize'].get(), weight=var_screen['fontshape'].get())
+        canvas.itemconfigure(menus[name], font=ft)
+        canvas.coords(sel_box, canvas.bbox(menus[name]))
+
 def edit_screen(e):
-    global root, eWin
+    global root, eWin, oWin, sel_box
+    print (e)
+    sel = selBlock(e.x, e.y)
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
 
@@ -330,25 +361,22 @@ def edit_screen(e):
     eWin.geometry("260x640+%d+%d" %(int(screen_width/2-150), int(screen_height/2-200)))
     eWin.protocol("WM_DELETE_WINDOW", closeEdit)
     eWin.resizable(True, True)
-    editScreen()
+    editScreen(sel)
     
 
 def closeEdit():
-    global eWin
-    for m in menus:
-        menus[m].configure(borderwidth=0)
-
+    global eWin, canvas, sel_box
+    canvas.delete(sel_box)
     eWin.destroy()
     eWin = None
 
 scFrame = None
 btFrame = None
-def editScreen():
+def editScreen(sel_name):
     global ARR_CONFIG, ARR_SCREEN, eWin, var_screen, scFrame
-    x, y = root.winfo_pointerx(), root.winfo_pointery()
 
-    Button(eWin, text=ARR_CONFIG['language']['close_option'], command=closeEdit, width=16).pack(side="bottom", padx=5, pady=10)
-    Button(eWin, text=ARR_CONFIG['language']['save_changes'], command=saveScreen, width=16).pack(side="bottom")
+    Button(eWin, text=LANG['close_option'], command=closeEdit, width=16).pack(side="bottom", padx=5, pady=10)
+    Button(eWin, text=LANG['save_changes'], command=saveScreen, width=16).pack(side="bottom")
     var_screen['message_str'] = StringVar()
     Message(eWin, textvariable = var_screen['message_str'], width= 200,  bd=0, relief=SOLID, foreground='red').pack(side="bottom", pady=5)       
 
@@ -358,19 +386,7 @@ def editScreen():
     ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
     listLabels = [x['name'] for x in ARR_SCREEN]
 
-    ## which lable?
-    dist  = 1000000
-    sel_name = ""
-    for scrn in ARR_SCREEN:
-        if x > scrn["position"][0]  and y > scrn["position"][1] :
-            if ((x - scrn["position"][0])^2) + ((y- scrn["position"][1])^2) < dist:
-                dist = ((x - scrn["position"][0])^2) + ((y- scrn["position"][1])^2) 
-                sel_name = scrn["name"]
-                # print (sel_name)
-    # print ()
-    # print (sel_name, dist)
-
-    Label(labelFrame, text=ARR_CONFIG['language']['name']).grid(row=0, column=0, sticky="w", pady=2, padx=4)
+    Label(labelFrame, text=LANG['name']).grid(row=0, column=0, sticky="w", pady=2, padx=4)
     var_screen['label'] = ttk.Combobox(labelFrame, width=18, state="readonly", values=listLabels)
     var_screen['label'].bind("<<ComboboxSelected>>", updateEntry)
     var_screen['label'].grid(row=0, column=1, columnspan=2, sticky="w")
@@ -380,32 +396,35 @@ def editScreen():
             updateEntry(0)
             break
 
-    var_screen['message_str'].set("hello")
+    var_screen['message_str'].set("")
 
 def updateEntry(e):
     global ARR_SCREEN, var_screen, scFrame, btFrame
 
-    listFont = dict()
-    listFont['fontfamily'] = ['simhei', 'arial', 'fangsong', 'simsun', 'gulim', 'batang', 'ds-digital','bauhaus 93', 'HP Simplified' ]
-    listFont['fontshape'] = ['normal', 'bold', 'italic']
-    listFont['fgcolor']  = ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink']
-    listFont['bgcolor'] = ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink','transparent']
-    listFont['align'] = ['left', 'right', 'center']
+    listFont = {
+        'fontfamily':['simhei', 'arial', 'fangsong', 'simsun', 'gulim', 'batang', 'ds-digital','bauhaus 93', 'HP Simplified' ],
+        'fontshape': ['normal', 'bold', 'italic'],
+        'fgcolor':   ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink'],
+        'bgcolor':   ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink','transparent'],
+        'align':     ['left', 'right', 'center']
+    }
 
-    list_keys = dict()
-    list_keys['label']    = ['text', 'fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'use',]
-    list_keys['number']   = ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'rule','use',]
-    list_keys['percent']  = ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align','role', 'rule','use',]
-    list_keys['picture']  = ['width', 'height', 'posX', 'posY', 'padX', 'padY', 'role', 'url','use',]
-    list_keys['snapshot'] = ['width', 'height', 'posX', 'posY', 'padX', 'padY', 'role', 'device_info','use',]
-    list_keys['datetime'] = ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'height', 'posX', 'posY', 'padX', 'padY', 'align', 'role', 'use']
-    # list_keys['variable'] = ['sql', 'use']
+    list_keys ={
+        'label':    ['text', 'fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor','width',  'posX', 'posY', 'align','role', 'use',],
+        'number':   ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'posX', 'posY', 'align','role', 'min', 'max', 'use', 'rule'],
+        'percent':  ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'posX', 'posY', 'align','role', 'rule',' use',],
+        'picture':  ['width', 'height', 'posX', 'posY', 'role', 'url','use',],
+        'snapshot': ['width', 'height', 'posX', 'posY', 'role', 'device_info','use',],
+        'datetime': ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'posX', 'posY', 'align', 'role', 'format', 'use'],
+
+        # 'variable': ['sql', 'use']
+    }
 
     list_roles= ['label', 'number', 'percent', 'datetime', 'picture', 'snapshot', 'video']
 
     sel = var_screen['label'].get()
     # print(sel)
-    selBlock()
+    selBlock(0,0)
     for x in list_keys:
         for key in list_keys[x]:
             if var_screen.get(key):
@@ -438,14 +457,15 @@ def updateEntry(e):
             var_screen[key]= StringVar()
             cat = None
             if (key=='use'):
-                Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
+                # print (x.get('flag'))
+                Label(scFrame, text= LANG[key] if LANG.get(key) else key).grid(row=i+2, column=0, pady=2)
                 chk = Checkbutton(scFrame, variable=var_screen[key])
                 chk.grid(row=i+2, column=1, sticky="w")
                 chk.select() if x.get('flag')=='y' else chk.deselect()
 
             # elif key == 'fontfamily' or key =='fontshape' or key =='fgcolor' or key == 'bgcolor' or key=='align':
             elif key in ['fontfamily', 'fontshape', 'fgcolor', 'bgcolor', 'align']:
-                Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
+                Label(scFrame, text= LANG[key] if LANG.get(key) else key).grid(row=i+2, column=0, pady=2)
                 var_screen[key] =  ttk.Combobox(scFrame, width=18, state="readonly", values=listFont[key])
                 var_screen[key].grid(row=i+2, column=1)
                 for j, ft in enumerate(listFont[key]):
@@ -474,7 +494,7 @@ def updateEntry(e):
                 cat = 1
                 
             elif key=='role':
-                Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
+                Label(scFrame, text= LANG[key] if LANG.get(key) else key).grid(row=i+2, column=0, pady=2)
                 var_screen[key] =  ttk.Combobox(scFrame, width=18, state="readonly", values=list_roles)
                 var_screen[key].grid(row=i+2, column=1)
                 for j, ft in enumerate(list_roles):
@@ -482,13 +502,13 @@ def updateEntry(e):
                         var_screen[key].current(j)
 
             elif key=='sql' or key == 'rule':
-                Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2, sticky='n')
+                Label(scFrame, text= LANG[key] if LANG.get(key) else key).grid(row=i+2, column=0, pady=2, sticky='n')
                 var_screen[key] = Text(scFrame, width=20, height=5)
                 var_screen[key].grid(row=i+2, column=1)
                 var_screen[key].insert(1.0, x.get(key))
 
             elif key == 'url':
-                Button(scFrame, command=browseFile, text = ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
+                Button(scFrame, command=browseFile, text = LANG[key] if LANG.get(key) else key).grid(row=i+2, column=0, pady=2)
                 Entry(scFrame, textvariable=var_screen[key], width=22).grid(row=i+2, column=1)
                 cat = 1
 
@@ -503,13 +523,13 @@ def updateEntry(e):
 
 
             else : # label, entry
-                Label(scFrame, text= ARR_CONFIG['language'][key] if ARR_CONFIG['language'].get(key) else key).grid(row=i+2, column=0, pady=2)
+                Label(scFrame, text= LANG[key] if LANG.get(key) else key).grid(row=i+2, column=0, pady=2)
                 Entry(scFrame, textvariable = var_screen[key], width=22).grid(row=i+2, column=1, columnspan=2)
                 cat = 1
 
             if cat:
                 var_screen[key].set(x.get(key))
-         
+        var_screen['message_str'].set("")
         print ()
 
 
@@ -540,9 +560,8 @@ def browseFile():
     var_screen['url'].set(fname)
     eWin.lift()  
         
-
 def saveScreen():
-    global ARR_CONFIG
+    global ARR_CONFIG, root, canvas, menus
     arr_template = loadTemplate(ARR_CONFIG['template'])
     
     sel = var_screen['label'].get()
@@ -558,73 +577,53 @@ def saveScreen():
                     message("position type error")
                     return False
                 arr_template[i]['position'] = [int(var_screen['posX'].get()), int(var_screen['posY'].get())]
-                if r['flag'] == 'y':
-                    movePos()
-                else :
-                   menus[sel].place_forget()
-
-            if var_screen.get('padX') and var_screen.get('padY'):
-                if not (var_screen['padX'].get().isnumeric() and var_screen['padY'].get().isnumeric()):
-                    print ("padding type error")
-                    message("padding type error")
-                    return False
-                arr_template[i]['padding']  = [int(var_screen['padX'].get()), int(var_screen['padY'].get())]
-                menus[sel].configure(padx=arr_template[i]['padding'][0], pady=arr_template[i]['padding'][1])
 
             if var_screen.get('fontsize'):
                 if not var_screen['fontsize'].get().isnumeric():
-                    print ("fontsize type error")
                     message("fontsize type error")
                     return False
                 arr_template[i]['font']  = [var_screen['fontfamily'].get(), int(var_screen['fontsize'].get()), var_screen['fontshape'].get()]
-                menus[sel].configure(font=tuple(arr_template[i]['font']))
-
-                if var_screen['bgcolor'].get() == 'transparent':
-                    bg_color ='black'
-                else :
-                    bg_color = var_screen['bgcolor'].get()
-                arr_template[i]['color'] = [var_screen['fgcolor'].get(), bg_color]
-                menus[sel].configure(fg=arr_template[i]['color'][0], bg=arr_template[i]['color'][1])
+                arr_template[i]['color'] = [var_screen['fgcolor'].get(), var_screen['bgcolor'].get()]
                 
-            if var_screen.get('width') and var_screen.get('height'):
-                if not (var_screen['width'].get().isnumeric() and var_screen['height'].get().isnumeric()):
-                    print ("size type error")
+            if var_screen.get('width'):
+                if not var_screen['width'].get().isnumeric():
                     message("size type error")
                     return False
-                arr_template[i]['size'] = [int(var_screen['width'].get()), int(var_screen['height'].get())]
-                menus[sel].configure(width=arr_template[i]['size'][0], height=arr_template[i]['size'][1])
+                arr_template[i]['size'][0] = int(var_screen['width'].get())
+            
+            if var_screen.get('height'):
+                if not  var_screen['height'].get().isnumeric():
+                    message("size type error")
+                    return False
+                arr_template[i]['size'][1] = int(var_screen['height'].get())
             
             if var_screen.get('align'):
                 arr_template[i]['align'] = var_screen['align'].get().strip()
-                if arr_template[i]['align']  == 'left':
-                    menus[sel].configure(anchor='w')
-                elif arr_template[i]['align']  == 'right':
-                    menus[sel].configure(anchor='e')
-                else :
-                    menus[sel].configure(anchor='center')
 
             if var_screen.get('url'):
                 arr_template[i]['url'] = var_screen['url'].get().strip()
-                imgPath = arr_template[i]['url']
-                if not (imgPath and os.path.isfile(imgPath)):
-                    imgPath = "cam.jpg"
-                img = cv.imread(imgPath)
-                img = Image.fromarray(img)
-                img = img.resize(tuple(arr_template[i]['size']), Image.LANCZOS)
-                imgtk = ImageTk.PhotoImage(image=img)
-                menus[sel].configure(image=imgtk)
-                menus[sel].photo=imgtk # phtoimage bug                
 
             if var_screen.get('text'):
                 arr_template[i]['text'] = var_screen['text'].get().strip()
-                var[sel].set(arr_template[i]['text'])
 
             if var_screen.get('rule'):
                 arr_template[i]['rule'] = var_screen['rule'].get(1.0, "end").strip()
-                # var[sel].set(arr_template[i]['rule'])
 
             if var_screen.get('sql'):
                 arr_template[i]['sql'] = var_screen['sql'].get().strip()
+
+            if var_screen.get('max') and var_screen['max'].get().isnumeric():
+                if not  var_screen['max'].get().isnumeric():
+                    message("Max type error")
+                    return False
+                arr_template[i]['max'] = int(var_screen['max'].get())
+
+            if var_screen.get('min') and var_screen['min'].get().isnumeric():
+                if not  var_screen['min'].get().isnumeric():
+                    message("Min type error")
+                    return False
+                arr_template[i]['min'] = int(var_screen['min'].get())
+
 
             arr_template[i]['role'] = var_screen['role'].get().strip()
             arr_template[i]['flag'] = 'y' if int(var_screen['use'].get()) else 'n'
@@ -660,3 +659,4 @@ def saveScreen():
     # print (arr)
     message("saved")
     saveTemplate(ARR_CONFIG['template'], arr_template)
+    mainScreen()

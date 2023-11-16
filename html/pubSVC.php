@@ -131,7 +131,7 @@ $DB_CUSTOM['weather'] 		= $userData['db_name'].".".$configVars['software.mysql.d
 $DB_CUSTOM['language'] 		= $userData['db_name'].".".$configVars['software.mysql.db_custom.table.language'];
 $DB_CUSTOM['web_config']	= $userData['db_name'].".webpage_config";
 
-
+define('TZ_OFFSET', $configVars['system.datetime.timezone.offset']); // Korea
 function Result2Array($rs)
 {
 	global $DB_CUSTOM;
@@ -333,7 +333,7 @@ if (isset($_GET['interval'])) {
 			$to_ts = time();
 		}
 		if(!$from_ts) {
-			$from_ts =strtotime("2019-01-01")+3600*8;
+			$from_ts =strtotime("2019-01-01") + TZ_OFFSET;
 		}
 		if(($to_ts - $from_ts) > 3600*24*92) {
 			$arr_rs['code'] = 1004;
@@ -347,7 +347,7 @@ if (isset($_GET['interval'])) {
 			$to_ts = time();
 		}
 		if(!$from_ts) {
-			$from_ts =strtotime("2019-01-01")+3600*8;
+			$from_ts =strtotime("2019-01-01")+TZ_OFFSET;
 		}
 		if(($to_ts - $from_ts) > 3600*24*186) {
 			$arr_rs['code'] = 1004;

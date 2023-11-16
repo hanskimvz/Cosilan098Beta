@@ -1,8 +1,6 @@
 <?php
 session_start();
 date_default_timezone_set ( "UTC" );
-$TZ_OFFSET = 3600*8;
-define (TZ_OFFSET, 3600*8);
 //CONNECT DB
 include  $_SERVER['DOCUMENT_ROOT'].'/libs/dbconnect.php';
 
@@ -10,13 +8,13 @@ include  $_SERVER['DOCUMENT_ROOT'].'/libs/dbconnect.php';
 
 if (!isset($_POST['mode'])) {
     if (!isset($_POST['date_from'])) {
-        $_POST['date_from'] = date("Y-m-d", time()+TZ_OFFSET);
+        $_POST['date_from'] = date("Y-m-d", time()+ TZ_OFFSET);
     }
     if (!isset($_POST['time_from'])) {
         $_POST['time_from'] = "00:00";
     }
     if (!isset($_POST['date_to'])) {
-        $_POST['date_to'] = date("Y-m-d", time()+TZ_OFFSET);
+        $_POST['date_to'] = date("Y-m-d", time() + TZ_OFFSET);
     }    
     if (!isset($_POST['time_to'])) {
         $_POST['time_to'] = date("24:00");

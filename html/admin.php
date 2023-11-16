@@ -21,7 +21,6 @@ else if (isset($_GET['fr']) && $_GET['fr'] == 'system') {
 }
 
 logincheck();
-define('TZ_OFFSET', 3600*9);
 
 /* ######################################################################################################### */
 if(($_COOKIE['role'] != 'admin') and  ($_COOKIE['role'] != 'root') and ($_GET['fr'] != 'profile')) {

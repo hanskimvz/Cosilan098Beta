@@ -39,10 +39,12 @@ import uuid
 cwd = os.path.abspath(os.path.dirname(sys.argv[0]))
 os.chdir(cwd)
 
-# TZ_OFFSET = 3600*8
+# not server, only view realtime screen, should be set TZ_OFFSET, else import TZ_OFFSET from functions_s
+TZ_OFFSET = 3600*8
+# from functions_s import TZ_OFFSET
 
-from functions_s import TZ_OFFSET
 ARR_CRPT = dict()
+LANG = dict()
 
 Running = True
 
@@ -140,12 +142,18 @@ def getWorkingHour(cursor):
     return sq_work
 
 
-def loadConfig(filename = "rtScreen.json"):
+def loadLanguage(filename = "rtScreen.lang"):
     lang = dict()
+    body = ""
     with open (filename, 'r', encoding='utf8')  as f:
-        body = f.read()
-    arr = json.loads(body)
-
+        for l in f.read().splitlines():
+            b = l.split("//")[0].strip()
+            if not b:
+                continue
+            body += b
+            
+    # print (body)
+    arr = json.loads('[' + body +']')
     LOCALE = locale.getdefaultlocale()
     if LOCALE[0] == 'zh_CN':
         selected_language = 'Chinese'
@@ -154,10 +162,14 @@ def loadConfig(filename = "rtScreen.json"):
     else :
         selected_language = 'English'
 
-    for s in arr['language']:
+    for s in arr:
         lang[s['key']] = s[selected_language]
+    return lang
 
-    arr['language'] = lang
+def loadConfig(filename = "rtScreen.json"):
+    with open (filename, 'r', encoding='utf8')  as f:
+        body = f.read()
+    arr = json.loads(body)
 
     if not arr['refresh_interval'] :
         arr['refresh_interval'] = 2
@@ -169,10 +181,10 @@ def loadConfig(filename = "rtScreen.json"):
 def saveConfig(filename="rtScreen.json", arr=[]):
     if not arr:
         arr = ARR_CONFIG
-    with open (filename, 'r', encoding='utf8')  as f:
-        body = f.read()
-    arr_t = json.loads(body)
-    arr["language"] = arr_t["language"]
+    # with open (filename, 'r', encoding='utf8')  as f:
+    #     body = f.read()
+    # arr_t = json.loads(body)
+    # arr["language"] = arr_t["language"]
 
     json_str = json.dumps(arr, ensure_ascii=False, indent=4)
     with open (filename, 'w', encoding="utf-8") as f:
@@ -314,27 +326,46 @@ def getSqls():
             arr_w.append("(" + (" or ".join(dev)) + ")")
             sqls.append("select '" + date_ref + "', device_info, counter_label, sum(counter_val) as value from " + ARR_CONFIG['mysql']['db'] + ".count_tenmin where " + (" and ".join(arr_w)) + " group by device_info, counter_label")
 
-        # if dev:
-        #     sql_sel += ', device_info'
-        #     arr_w.append("(" + (" or ".join(dev)) + ")")
-
-        # whr_dev   = " or ".join(dev)        
-
-        # if whr_dev:
-        #     arr_w.append("(" + whr_dev + ")")
-        #     sql_sel += ', device_info'
-        # # else :
-        # #     sql_sel += ", 'all'"
-
-            
-
-        # # sql_sel += ', counter_label, sum(counter_val) as value'
-        # sqls.append("select " + sql_sel + " from " + ARR_CONFIG['mysql']['db'] + ".count_tenmin where " + (" and ".join(arr_w)) + " group by " + (", ".join(grp))  ) 
-
-    # for sql in sqls:
-    #     print (sql)
-    # print()
     return sqls
+
+
+def getRtCountingX(cursor, arr_latest):
+    arr_t = dict()
+    ct_mask =  list()
+    if not arr_latest:
+        return False
+    for lt in arr_latest:
+        ct_mask.append("(device_info = '%s' and timestamp >= %d)" %(lt['device_info'], ts))
+
+    if (ct_mask) :
+        sq_s = ' or '.join(ct_mask)
+    
+    sq = "select device_info, counter_label, counter_val,  counter_name, timestamp, regdate from common.counting_event where db_name='%s' and (%s)  order by timestamp asc " %(ARR_CONFIG['mysql']['db'], sq_s) 
+    # print (sq)
+    cursor.execute(sq)
+    for row in cursor.fetchall():
+        print (row)
+        if not row[0] in arr_t:
+            arr_t[row[0]] = dict()
+        if not row[1] in arr_t[row[0]]:
+            arr_t[row[0]][row[1]] = list()
+
+        arr_t[row[0]][row[1]].append(row[2])
+
+    diff = dict()
+    diff['all'] = dict()
+    for dev in arr_t:
+        # print (dev)
+        diff[dev] = dict()
+        for label in arr_t[dev]:
+            # print (label)
+            if not diff['all'].get(label):
+                diff['all'][label] = 0
+            diff[dev][label] = max(arr_t[dev][label]) - min(arr_t[dev][label])
+            diff['all'][label] += diff[dev].get(label)
+
+    # print (diff)
+    return diff
 
 
 def getRtCounting(cursor, arr_latest):
@@ -343,12 +374,22 @@ def getRtCounting(cursor, arr_latest):
     if not arr_latest:
         return False
     for lt in arr_latest:
-        # print (lt)
-        ct_mask.append("(device_info = '%s' and timestamp >= %d)" %(lt['device_info'], lt['ts'] - TZ_OFFSET))
+        ct_mask.append("(device_info = '%s' and timestamp < %d)" %(lt['device_info'], lt['ts']-TZ_OFFSET))
 
     if (ct_mask) :
         sq_s = ' or '.join(ct_mask)
-    
+
+    ct_mask = list()
+    sq = "select device_info, counter_label, max(timestamp) from common.counting_event where db_name='%s' and (%s) group by device_info, counter_label " %(ARR_CONFIG['mysql']['db'], sq_s) 
+    # print (sq)
+    cursor.execute(sq)
+    for row in cursor.fetchall():
+        # print (row)
+        ct_mask.append("(device_info = '%s' and counter_label= '%s' and timestamp >= %d)" %(row[0], row[1], row[2]))
+
+    if (ct_mask) :
+        sq_s = ' or '.join(ct_mask)
+
     sq = "select device_info, counter_label, counter_val,  counter_name, timestamp, regdate from common.counting_event where db_name='%s' and (%s)  order by timestamp asc " %(ARR_CONFIG['mysql']['db'], sq_s) 
     # print (sq)
     cursor.execute(sq)
@@ -375,17 +416,18 @@ def getRtCounting(cursor, arr_latest):
 
     # print (diff)
     return diff
-
 def getRptCounting(cursor):
     arr_crpt = dict()
+    # arr_crpt = ARR_CRPT
     sqls = getSqls()
 
-    sq = "select device_info, year, month, day, hour, min, max(timestamp) as latest_ts from %s.count_tenmin where year = year(curdate()) and month=month(curdate()) and day= dayofmonth(curdate()) group by device_info" %( ARR_CONFIG['mysql']['db'])
+    sq = "select device_info, max(timestamp) as latest_ts from %s.count_tenmin where year = year(curdate()) and month=month(curdate()) and day= dayofmonth(curdate()) group by device_info" %( ARR_CONFIG['mysql']['db'])
     # print (sq)
     cursor.execute(sq)
     latest = list()
     for row in cursor.fetchall():
-        latest.append({"device_info": row[0], "year":row[1], "month":row[2], "day": row[3], "hour":row[4], "min":row[5], "ts":row[6]})
+        tss = dateTss(time.gmtime(int(row[1])))
+        latest.append({"device_info": row[0], "year": tss['year'], "month":tss['month'], "day": tss['day'], "hour":tss['hour'], "min":tss['min'], "ts":row[1]})
 
     for sq in sqls:
         # print (sq)
@@ -422,8 +464,9 @@ def getData():
     # print (time.time()-t)
 
 ARR_CONFIG = loadConfig()
+LANG = loadLanguage()
 getVariableNames()
-
+print (ARR_CRPT)
 if __name__ == '__main__':
     
     # for sq in getSqls():
@@ -464,563 +507,3 @@ if __name__ == '__main__':
     # print (oper)
 
     # pass
-
-
-# def parseRule(ss):
-#     global limit_number
-#     regex= re.compile(r"(\w+\s*:\s*\w+)", re.IGNORECASE)
-#     calc_regex= re.compile(r"(\w+)\(", re.IGNORECASE)
-#     m = calc_regex.search(ss)
-#     calc = m.group(1) if m else 'sum'
-
-#     if calc == 'number':
-#         limit_number = re.sub(r'[^0-9]', '', ss)
-#         return (calc, limit_number)
-
-#     if not calc in ['sum', 'diff', 'div', 'percent', 'number', 'margin']:
-#         return False
-#     arr = list()
-#     for m in regex.finditer(ss):
-#         dt, ct = m.group().split(":")
-#         arr.append((dt.strip(), ct.strip()))
-#     if not arr:
-#         return False
-#     return (calc, arr)
-
-
-# def getRptCounting(cursor): # counting db
-#     arr_crpt = dict()
-#     filename = "rtRule.json"
-#     with open(filename, "r", encoding="utf-8") as f:
-#         body = f.read()
-
-#     arr = json.loads(body)
-
-#     for r in arr:
-#         if r.get('flag') != 'y':
-#             continue
-#         # print (r['sql'])
-#         cursor.execute(r['sql'])
-#         # columns = cursor.description
-#         for row in cursor.fetchall():
-#             st = r['name']
-#             for i, x in enumerate(row):
-#                 if i < len(row)-1:
-#                     st += ":" + str(x)
-#             arr_crpt[st] = row[i]
-
-#     sq = "select device_info, year, month, day, hour, min, max(timestamp) as latest_ts from %s.count_tenmin where year = year(curdate()) and month=month(curdate()) and day= dayofmonth(curdate()) group by device_info" %( ARR_CONFIG['mysql']['db'])
-#     # print (sq)
-#     cursor.execute(sq)
-#     arr_crpt['latest'] = list()
-#     for row in cursor.fetchall():
-#         arr_crpt['latest'].append({"device_info": row[0], "year":row[1], "month":row[2], "day": row[3], "hour":row[4], "min":row[5], "ts":row[6]})
-
-#     return arr_crpt
-
-
-
-
-
-
-# class getDataThread(threading.Thread):
-#     def __init__(self):
-#         threading.Thread.__init__(self)
-#         self.delay = ARR_CONFIG['refresh_interval']
-#         self.Running = True
-#         self.exFlag = False
-#         self.last = 0
-#         self.i = 0
-
-#     def run(self):
-#         self.dbcon = dbconMaster()
-#         while self.Running :
-#             if self.i == 0 :
-#                 self.cur = self.dbcon.cursor()
-#                 if int(time.time())-self.last > 300:
-#                 # if (int(time.time())%300) < 2: #every 5minute
-#                     try:
-#                         getRptCounting(self.cur)
-#                         self.last = int(time.time())
-#                     except Exception as e:
-#                         print (e)
-#                         time.sleep(5)
-#                         self.dbcon = dbconMaster()
-#                         print ("Reconnected")
-#                         continue
-                
-#                 changeSnapshot(self.cur)
-#                 try :
-#                     arrn = getNumberData(self.cur)
-#                     self.dbcon.commit()
-#                 except pymysql.err.OperationalError as e:
-#                     print (e)
-#                     time.sleep(5)
-#                     self.dbcon = dbconMaster()
-#                     print ("Reconnected")
-#                     continue
-
-#                 # print(arrn)
-#                 changeNumbers(arrn)
-            
-#             self.i += 1
-#             if self.i > self.delay:
-#                 self.i = 0
-#             # print (self.i)
-#             time.sleep(1)
-
-#         self.cur.close()
-#         self.dbcon.close()
-#         self.exFlag = True
-                
-#     def stop(self):
-#         self.Running = False    
-
-
-
-
-
-
-
-
-
-# class getDataThread(threading.Thread):
-#     def __init__(self):
-#         threading.Thread.__init__(self)
-#         self.delay = ARR_CONFIG['refresh_interval']
-#         self.Running = True
-#         self.exFlag = False
-#         self.last = 0
-#         self.i = 0
-
-#     def run(self):
-#         self.dbcon = dbconMaster()
-#         while self.Running :
-#             if self.i == 0 :
-#                 self.cur = self.dbcon.cursor()
-#                 if int(time.time())-self.last > 300:
-#                 # if (int(time.time())%300) < 2: #every 5minute
-#                     try:
-#                         getRptCounting(self.cur)
-#                         self.last = int(time.time())
-#                     except Exception as e:
-#                         print (e)
-#                         time.sleep(5)
-#                         self.dbcon = dbconMaster()
-#                         print ("Reconnected")
-#                         continue
-                
-#                 changeSnapshot(self.cur)
-#                 try :
-#                     arrn = getNumberData(self.cur)
-#                     self.dbcon.commit()
-#                 except pymysql.err.OperationalError as e:
-#                     print (e)
-#                     time.sleep(5)
-#                     self.dbcon = dbconMaster()
-#                     print ("Reconnected")
-#                     continue
-
-#                 # print(arrn)
-#                 changeNumbers(arrn)
-            
-#             self.i += 1
-#             if self.i > self.delay:
-#                 self.i = 0
-#             # print (self.i)
-#             time.sleep(1)
-
-#         self.cur.close()
-#         self.dbcon.close()
-#         self.exFlag = True
-                
-#     def stop(self):
-#         self.Running = False    
-
-
-
-
-
-# def updateRptCounting(cursor):
-#     global ARR_CRPT
-#     ARR_CRPT = dict()
-#     # sq_work = getWorkingHour(cursor)
-#     # print("sqwork:", sq_work)
-#     sq_work = ""
-    
-#     ts_now = int(time.time() + TZ_OFFSET)
-#     tsm = time.gmtime(ts_now)
-#     arr_ref = [
-#         {
-#             "ref_date": 'today',
-#             "start_ts" : int(ts_now //(3600*24)) * 3600*24,
-#             "end_ts" : int(time.time() + TZ_OFFSET),
-#         },
-#         {
-#             "ref_date" : 'yesterday',
-#             "start_ts" :  int(ts_now //(3600*24)) * 3600*24 - 3600*24,
-#             "end_ts" : int(ts_now //(3600*24)) * 3600*24,
-            
-#         },
-#         {
-#             "ref_date" : 'thismonth',
-#             "start_ts" : int(time.mktime((tsm.tm_year, tsm.tm_mon, 1, 0, 0, 0, 0, 0, 0)) + TZ_OFFSET),
-#             "end_ts" : ts_now
-#         },
-#         {
-#             "ref_date" : 'thisyear',
-#             "start_ts" : int(time.mktime((tsm.tm_year, 1, 1, 0, 0, 0, 0, 0, 0)) + TZ_OFFSET),
-#             "end_ts" : ts_now
-#         }
-#     ]
-#     for arr in arr_ref:
-#         # print(arr)
-        
-#         sq = "select device_info, counter_label, sum(counter_val) as sum, max(timestamp) as latest_ts from %s.count_tenmin where timestamp >= %d and timestamp < %d %s group by counter_label, device_info" %( ARR_CONFIG['mysql']['db'], arr['start_ts'], arr['end_ts'], sq_work)
-#         # print(arr['ref_date'], sq)
-#         cursor.execute(sq)
-#         for row in cursor.fetchall():
-#             # print (row)
-#             if not arr['ref_date'] in ARR_CRPT:
-#                 ARR_CRPT[arr['ref_date']] = dict()
-#             if not row[0] in ARR_CRPT[arr['ref_date']]:
-#                 ARR_CRPT[arr['ref_date']][row[0]] = dict()
-#             if not row[1] in ARR_CRPT[arr['ref_date']][row[0]]:
-#                 ARR_CRPT[arr['ref_date']][row[0]][row[1]] = dict()
-
-#             ARR_CRPT[arr['ref_date']][row[0]][row[1]]['counter_val'] = row[2]
-#             ARR_CRPT[arr['ref_date']][row[0]][row[1]]['latest'] = row[3]
-#             ARR_CRPT[arr['ref_date']][row[0]][row[1]]['datetime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(row[3]))
-
-#             if not 'all' in ARR_CRPT[arr['ref_date']]:
-#                 ARR_CRPT[arr['ref_date']]['all'] = dict()
-#             if not row[1] in ARR_CRPT[arr['ref_date']]['all']:
-#                 ARR_CRPT[arr['ref_date']]['all'][row[1]] = {'counter_val':0, 'latest':0}
-
-
-#             ARR_CRPT[arr['ref_date']]['all'][row[1]]['counter_val'] += row[2]
-#             if (row[3] > ARR_CRPT[arr['ref_date']]['all'][row[1]]['latest']):
-#                 ARR_CRPT[arr['ref_date']]['all'][row[1]]['latest'] = row[3]
-#                 ARR_CRPT[arr['ref_date']]['all'][row[1]]['datetime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(row[3]))
-
-#     for x in ARR_CRPT:
-#         for y in ARR_CRPT[x]:
-#             print (x, y, ARR_CRPT[x][y])
-    
-
-
-
-
-
-
-
-
-# def getNumberData(cursor):
-#     global ARR_CRPT, ARR_SCREEN, limit_number
-#     arr_number = list()
-   
-#     for n in ARR_SCREEN:
-#         if n['name'].startswith('number'):
-#             exp = parseRule(n['rule'])
-#             if not (exp):
-#                 continue
-#             calc, rule = exp
-#             arr_number.append({
-#                 "name": n['name'],
-#                 "device_info": n['device_info'],
-#                 "calc": calc,
-#                 "rule": rule,
-#                 "text": 0,
-#                 "flag": n['flag']
-#             })
-#     arr_rt = getRtCounting(cursor)
-#     for i, arr in enumerate(arr_number):
-#         if arr['flag'] == 'n':
-#             continue
-#         if arr['calc'] == 'number':
-#             arr_number[i]['text'] = arr_number[i]['rule']
-#             continue
-        
-#         if arr.get('device_info'):
-#             dev_info = arr['device_info']
-#         else :
-#             arr_number[i]['text'] = 0
-#             continue
-#         num=0
-#         n = 0
-#         for j, (dt, ct) in enumerate(arr['rule']):
-#             if ARR_CRPT.get(dt) and ARR_CRPT[dt].get(dev_info) and ARR_CRPT[dt][dev_info].get(ct):
-#                 n = ARR_CRPT[dt][dev_info][ct]['counter_val']
-#             else :
-#                 print ("Error on rpt >> dt:", dt, "dev_info:", dev_info, "ct:", ct)
-
-#             if dt != 'yesterday' :
-#                 if arr_rt :
-#                     if arr_rt.get(dev_info) and arr_rt[dev_info].get(ct):
-#                         n += arr_rt[dev_info][ct]['diff']
-#                     else :
-#                         print ("Error on rt >> dev_info:", dev_info, "ct:", ct)
-#                 else:
-#                     print ("Error on rt >> arr_rt is null")
-#             if j == 0:
-#                 num = n
-            
-#             elif arr['calc'] == 'sum':
-#                 num += n
-            
-#             elif arr['calc'] == 'diff':
-#                 num -= n
-#             elif arr['calc'] == 'margin':
-#                 num -= n                
-                    
-#         if arr['calc'] == 'div' or arr['calc'] == 'percent' and n:
-#             num = "%3.2f %%"  %(num/n *100) if  arr['calc'] == 'percent' else "%3.2f"  %(num/n)
-#         elif arr['calc'] == 'margin':
-#             num = int(limit_number) - int(num)
-#         arr_number[i]['text'] = num
-
-#     for n in arr_number:
-#         print (n)
-    
-#     return arr_number  
-
-# def changeNumbers(arr):
-#     for rs in arr:
-#         if var.get(rs['name']):
-#             var[rs['name']].set(rs.get('text'))
-
-
-# def changeSnapshot(cursor):
-#     global ARR_SCREEN, menus
-#     for rs in ARR_SCREEN:
-#         name = rs.get('name')
-#         w, h = int(rs['size'][0]), int(rs['size'][1]) if rs.get('size') else (0, 0)
-#         if name.startswith('snapshot'):
-#             imgb64 = getSnapshot(cursor, rs.get('device_info'))
-#             if imgb64:
-#                 imgb64 = imgb64.decode().split("jpg;base64,")[1]
-#                 body = base64.b64decode(imgb64)
-#                 imgarr = np.asarray(bytearray(body), dtype=np.uint8)
-#                 img = cv.imdecode(imgarr, cv.IMREAD_COLOR)
-#             else :
-#                 img = cv.imread("./cam.jpg")
-#             img = Image.fromarray(img)
-#             img = img.resize((w, h), Image.LANCZOS)
-#             imgtk = ImageTk.PhotoImage(image=img)
-#             # menus[name].create_image(0, 0, anchor="nw", image=imgtk)
-#             menus[name].configure(image=imgtk)
-#             menus[name].photo=imgtk # phtoimage bug
-#             # imgPathOld[name] = imgPath
-
-# class playVideo():
-#     def __init__(self, label_n, cap):
-#         self.cap = cap
-#         self.interval = 10 
-#         self.label= label_n
-#         self.w = 640
-#         self.h = 320
-#     def run(self):
-#         self.update_image()
-
-#     def update_image(self):    
-#         # Get the latest frame and convert image format
-#         self.OGimage = cv.cvtColor(self.cap.read()[1], cv.COLOR_BGR2RGB) # to RGB
-#         self.OGimage = Image.fromarray(self.OGimage) # to PIL format
-#         self.image = self.OGimage.resize((self.w, self.h), Image.ANTIALIAS)
-#         self.image = ImageTk.PhotoImage(self.image) # to ImageTk format
-#         # Update image
-#         self.label.configure(image=self.image)
-#         # Repeat every 'interval' ms
-#         self.label.after(self.interval, self.update_image)
-
-# class showPicture(threading.Thread):
-#     def __init__(self):
-#         threading.Thread.__init__(self)
-#         self.delay = ARR_CONFIG['refresh_interval']
-#         self.Running = True
-#         self.exFlag = False
-#         self.i = 0
-
-#     def run(self):
-#         imgPathOld =  dict()
-#         thx = dict()
-#         cap=None
-#         while self.Running :
-#             if self.i == 0:
-#                 for rs in ARR_SCREEN:
-#                     name  = rs.get('name')
-#                     if rs.get('flag')=='n':
-#                         continue
-#                     if not name in menus:
-#                         menus[name] = Label(root, borderwidth=0)
-#                         # menus[name] = Canvas(root)
-
-#                     if name.startswith('picture') :
-#                         imgPath = rs.get('url')
-#                         w, h = rs.get('size')
-#                         if not imgPath :
-#                             continue
-#                         print (imgPath)
-#                         img = cv.imread(imgPath)
-#                         # img = cv.resize(img, (int(w), int(h)))
-#                         img = Image.fromarray(img)
-#                         img = img.resize((int(w), int(h)), Image.LANCZOS)
-#                         imgtk = ImageTk.PhotoImage(image=img)
-#                         # menus[name].create_image(0, 0, anchor="nw", image=imgtk)
-#                         menus[name].configure(image=imgtk)
-#                         menus[name].photo=imgtk # phtoimage bug
-#                         menus[name].configure(width=int(w), height=int(h))
-#                         menus[name].place(x=int(rs['position'][0]), y=int(rs['position'][1]))
-#                         imgPathOld[name] = imgPath
-                    
-#                     elif name.startswith('video'):
-                       
-#                         imgPath = rs.get('url')
-#                         w, h = rs.get('size')
-#                         if not imgPath:
-#                             continue
-#                         print (imgPath)
-#                         if imgPathOld.get(name) != imgPath:
-#                             if cap:
-#                                 cap.release()
-#                             cap = cv.VideoCapture(imgPath)
-#                             thx[name] = playVideo(menus[name], cap)
-#                             thx[name].run()
-#                             print ("cap init")
-#                             imgPathOld[name] = imgPath
-#                         menus[name].configure(width=int(w), height=int(h))
-#                         thx[name].w = int(w)
-#                         thx[name].h = int(h)
-#                         menus[name].place(x=int(rs['position'][0]), y=int(rs['position'][1]))
-                            
-                            
-                        
-#                         if self.Running == False:
-#                             cap.release()
-#                             cv.destroyAllWindows()
-#                             break
-                    
-#             self.i += 1
-#             if self.i > self.delay:
-#                 self.i = 0
-#             # print (self.i)
-#             time.sleep(1)
-#         # if cap:
-#         #     cap.release()
-#         self.exFlag = True       
-
-#     def stop(self):
-#         self.Running = False
-
-# class procScreen(threading.Thread):
-#     def __init__(self):
-#         threading.Thread.__init__(self)
-#         self.delay = ARR_CONFIG['refresh_interval']
-#         self.Running = True
-#         self.exFlag = False
-#         self.i = 0
-
-#     def run(self):
-#         while self.Running :
-#             if self.i == 0 :
-#                 getScreenData()
-#                 putSections()
-
-#             self.i += 1
-#             if self.i > self.delay:
-#                 self.i = 0
-#             # print (self.i)
-#             time.sleep(1)
-#         self.exFlag = True
-                
-#     def stop(self):
-#         self.Running = False
-
-# class getDataThread(threading.Thread):
-#     def __init__(self):
-#         threading.Thread.__init__(self)
-#         self.delay = ARR_CONFIG['refresh_interval']
-#         self.Running = True
-#         self.exFlag = False
-#         self.last = 0
-#         self.i = 0
-
-#     def run(self):
-#         self.dbcon = dbconMaster()
-#         while self.Running :
-#             if self.i == 0 :
-#                 self.cur = self.dbcon.cursor()
-#                 if int(time.time())-self.last > 300:
-#                 # if (int(time.time())%300) < 2: #every 5minute
-#                     try:
-#                         updateRptCounting(self.cur)
-#                         self.last = int(time.time())
-#                     except Exception as e:
-#                         print (e)
-#                         time.sleep(5)
-#                         self.dbcon = dbconMaster()
-#                         print ("Reconnected")
-#                         continue
-                
-#                 changeSnapshot(self.cur)
-#                 try :
-#                     arrn = getNumberData(self.cur)
-#                     self.dbcon.commit()
-#                 except pymysql.err.OperationalError as e:
-#                     print (e)
-#                     time.sleep(5)
-#                     self.dbcon = dbconMaster()
-#                     print ("Reconnected")
-#                     continue
-
-#                 # print(arrn)
-#                 changeNumbers(arrn)
-            
-#             self.i += 1
-#             if self.i > self.delay:
-#                 self.i = 0
-#             # print (self.i)
-#             time.sleep(1)
-
-#         self.cur.close()
-#         self.dbcon.close()
-#         self.exFlag = True
-                
-#     def stop(self):
-#         self.Running = False
-# def forgetLabel(label):
-#     global menus
-#     menus[label].place_forget()
-
-
-
-# def updateVariables(_root=None, _menus=None, _var=None, _lang=None, _editmode=None, _selLabel=None):
-#     global root, menus, var, lang, editmode, selLabel
-#     if _root !=None:
-#         root = _root
-#     if _menus != None:
-#         menus = _menus
-#     if _var != None:
-#         var = _var
-#     if _lang != None:
-#         lang= _lang
-#     if _editmode != None:
-#         editmode = _editmode
-#     if _selLabel != None:
-#         selLabel = _selLabel
-# loadConfig()
-
-# def getCRPT():
-#     return ARR_CRPT
-
-# def getSCREEN():
-#     return ARR_SCREEN
-
-# def getCONFIG():
-#     loadConfig()
-#     return ARR_CONFIG
-
-
-# getScreenData()
-# for x in ARR_CONFIG:
-#     print (x)

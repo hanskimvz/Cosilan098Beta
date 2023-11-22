@@ -611,8 +611,9 @@ def dbconMaster(host = '', user = '', password = '', db = '', charset ='', port=
 
 	try:
 		dbcon = pymysql.connect(host=host, user=str(user), password=str(password),  charset=charset, port=int(port))
-	except pymysql.err.OperationalError as e :
-		print (str(e))
+	# except pymysql.err.OperationalError as e :
+	except Exception as e :
+		print ('dbconerr', str(e))
 		return None
 	
 	return dbcon
@@ -650,16 +651,13 @@ _SERVER = configVars('software.root.update_server.address')
 _SERVER_MAC = configVars('software.root.update_server.mac')
 TZ_OFFSET =  configVars('system.datetime.timezone.offset')
 
-print (TZ_OFFSET)
+# print (TZ_OFFSET)
 try :
     TZ_OFFSET = int(TZ_OFFSET)
 except:
     TZ_OFFSET = 0
 if not TZ_OFFSET:
     TZ_OFFSET = 3600*8
-
-#because local
-TZ_OFFSET = 3600*8
 
 PROBE_INTERVAL = configVars('software.service.probe_interval')
 try:

@@ -40,6 +40,7 @@ def exitProgramOpt():
 
 def mainScreen():
     global ARR_CONFIG, root, canvas
+    arr_img = dict()
     canvas.bind('<Double-Button-1>', edit_screen)
     ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
     for s in ARR_SCREEN:
@@ -72,17 +73,19 @@ def mainScreen():
                 imgPath = "cam.jpg"
 
             # using CV
-            # img = cv.imread(imgPath)
-            # img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
-            # img = Image.fromarray(img)
+            img = cv.imread(imgPath)
+            img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+            img = Image.fromarray(img)
 
             # using othter
-            img = Image.open(imgPath)
+            # img = Image.open(imgPath)
 
             img = img.resize((w, h), Image.LANCZOS)
-            imgtk = ImageTk.PhotoImage(image=img)
-            canvas.image_names=imgtk # phtoimage bug
-            canvas.itemconfigure(menus[name], image=imgtk)
+            arr_img[menus[name]] = ImageTk.PhotoImage(image=img)
+            canvas.itemconfigure(menus[name], image=arr_img[menus[name]])
+            # canvas.image_names=imgtk # phtoimage bug
+            # canvas.photo=arr_img  # phtoimage bug
+            canvas.lower(menus[name])
 
         elif s.get('role') == 'snapshot':
             pass
@@ -135,6 +138,9 @@ def mainScreen():
 
     if eWin:
         selBlock()
+
+    canvas.photo=arr_img  # phtoimage bug
+    canvas.find_all()
 
 
 
@@ -305,6 +311,7 @@ sel_box = None
 
 def selBlock(x=0, y=0):
     global sel_box
+    sel =  None
     if sel_box:
         canvas.delete(sel_box)
 
@@ -400,6 +407,7 @@ def editScreen(sel_name):
 
 def updateEntry(e):
     global ARR_SCREEN, var_screen, scFrame, btFrame
+    role = None
 
     listFont = {
         'fontfamily':['simhei', 'arial', 'fangsong', 'simsun', 'gulim', 'batang', 'ds-digital','bauhaus 93', 'HP Simplified' ],
@@ -412,7 +420,7 @@ def updateEntry(e):
     list_keys ={
         'label':    ['text', 'fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor','width',  'posX', 'posY', 'align','role', 'use',],
         'number':   ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'posX', 'posY', 'align','role', 'min', 'max', 'use', 'rule'],
-        'percent':  ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'posX', 'posY', 'align','role', 'rule',' use',],
+        'percent':  ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'posX', 'posY', 'align','role', 'rule', 'use',],
         'picture':  ['width', 'height', 'posX', 'posY', 'role', 'url','use',],
         'snapshot': ['width', 'height', 'posX', 'posY', 'role', 'device_info','use',],
         'datetime': ['fontfamily', 'fontsize', 'fontshape', 'fgcolor', 'bgcolor', 'width', 'posX', 'posY', 'align', 'role', 'format', 'use'],
@@ -423,6 +431,8 @@ def updateEntry(e):
     list_roles= ['label', 'number', 'percent', 'datetime', 'picture', 'snapshot', 'video']
 
     sel = var_screen['label'].get()
+    if var_screen.get('role') in list_roles:
+        role = var_screen['role'].get()
     # print(sel)
     selBlock(0,0)
     for x in list_keys:
@@ -446,6 +456,8 @@ def updateEntry(e):
         
         # print (x)
         arr_key = list_keys[x.get('role')]
+        if role:
+            arr_key = list_keys[role]
 
         x['fontfamily'],  x['fontsize'], x['fontshape'] = tuple(x['font'])     if x.get('font') else (0,0,0)
         x['fgcolor'], x['bgcolor']                      = tuple(x['color'])    if x.get('color') else (0,0)
@@ -498,8 +510,14 @@ def updateEntry(e):
                 var_screen[key] =  ttk.Combobox(scFrame, width=18, state="readonly", values=list_roles)
                 var_screen[key].grid(row=i+2, column=1)
                 for j, ft in enumerate(list_roles):
-                    if x.get(key) == ft:
-                        var_screen[key].current(j)
+                    # if role :
+                    #     if role == ft:
+                    #         var_screen[key].current(j)
+                    # else :
+                        if x.get(key) == ft:
+                            var_screen[key].current(j)
+
+                var_screen['role'].bind("<<ComboboxSelected>>", updateEntry)                        
 
             elif key=='sql' or key == 'rule':
                 Label(scFrame, text= LANG[key] if LANG.get(key) else key).grid(row=i+2, column=0, pady=2, sticky='n')

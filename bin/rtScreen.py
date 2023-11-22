@@ -36,8 +36,8 @@ import threading
 
 
 # from rt_main import var, menus, lang, cwd, ARR_SCREEN, ARR_CONFIG, getSCREEN, getCRPT, dbconMaster, parseRule, procScreen, getDataThread, updateVariables
-from rt_main import ARR_CONFIG, ARR_CRPT, dbconMaster, loadTemplate, getRptCounting, getRtCounting
-from rt_edit import ARR_SCREEN, root, menus, var, canvas, mainScreen, frame_option, edit_screen
+from rt_main import ARR_CONFIG, ARR_CRPT, dbconMaster, loadTemplate, getRptCounting, getRtCounting, is_online
+from rt_edit import ARR_SCREEN, root, menus, canvas, mainScreen, frame_option, edit_screen
 
 # ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
 
@@ -219,7 +219,7 @@ class thGetDataTimer():
         self.arr_crpt = dict()
         self.diff = dict()
         self.latest = 0
-        self.dbcon = dbconMaster()
+        self.dbcon = dbconMaster(host=ARR_CONFIG['mysql']['host'], user = ARR_CONFIG['mysql']['user'], password=ARR_CONFIG['mysql']['password'], port=int(ARR_CONFIG['mysql']['port']))
         self.cur=None
         self.daemon = True
         self.thread = threading.Timer(0, self.handle_function)
@@ -232,7 +232,16 @@ class thGetDataTimer():
     
     def main_function(self):
         ts = time.time()
+        if not self.dbcon:
+            self.dbcon = dbconMaster(host=ARR_CONFIG['mysql']['host'], user = ARR_CONFIG['mysql']['user'], password=ARR_CONFIG['mysql']['password'], port=int(ARR_CONFIG['mysql']['port']))
+            self.last = 0
+            print ("self.dbcon:", self.dbcon)
+            if self.dbcon:
+                print ("Reconnected")
+            return False
         self.cur = self.dbcon.cursor()
+        # print ("dbcon", self.dbcon, "cursor", self.cur)
+
         if int(time.time())-self.last > 300:
             try:
                 print ("get rpt")
@@ -241,19 +250,25 @@ class thGetDataTimer():
                 # print (self.latest)
             except Exception as e:
                 print (e)
+                self.dbcon.close()
+                self.dbcon = None
                 time.sleep(5)
-                self.dbcon = dbconMaster()
-                self.last = 0
-                print ("Reconnected")
+                # self.dbcon = dbconMaster(host=ARR_CONFIG['mysql']['host'], user = ARR_CONFIG['mysql']['user'], password=ARR_CONFIG['mysql']['password'], port=int(ARR_CONFIG['mysql']['port']))
+                # self.last = 0
+                # print ("Reconnected")
+                return False
             
         try :
             self.diff = getRtCounting(self.cur, self.latest)
             self.dbcon.commit()
-        except pymysql.err.OperationalError as e:
+        except Exception as e:
             print (e)
+            self.dbcon.close()
+            self.dbcon = None
             time.sleep(5)
-            self.dbcon = dbconMaster()
-            print ("Reconnected")
+            # self.dbcon = dbconMaster(host=ARR_CONFIG['mysql']['host'], user = ARR_CONFIG['mysql']['user'], password=ARR_CONFIG['mysql']['password'], port=int(ARR_CONFIG['mysql']['port']))
+            # print ("Reconnected")
+            return False
 
         self.cur.close()
         # print ("self", self.arr_crpt)
@@ -288,6 +303,7 @@ class thGetDataTimer():
         return True
 
     def cancel(self):
+        self.dbcon.close()
         str_s = "Stopping realtime counting"
         print(str_s)
         self.thread.cancel()

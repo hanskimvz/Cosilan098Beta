@@ -24,14 +24,14 @@
 
 import time, os, sys
 import re, json, base64
-import pymysql
+# import pymysql
 # from tkinter import *
 # from tkinter import ttk
 # from tkinter import filedialog
-import cv2 as cv
-import numpy as np
-from PIL import ImageTk, Image
-import threading
+# import cv2 as cv
+# import numpy as np
+# from PIL import ImageTk, Image
+# import threading
 import locale
 import uuid
 
@@ -40,9 +40,9 @@ cwd = os.path.abspath(os.path.dirname(sys.argv[0]))
 os.chdir(cwd)
 
 # not server, only view realtime screen, should be set TZ_OFFSET, else import TZ_OFFSET from functions_s
-TZ_OFFSET = 3600*8
-# from functions_s import TZ_OFFSET
+from functions_s import TZ_OFFSET, is_online, dbconMaster
 
+TZ_OFFSET = 3600*8
 ARR_CRPT = dict()
 LANG = dict()
 
@@ -52,24 +52,24 @@ def getMac():
 	mac = "%012X" %(uuid.getnode())
 	return mac
 
-def dbconMaster(host='', user='', password='',   charset = 'utf8', port=0): #Mysql
-    global ARR_CONFIG
-    if not host:
-        host=ARR_CONFIG['mysql']['host']
-    if not user :
-        user = ARR_CONFIG['mysql']['user']
-    if not password:
-        password = ARR_CONFIG['mysql']['password']
-    if not port:
-        port = int(ARR_CONFIG['mysql']['port'])
+# def dbconMaster(host='', user='', password='',   charset = 'utf8', port=0): #Mysql
+#     global ARR_CONFIG
+#     if not host:
+#         host=ARR_CONFIG['mysql']['host']
+#     if not user :
+#         user = ARR_CONFIG['mysql']['user']
+#     if not password:
+#         password = ARR_CONFIG['mysql']['password']
+#     if not port:
+#         port = int(ARR_CONFIG['mysql']['port'])
         
 
-    try:
-        dbcon = pymysql.connect(host=host, user=str(user), password=str(password), charset=charset, port=port)
-    except pymysql.err.OperationalError as e :
-        print (str(e))
-        return None
-    return dbcon   
+#     try:
+#         dbcon = pymysql.connect(host=host, user=str(user), password=str(password), charset=charset, port=port)
+#     except pymysql.err.OperationalError as e :
+#         print (str(e))
+#         return None
+#     return dbcon   
 
 def dateTss(tss):
     # tm_year=2021, tm_mon=3, tm_mday=22, tm_hour=21, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=81, tm_isdst=-1
@@ -442,7 +442,7 @@ def getRptCounting(cursor):
 
 def getData():
     t = time.time()
-    dbcon = dbconMaster()
+    dbcon = dbconMaster(host=ARR_CONFIG['mysql']['host'], user = ARR_CONFIG['mysql']['user'], password=ARR_CONFIG['mysql']['password'], port=int(ARR_CONFIG['mysql']['port']))
     with dbcon:
         cursor = dbcon.cursor()
         arr_crpt, latest = getRptCounting(cursor)
@@ -461,8 +461,9 @@ def getData():
             # else :
             #     ARR_CRPT[key] = arr_crpt[key]
 
-    # print (time.time()-t)
+    print (time.time()-t)
 
+print ("TZ_OFFSET", TZ_OFFSET)
 ARR_CONFIG = loadConfig()
 LANG = loadLanguage()
 getVariableNames()

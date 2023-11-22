@@ -15,7 +15,7 @@ from rt_main import ARR_CONFIG, loadConfig, saveConfig, loadTemplate, saveTempla
 
 var = dict()
 root = Tk()
-canvas = Canvas(root, width=root.winfo_screenwidth(), height=root.winfo_screenheight(),background='black')
+canvas = Canvas(root, width=root.winfo_screenwidth(), height=root.winfo_screenheight(),background='black', highlightthickness=0)
 canvas.pack(padx=0, pady=0, side="top")
 menus = dict()
 bgbox = dict()
@@ -23,6 +23,8 @@ bgbox = dict()
 
 oWin = None
 eWin = None
+geometry = root.geometry()
+fullscrntag = False
 
 ARR_CONFIG = loadConfig()
 ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
@@ -37,6 +39,24 @@ def exitProgramOpt():
     root.quit()
     print ("destroyed root")
     sys.stdout.flush()
+
+def fullScreen(e):
+    global root, fullscrntag, geometry
+    if fullscrntag == False:
+        fullscrntag = True
+        geometry = root.geometry()
+        root.overrideredirect(True)
+
+        if os.name == 'nt':
+            root.state("zoomed")
+        else :
+            root.attributes("-fullscreen", True)
+    else :
+        fullscrntag = False
+        root.state("normal")
+        root.geometry(geometry)
+        root.overrideredirect(False)
+        root.attributes("-fullscreen", False)    
 
 def mainScreen():
     global ARR_CONFIG, root, canvas

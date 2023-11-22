@@ -3,7 +3,7 @@
     "mysql": {
         "charset": "utf8",
         "db": "cnt_demo",
-        "host": "47.115.219.90",
+        "host": "192.168.1.250",
         "password": "13579",
         "port": "3306",
         "user": "rt_user"

@@ -37,7 +37,7 @@ import threading
 
 # from rt_main import var, menus, lang, cwd, ARR_SCREEN, ARR_CONFIG, getSCREEN, getCRPT, dbconMaster, parseRule, procScreen, getDataThread, updateVariables
 from rt_main import ARR_CONFIG, ARR_CRPT, dbconMaster, loadTemplate, getRptCounting, getRtCounting, is_online
-from rt_edit import ARR_SCREEN, root, menus, canvas, mainScreen, frame_option, edit_screen
+from rt_edit import ARR_SCREEN, root, menus, canvas, mainScreen, frame_option, edit_screen, fullScreen
 
 # ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
 
@@ -114,7 +114,8 @@ def numberByRule(rule):
         elif o == '*' :
             num *= n
         elif o == '/':
-            num /= n if n else 0
+            if n >0:
+                num /= n
 
     return num
 
@@ -322,6 +323,7 @@ if __name__ == '__main__':
         root.bind('<Double-Button-1>', edit_screen)
         root.wm_attributes("-transparentcolor", 'grey')
     root.bind('<Button-3>', frame_option)
+    root.bind("<F11>", fullScreen)
     root.configure(background="black")
     
 

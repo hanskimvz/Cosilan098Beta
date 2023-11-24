@@ -1,42 +1,98 @@
-INFO      2023-02-05 19:21:51,391 startBI execute_services 88 PHP-CGI Startd MainThread
-INFO      2023-02-05 19:21:54,722 startBI execute_services 96 NGINX Startd MainThread
-INFO      2023-02-05 19:21:57,183 tlss_counting run 214 =====  Starting TLSS Counting  ===== tlss
-INFO      2023-02-05 19:21:57,184 tlss_counting run 221 [-] Socket Created(TLSS) tlss
-INFO      2023-02-05 19:21:57,196 tlss_counting run 225 [-] Socket Bound to port 5000 tlss
-INFO      2023-02-05 19:21:58,184 active_counting cancel 296 stopping Active Counting Servce MainThread
-INFO      2023-02-05 19:22:00,196 active_counting start 284 starting Active Counting Service MainThread
-INFO      2023-02-05 19:22:01,196 active_counting main_function 266 ======== Active Counting, starting 0 ======== Thread-7
-INFO      2023-02-05 19:22:01,196 proc_db cancel 318 Stopping processing counting, heatmap, face db Service MainThread
-INFO      2023-02-05 19:22:03,200 proc_db start 306 Starting processing counting, heatmap, face db service MainThread
-INFO      2023-02-05 19:22:03,709 active_counting searchDeviceToDB 170 browsing devices 6 and info to db succeed Thread-7
-INFO      2023-02-05 19:22:04,215 proc_event run 78 Stating Event Push processing event
-INFO      2023-02-05 19:22:04,215 proc_event run 85 [-] Socket Created(EVENT PUSH Service) event
-INFO      2023-02-05 19:22:04,228 proc_event run 89 [-] Socket Bound to port 5030 event
-INFO      2023-02-05 19:22:05,223 face_det cancel 130 Stopping process Face to Age Gender MainThread
-INFO      2023-02-05 19:22:05,402 active_counting procActive 178 Setting device time Thread-7
-INFO      2023-02-05 19:22:06,830 active_counting setDatetimeToDevice 145 192.168.3.11: Setting datetimezone OK Thread-7
-INFO      2023-02-05 19:22:07,229 face_det start 118 Starting Face to Age Gender via transfering FPP server MainThread
-INFO      2023-02-05 19:22:08,244 sysdaemon cancel 613 Stopping System Conrtol service MainThread
-INFO      2023-02-05 19:22:08,906 db_functions updateSnapshot 148 updating snapshot from mac=001323A00324&brand=CAP&model=IPN3102HD at 2023-02-05 19:22:08 to DB Thread-7
-INFO      2023-02-05 19:22:08,937 db_functions updateSnapshot 168 mac=001323A00324&brand=CAP&model=IPN3102HD: snapshot updated Thread-7
-INFO      2023-02-05 19:22:09,753 active_counting setDatetimeToDevice 145 192.168.3.12: Setting datetimezone OK Thread-7
-INFO      2023-02-05 19:22:10,761 db_functions updateSnapshot 148 updating snapshot from mac=001323A00326&brand=CAP&model=IPN3102HD at 2023-02-05 19:22:10 to DB Thread-7
-INFO      2023-02-05 19:22:10,793 db_functions updateSnapshot 168 mac=001323A00326&brand=CAP&model=IPN3102HD: snapshot updated Thread-7
-INFO      2023-02-05 19:22:13,262 sysdaemon start 600 Starting System Conrtol service as Auto update, reportting, Auto Backup MainThread
-INFO      2023-02-05 19:22:15,065 active_counting setDatetimeToDevice 145 192.168.3.10: Setting datetimezone OK Thread-7
-INFO      2023-02-05 19:22:18,335 db_functions updateSnapshot 148 updating snapshot from mac=001323A00CDC&brand=CAP&model=IPX3702HD at 2023-02-05 19:22:18 to DB Thread-7
-INFO      2023-02-05 19:22:18,353 db_functions updateSnapshot 168 mac=001323A00CDC&brand=CAP&model=IPX3702HD: snapshot updated Thread-7
-INFO      2023-02-05 19:22:19,254 active_counting setDatetimeToDevice 145 192.168.3.31: Setting datetimezone OK Thread-7
-INFO      2023-02-05 19:22:20,249 db_functions updateSnapshot 148 updating snapshot from mac=001323A0031F&brand=SEJIN TECH LTD.&model=SC6102HD at 2023-02-05 19:22:20 to DB Thread-7
-INFO      2023-02-05 19:22:20,289 db_functions updateSnapshot 168 mac=001323A0031F&brand=SEJIN TECH LTD.&model=SC6102HD: snapshot updated Thread-7
-INFO      2023-02-05 19:22:21,105 active_counting setDatetimeToDevice 145 192.168.3.15: Setting datetimezone OK Thread-7
-INFO      2023-02-05 19:22:22,079 db_functions updateSnapshot 148 updating snapshot from mac=00132308944E&brand=CAP&model=IPN2102HD at 2023-02-05 19:22:22 to DB Thread-7
-INFO      2023-02-05 19:22:22,186 db_functions updateSnapshot 168 mac=00132308944E&brand=CAP&model=IPN2102HD: snapshot updated Thread-7
-INFO      2023-02-05 19:22:22,871 active_counting setDatetimeToDevice 145 192.168.3.13: Setting datetimezone OK Thread-7
-INFO      2023-02-05 19:22:23,656 db_functions updateSnapshot 148 updating snapshot from mac=001323A00322&brand=CAP&model=IPN3502HDIR at 2023-02-05 19:22:23 to DB Thread-7
-INFO      2023-02-05 19:22:23,692 db_functions updateSnapshot 168 mac=001323A00322&brand=CAP&model=IPN3502HDIR: snapshot updated Thread-7
-INFO      2023-02-05 19:22:23,899 active_counting main_function 277 Online 6, elaspe time: 22, need 278 sec sleep Thread-7
-INFO      2023-02-05 19:23:10,344 active_counting cancel 296 stopping Active Counting Servce Thread-39
-INFO      2023-02-05 19:23:10,344 face_det cancel 130 Stopping process Face to Age Gender Thread-39
-INFO      2023-02-05 19:23:10,345 proc_db cancel 318 Stopping processing counting, heatmap, face db Service Thread-39
-INFO      2023-02-05 19:23:10,345 sysdaemon cancel 613 Stopping System Conrtol service Thread-39
+INFO      2023-11-23 00:00:44,933 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:01:00,671 rtScreen <module> 317 start rtScreen 2023-11-23 00:01:00 MainThread
+INFO      2023-11-23 00:04:11,887 rtScreen <module> 317 start rtScreen 2023-11-23 00:04:11 MainThread
+INFO      2023-11-23 00:05:00,140 rtScreen <module> 317 start rtScreen 2023-11-23 00:05:00 MainThread
+INFO      2023-11-23 00:05:12,761 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:05:19,845 rtScreen <module> 317 start rtScreen 2023-11-23 00:05:19 MainThread
+INFO      2023-11-23 00:05:26,706 rt_edit saveOption 254 template changed: template2.json MainThread
+INFO      2023-11-23 00:05:26,707 rt_edit saveOption 272 saved MainThread
+INFO      2023-11-23 00:05:27,937 rtScreen <module> 317 start rtScreen 2023-11-23 00:05:27 MainThread
+INFO      2023-11-23 00:05:33,139 rt_edit saveOption 254 template changed: template3.json MainThread
+INFO      2023-11-23 00:05:33,141 rt_edit saveOption 272 saved MainThread
+INFO      2023-11-23 00:05:34,343 rtScreen <module> 317 start rtScreen 2023-11-23 00:05:34 MainThread
+INFO      2023-11-23 00:06:26,338 rtScreen <module> 317 start rtScreen 2023-11-23 00:06:26 MainThread
+INFO      2023-11-23 00:07:50,061 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:10:34,888 rtScreen <module> 317 start rtScreen 2023-11-23 00:10:34 MainThread
+INFO      2023-11-23 00:11:22,128 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:16:25,592 rtScreen <module> 365 start rtScreen 2023-11-23 00:16:25 MainThread
+INFO      2023-11-23 00:19:31,956 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:20:38,057 rtScreen <module> 372 start rtScreen 2023-11-23 00:20:38 MainThread
+INFO      2023-11-23 00:20:51,349 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:27:01,064 rtScreen <module> 380 start rtScreen 2023-11-23 00:27:01 MainThread
+INFO      2023-11-23 00:27:08,647 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:32:11,080 rtScreen <module> 383 start rtScreen 2023-11-23 00:32:11 MainThread
+INFO      2023-11-23 00:32:27,975 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:32:55,332 rtScreen <module> 384 start rtScreen 2023-11-23 00:32:55 MainThread
+INFO      2023-11-23 00:33:12,404 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:33:51,000 rtScreen <module> 384 start rtScreen 2023-11-23 00:33:51 MainThread
+INFO      2023-11-23 00:34:00,594 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:37:35,403 rtScreen <module> 384 start rtScreen 2023-11-23 00:37:35 MainThread
+INFO      2023-11-23 00:37:39,285 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:37:55,914 rtScreen <module> 384 start rtScreen 2023-11-23 00:37:55 MainThread
+INFO      2023-11-23 00:38:04,636 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:39:46,114 rtScreen <module> 384 start rtScreen 2023-11-23 00:39:46 MainThread
+INFO      2023-11-23 00:40:00,401 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:43:02,688 rtScreen <module> 383 start rtScreen 2023-11-23 00:43:02 MainThread
+INFO      2023-11-23 00:43:11,978 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:47:44,229 rtScreen <module> 385 start rtScreen 2023-11-23 00:47:44 MainThread
+INFO      2023-11-23 00:47:47,149 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:48:41,996 rtScreen <module> 386 start rtScreen 2023-11-23 00:48:41 MainThread
+INFO      2023-11-23 00:48:45,456 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:50:45,261 rtScreen <module> 393 start rtScreen 2023-11-23 00:50:45 MainThread
+INFO      2023-11-23 00:50:59,875 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 00:52:32,789 rtScreen <module> 392 start rtScreen 2023-11-23 00:52:32 MainThread
+INFO      2023-11-23 01:02:05,335 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 01:02:43,722 rtScreen <module> 393 start rtScreen 2023-11-23 01:02:43 MainThread
+INFO      2023-11-23 01:07:20,755 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 01:07:27,989 rtScreen <module> 393 start rtScreen 2023-11-23 01:07:27 MainThread
+INFO      2023-11-23 01:09:07,583 rt_edit saveOption 260 template changed: template1.json MainThread
+INFO      2023-11-23 01:09:07,584 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 01:09:08,985 rtScreen <module> 393 start rtScreen 2023-11-23 01:09:08 MainThread
+INFO      2023-11-23 01:09:36,245 rt_edit saveOption 260 template changed: template3.json MainThread
+INFO      2023-11-23 01:09:36,246 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 01:09:37,471 rtScreen <module> 393 start rtScreen 2023-11-23 01:09:37 MainThread
+INFO      2023-11-23 01:15:30,819 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 01:15:36,975 rtScreen <module> 393 start rtScreen 2023-11-23 01:15:36 MainThread
+INFO      2023-11-23 02:07:28,239 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 02:08:14,658 rtScreen <module> 395 start rtScreen 2023-11-23 02:08:14 MainThread
+INFO      2023-11-23 02:16:19,909 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 02:17:12,727 rtScreen <module> 395 start rtScreen 2023-11-23 02:17:12 MainThread
+INFO      2023-11-23 02:22:28,263 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 02:22:31,980 rtScreen <module> 395 start rtScreen 2023-11-23 02:22:31 MainThread
+INFO      2023-11-23 08:23:55,552 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 08:24:07,727 rtScreen <module> 395 start rtScreen 2023-11-23 08:24:07 MainThread
+INFO      2023-11-23 08:29:24,784 rt_edit saveOption 260 template changed: template4.json MainThread
+INFO      2023-11-23 08:29:24,786 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 08:29:26,056 rtScreen <module> 391 start rtScreen 2023-11-23 08:29:26 MainThread
+INFO      2023-11-23 08:29:26,203 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 08:29:56,916 rt_edit saveOption 260 template changed: template5.json MainThread
+INFO      2023-11-23 08:29:56,917 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 08:29:58,178 rtScreen <module> 391 start rtScreen 2023-11-23 08:29:58 MainThread
+INFO      2023-11-23 08:29:58,412 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 08:37:52,106 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 08:37:52,110 rtScreen cancel 383 Stopping snapshot MainThread
+INFO      2023-11-23 08:37:57,883 rtScreen <module> 391 start rtScreen 2023-11-23 08:37:57 MainThread
+INFO      2023-11-23 08:37:57,953 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 08:40:23,323 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 08:40:26,395 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 08:40:26,397 rtScreen cancel 383 Stopping snapshot MainThread
+INFO      2023-11-23 10:15:40,806 rtScreen <module> 391 start rtScreen 2023-11-23 10:15:40 MainThread
+INFO      2023-11-23 10:15:40,895 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 10:15:52,320 rt_edit saveOption 260 template changed: template1.json MainThread
+INFO      2023-11-23 10:15:52,322 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 10:15:53,538 rtScreen <module> 391 start rtScreen 2023-11-23 10:15:53 MainThread
+INFO      2023-11-23 10:15:53,714 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 10:17:55,857 rt_edit saveOption 260 template changed: template2.json MainThread
+INFO      2023-11-23 10:17:55,859 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 10:17:57,363 rtScreen <module> 391 start rtScreen 2023-11-23 10:17:57 MainThread
+INFO      2023-11-23 10:17:58,103 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 10:18:20,520 rt_edit saveOption 260 template changed: template3.json MainThread
+INFO      2023-11-23 10:18:20,522 rt_edit saveOption 278 saved MainThread
+INFO      2023-11-23 10:18:21,764 rtScreen <module> 391 start rtScreen 2023-11-23 10:18:21 MainThread
+INFO      2023-11-23 10:18:21,916 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 10:26:55,363 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 10:26:55,378 rtScreen cancel 383 Stopping snapshot MainThread
+INFO      2023-11-23 15:36:52,979 rtScreen <module> 391 start rtScreen 2023-11-23 15:36:52 MainThread
+INFO      2023-11-23 15:36:53,582 rtScreen start 371 Starting processing snapshot MainThread
+INFO      2023-11-23 15:39:07,587 rt_edit exitProgramOpt 41 destroy root MainThread
+INFO      2023-11-23 15:39:07,598 rtScreen cancel 383 Stopping snapshot MainThread

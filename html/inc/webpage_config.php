@@ -201,6 +201,8 @@ else if ($_GET['db'] == 'dashboard') {
             <td><select class="form-control" id="card_banner['.$i.'][title]">
                 <option value="today" '.($arr_result['card_banner'][$i]['title']=='today'?'selected':'').'>today</option>
                 <option value="yesterday" '.($arr_result['card_banner'][$i]['title']=='yesterday'?'selected':'').'>yesterday</option>
+                <option value="average12week" '.($arr_result['card_banner'][$i]['title']=='average12week'?'selected':'').'>average12week</option>
+                <option value="total12week" '.($arr_result['card_banner'][$i]['title']=='total12week'?'selected':'').'>total12week</option>
                 <option value="average" '.($arr_result['card_banner'][$i]['title']=='average'?'selected':'').'>average</option>
                 <option value="total" '.($arr_result['card_banner'][$i]['title']=='total'?'selected':'').'>total</option>
             </select></td>

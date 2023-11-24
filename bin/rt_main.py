@@ -40,7 +40,7 @@ cwd = os.path.abspath(os.path.dirname(sys.argv[0]))
 os.chdir(cwd)
 
 # not server, only view realtime screen, should be set TZ_OFFSET, else import TZ_OFFSET from functions_s
-from functions_s import TZ_OFFSET, is_online, dbconMaster
+from functions_s import TZ_OFFSET, is_online, dbconMaster, log
 
 TZ_OFFSET = 3600*8
 ARR_CRPT = dict()

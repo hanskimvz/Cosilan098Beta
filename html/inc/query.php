@@ -493,6 +493,164 @@ else if ($_GET['fr'] == 'dashBoard') {
 	}
 	else if($_GET['page'] == 'card') {
 		$arr_cfg = [
+			["title"=>"today", 		"display"=>$msg['today'], 			"badge"=>$msg['visitors'], "badge_color"=> "#47bac1", "label"=>"entrance"],
+			["title"=>"yesterday", 	"display"=>$msg['yesterday'], 		"badge"=>$msg['visitors'], "badge_color"=> "#fcc100", "label"=>"entrance"],
+			["title"=>"average12week",  "display"=>$msg['average12weeks'], 	"badge"=>$msg['visitors'], "badge_color"=> "#5b7dff", "label"=>"entrance"],
+			["title"=>"total12week",  	"display"=>$msg['total12weeks'], 	"badge"=>$msg['visitors'], "badge_color"=> "#5fc27e", "label"=>"entrance"],
+		];		
+		$arr_cfg = queryWebConfig('dashboard','card_banner', $arr_cfg);
+		$sq_workinghour = queryWorkingHour();
+
+		$sq = "select year, month, day, timestamp, counter_label, sum(counter_val) as sum from ".$DB_CUSTOM['count']." where timestamp <".$arr_cat['ts_to']." ".$arr_sq['p_sq']." ".$sq_workinghour." group by year, month, day, counter_label";
+		// print $sq;
+		$rs = mysqli_query($connect0, $sq);
+		$arr_rs = array();
+		for ($i=0; $i<$rs->num_rows; $i++){
+			$assoc = mysqli_fetch_assoc($rs);
+			$ts = $assoc['timestamp'] - ($assoc['timestamp']%(3600*24)); 
+			$arr_rs[$ts][$assoc['counter_label']] = $assoc['sum'];
+		}
+
+		for ($i=0; $i<4; $i++){
+			$arr_result[$i]['value'] = 0;
+			$total = 0;
+			$cnt = 0;
+			if ($arr_cfg[$i]['title'] == 'today') {
+				$ts = $arr_cat['ts_to']-3600*24;
+				$arr_result[$i]['ref_date'] =  date("Y-m-d ", $ts);
+				
+				foreach($arr_cfg[$i]['labels'] as $ct_label) {
+					$arr_result[$i]['value'] += $arr_rs[$ts][$ct_label];
+					foreach($arr_rs as $ts=>$arr_label){
+						$total += $arr_label[$ct_label];
+						$cnt ++;
+					}
+				}
+				if ($cnt) {
+					$arr_result[$i]['percent'] = round($arr_result[$i]['value'] / $total * $cnt * 100,2);
+				}
+
+			}
+			else if ($arr_cfg[$i]['title'] == 'yesterday') {
+				$ts = $arr_cat['ts_to']-3600*24*2;
+				$arr_result[$i]['ref_date'] =  date("Y-m-d ", $ts);
+				foreach($arr_cfg[$i]['labels'] as $ct_label) {
+					$arr_result[$i]['value'] += $arr_rs[$ts][$ct_label];
+					foreach($arr_rs as $tss=>$arr_label){
+						if ($tss > $ts) {
+							continue;
+						}
+						$total += $arr_label[$ct_label];
+						$cnt ++;
+					}
+				}
+				if ($cnt) {
+					$arr_result[$i]['percent'] = round($arr_result[$i]['value'] / $total * $cnt * 100,2);
+				}
+			}
+			else if ($arr_cfg[$i]['title'] == 'average') {
+				$ts = $arr_cat['ts_to']-3600*24;
+				$ts_s = $ts;
+				$arr_result[$i]['ref_date'] = "";
+				foreach($arr_cfg[$i]['labels'] as $ct_label) {
+					foreach($arr_rs as $tss=>$arr_label){
+						if ($tss > $ts) {
+							continue;
+						}
+						$total += $arr_label[$ct_label];
+						$cnt ++;
+						if ($tss < $ts_s) {
+							$ts_s = $tss;
+						}
+					}
+				}
+				$arr_result[$i]['ref_date'] = date("Y-m-d ", $ts_s)."~".date("Y-m-d ", $ts);
+				if ($cnt) {
+					$arr_result[$i]['value']   =  round($total/$cnt,2);
+					$arr_result[$i]['percent'] = round($arr_result[$i]['value'] / $total * $cnt * 100,2);
+				}
+			}
+			else if ($arr_cfg[$i]['title'] == 'total') {
+				$ts = $arr_cat['ts_to']-3600*24;
+				$ts_s = $ts;
+				$arr_result[$i]['ref_date'] =  "";
+				foreach($arr_cfg[$i]['labels'] as $ct_label) {
+					foreach($arr_rs as $tss=>$arr_label){
+						if ($tss > $ts) {
+							continue;
+						}
+						$total += $arr_label[$ct_label];
+						$cnt ++;
+						if ($tss < $ts_s) {
+							$ts_s = $tss;
+						}						
+					}
+				}
+				$arr_result[$i]['ref_date'] = date("Y-m-d ", $ts_s)."~".date("Y-m-d ", $ts);
+				$arr_result[$i]['value']   = $total;
+				if ($cnt) {
+					$arr_result[$i]['percent'] = round($arr_result[$i]['value'] / $total * 100,2);
+				}
+			}
+			else if ($arr_cfg[$i]['title'] == 'total12week') {
+				$ts = $arr_cat['ts_to']-3600*24;
+				$ts_s = $ts;
+				$arr_result[$i]['ref_date'] =  "";
+				foreach($arr_cfg[$i]['labels'] as $ct_label) {
+					foreach($arr_rs as $tss=>$arr_label){
+						if ($tss > $ts) {
+							continue;
+						}
+						if ($tss < $ts-3600*24*12) {
+							continue;
+						}
+						$total += $arr_label[$ct_label];
+						$cnt ++;
+						if ($tss < $ts_s) {
+							$ts_s = $tss;
+						}						
+					}
+				}
+				$arr_result[$i]['ref_date'] = date("Y-m-d ", $ts_s)."~".date("Y-m-d ", $ts);
+				if ($cnt) {
+					$arr_result[$i]['value']   =  round($total/$cnt,2);
+					$arr_result[$i]['percent'] = round($arr_result[$i]['value'] / $total * 100,2);
+				}
+			}
+			else if ($arr_cfg[$i]['title'] == 'average12week') {
+				$ts = $arr_cat['ts_to']-3600*24;
+				$ts_s = $ts;
+				$arr_result[$i]['ref_date'] =  "";
+				foreach($arr_cfg[$i]['labels'] as $ct_label) {
+					foreach($arr_rs as $tss=>$arr_label){
+						if ($tss > $ts) {
+							continue;
+						}
+						if ($tss < $ts-3600*24*12) {
+							continue;
+						}
+						$total += $arr_label[$ct_label];
+						$cnt ++;
+						if ($tss < $ts_s) {
+							$ts_s = $tss;
+						}						
+					}
+				}
+				$arr_result[$i]['ref_date'] = date("Y-m-d ", $ts_s)."~".date("Y-m-d ", $ts);
+				$arr_result[$i]['value']   = $total;
+				if ($cnt) {
+					$arr_result[$i]['percent'] = round($arr_result[$i]['value'] / $total * 100,2);
+				}
+			}
+
+			$arr_result[$i]['display'] = $msg['card_banner'.$i.'_display'];
+			$arr_result[$i]['badge'] = $msg['card_banner'.$i.'_badge'];
+		}
+		$arr_result['elaspe'] = microtime(true) - $s1;
+		$json_str = json_encode($arr_result, JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+	}
+	else if($_GET['page'] == 'cardx') {
+		$arr_cfg = [
 			["title"=>"today", "display"=>$msg['today'], "badge"=>$msg['visitors'], "badge_color"=> "#47bac1", "label"=>"entrance"],
 			["title"=>"yesterday", "display"=>$msg['yesterday'], "badge"=>$msg['visitors'], "badge_color"=> "#fcc100", "label"=>"entrance"],
 			["title"=>"average", "display"=>$msg['average12weeks'], "badge"=>$msg['visitors'], "badge_color"=> "#5b7dff", "label"=>"entrance"],

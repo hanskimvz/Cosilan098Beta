@@ -10,7 +10,7 @@ import cv2 as cv
 import numpy as np
 from PIL import ImageTk, Image
 
-from rt_main import ARR_CONFIG, loadConfig, saveConfig, loadTemplate, saveTemplate, loadLanguage, dbconMaster, getVariableNames, Running, cwd
+from rt_main import ARR_CONFIG, loadConfig, saveConfig, loadTemplate, saveTemplate, loadLanguage, dbconMaster, getVariableNames, Running, cwd, log
 
 
 var = dict()
@@ -38,6 +38,7 @@ def exitProgramOpt():
     root.destroy()
     root.quit()
     print ("destroyed root")
+    log.info("destroy root")
     sys.stdout.flush()
 
 def fullScreen(e):
@@ -60,6 +61,8 @@ def fullScreen(e):
 
 def mainScreen():
     global ARR_CONFIG, root, canvas
+    # screen_width = root.winfo_screenwidth()
+    # screen_height = root.winfo_screenheight()
     arr_img = dict()
     canvas.bind('<Double-Button-1>', edit_screen)
     ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
@@ -81,6 +84,7 @@ def mainScreen():
 
         w, h = int(s['size'][0]), int(s['size'][1]) if s.get('size') else (0, 0)
         posx, posy = (int(s['position'][0]), int(s['position'][1])) if s.get('position') else (0, 0)
+        # posx, posy = (int(screen_width/s['position'][0] * 65535), int(screen_height/s['position'][1]*65535)) if s.get('position') else (0, 0)
 
         if s.get('position'):
             xo, yo =  canvas.coords(menus[name])
@@ -108,7 +112,13 @@ def mainScreen():
             canvas.lower(menus[name])
 
         elif s.get('role') == 'snapshot':
-            pass
+            img = cv.imread("cam.jpg")
+            img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+            img = Image.fromarray(img)
+            img = img.resize((w, h), Image.LANCZOS)
+            arr_img[menus[name]] = ImageTk.PhotoImage(image=img)
+            canvas.itemconfigure(menus[name], image=arr_img[menus[name]])
+            canvas.lower(menus[name])
 
         elif s.get('role') == 'video':
             pass
@@ -211,6 +221,7 @@ def saveOption():
     for key in ARR_CONFIG['mysql']:
         if str(ARR_CONFIG['mysql'][key]).strip() != str(var_option[key].get()).strip():
             print ("%s : %s" %(ARR_CONFIG['mysql'][key], var_option[key].get()))
+            log.info("%s : %s" %(ARR_CONFIG['mysql'][key], var_option[key].get()))
             chMysql = True
             break
     if chMysql:
@@ -227,6 +238,7 @@ def saveOption():
         except Exception as e:
             print ("MYSQL Error")
             print (e)
+            log.error("Mysql Error: %s" %str(e))
             message (LANG.get("check_mysql_conf"))
             return False
 
@@ -237,6 +249,7 @@ def saveOption():
         ARR_CONFIG['refresh_interval'] = int(var_option['refresh_interval'].get())
     except:
         message (LANG.get("refresh_time_error"))
+        log.error("refresh_time_error")
         return False
 
     if ARR_CONFIG['template'] != var_option['template'].get().strip():
@@ -244,6 +257,7 @@ def saveOption():
         ARR_CONFIG['template'] = var_option['template'].get().strip()
         # ARR_CONFIG['template'] = template.get().strip()
         print ("template changed")
+        log.info("template changed: %s" %var_option['template'].get().strip())
         need_restart = True
 
     fx = "yes" if var_option['full_screen'].get() else "no"
@@ -261,6 +275,7 @@ def saveOption():
 
     saveConfig("rtScreen.json", ARR_CONFIG)
     message("saved")
+    log.info("saved")
     if need_restart:
         #restart
         sys.stdout.flush()

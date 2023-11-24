@@ -23,7 +23,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import time, os, sys
-import re, json
+import re, json, base64
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
@@ -36,7 +36,7 @@ import threading
 
 
 # from rt_main import var, menus, lang, cwd, ARR_SCREEN, ARR_CONFIG, getSCREEN, getCRPT, dbconMaster, parseRule, procScreen, getDataThread, updateVariables
-from rt_main import ARR_CONFIG, ARR_CRPT, dbconMaster, loadTemplate, getRptCounting, getRtCounting, is_online
+from rt_main import ARR_CONFIG, ARR_CRPT, dbconMaster, getSnapshot, getRptCounting, getRtCounting, is_online, log
 from rt_edit import ARR_SCREEN, root, menus, canvas, mainScreen, frame_option, edit_screen, fullScreen
 
 # ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
@@ -312,8 +312,83 @@ class thGetDataTimer():
     def stop(self):
         self.cancel()
 
+
+
+class thSnapshotTimer():
+    def __init__(self, t=20):
+        self.t = ARR_CONFIG['refresh_interval'] * 10
+        self.dbcon = dbconMaster(host=ARR_CONFIG['mysql']['host'], user = ARR_CONFIG['mysql']['user'], password=ARR_CONFIG['mysql']['password'], port=int(ARR_CONFIG['mysql']['port']))
+        self.cur=None
+        self.daemon = True
+        self.thread = threading.Timer(0, self.handle_function)
+        self.arr_img = dict()
+
+    def handle_function(self):
+        self.main_function()
+        self.thread = threading.Timer(self.t, self.handle_function)
+        self.thread.start()
+    
+    def main_function(self):
+        ts = time.time()
+        print ("start snapshot")
+        if not self.dbcon:
+            self.dbcon = dbconMaster(host=ARR_CONFIG['mysql']['host'], user = ARR_CONFIG['mysql']['user'], password=ARR_CONFIG['mysql']['password'], port=int(ARR_CONFIG['mysql']['port']))
+            self.last = 0
+            print ("self.dbcon:", self.dbcon)
+            if self.dbcon:
+                print ("Reconnected")
+            return False
+        self.cur = self.dbcon.cursor()
+        for scrn in ARR_SCREEN:
+            if scrn['flag'] == 'n':
+                continue
+            if scrn['role'] != 'snapshot':
+                continue
+            if not scrn.get('device_info'):
+                continue
+            body = getSnapshot(self.cur, scrn['device_info'])
+            self.dbcon.commit()
+            if not body:
+                print ("get no pic %s" %scrn['device_info'])
+                continue
+            body = body.replace(b'data:image/jpg;base64,', b'')
+            w, h = int(scrn['size'][0]), int(scrn['size'][1]) if scrn.get('size') else (0, 0)
+            img = base64.b64decode(body)
+            fname = "%s.jpg" %scrn['name']
+            with open (fname, "wb") as f:
+                f.write(img)
+            img = Image.open(fname)
+            img = img.resize((w, h), Image.LANCZOS)
+            self.arr_img[menus[scrn['name']]] = ImageTk.PhotoImage(image=img)
+            canvas.itemconfigure(menus[scrn['name']], image=self.arr_img[menus[scrn['name']]])
+
+        canvas.photo = self.arr_img
+
+   
+    def start(self):
+        str_s = "Starting processing snapshot"
+        print(str_s)
+        log.info(str_s)
+        self.thread.start()
+
+    def is_alive(self) :
+        if int(time.time()) - self.last > 600:
+            return False
+        return True
+
+    def cancel(self):
+        self.dbcon.close()
+        str_s = "Stopping snapshot"
+        print(str_s)
+        log.info(str_s)
+        self.thread.cancel()
+
+    def stop(self):
+        self.cancel()
+
 if __name__ == '__main__':
     # root =Tk()
+    log.info("start rtScreen %s" %(time.strftime("%Y-%m-%d %H:%M:%S")))
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
 
@@ -344,10 +419,15 @@ if __name__ == '__main__':
     thd = thGetDataTimer()
     thd.start()
     print ("thd alive", thd.is_alive())
+    ths = thSnapshotTimer()
+    ths.start()
+    print ("ths alive", thd.is_alive())
+
    
     root.mainloop()
 
     thd.stop()
+    ths.stop()
     # for i in range(100):
     #     if thd:
     #         thd.stop()
@@ -359,3 +439,4 @@ if __name__ == '__main__':
 
 raise SystemExit()
 sys.exit()
+

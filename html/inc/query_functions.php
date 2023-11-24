@@ -351,24 +351,21 @@ function queryWebConfig($page, $frame='', $arr_cfg=[]){
 		$arr_cfg[$assoc['depth']] = json_decode($assoc['body'], true); // true : array, false: stdObject
 		$arr_cfg[$assoc['depth']]['page']  = $assoc['page'];
 		$arr_cfg[$assoc['depth']]['frame'] = $assoc['frame'];
-		$arr_cfg[$assoc['depth']]['body'] = $assoc['body'];
+		$arr_cfg[$assoc['depth']]['body']  = $assoc['body'];
 		$arr_cfg[$assoc['depth']]['flag']  = $assoc['flag'];
 	}
+
 	// print_r($arr_cfg);
 	for($i=0; $i<sizeof($arr_cfg); $i++) {
 		$arr_cfg[$i]['sq_label'] = '';
 		if (!isset($arr_cfg[$i]['labels'])) {
 			continue;
 		}
+		$arr = array();
 		foreach($arr_cfg[$i]['labels'] as $label){
-			if (!trim($label)) {
-				continue;
-			}
-			if($arr_cfg[$i]['sq_label']) {
-				$arr_cfg[$i]['sq_label'] .= " or ";
-			}
-			$arr_cfg[$i]['sq_label'] .= "counter_label='".trim($label)."'";
+			array_push($arr, "counter_label='".trim($label)."'" );
 		}
+		$arr_cfg[$i]['sq_label'] = join (" or ", $arr);
 		if($arr_cfg[$i]['sq_label']) {
 			$arr_cfg[$i]['sq_label'] = " and (".$arr_cfg[$i]['sq_label'] .")";
 		}

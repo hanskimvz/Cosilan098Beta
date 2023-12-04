@@ -304,7 +304,7 @@ def start_commands_windows():
 		print(arr['startbi']['pid'], arr['startbi']['code'])
 		if arr['startbi']['code'] == 0 and arr['startbi']['pid'] == 0:
 			os.chdir(_ROOT_DIR + "\\BIN")
-			p = os.system("RunHiddenConsole.exe python3.exe startBI.py")
+			p = os.system("RunHiddenConsole.exe ..\PYTHON3\python3.exe startBI.py")
 			print ("service started")
 
 	else :

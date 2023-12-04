@@ -37,7 +37,7 @@ import threading
 
 # from rt_main import var, menus, lang, cwd, ARR_SCREEN, ARR_CONFIG, getSCREEN, getCRPT, dbconMaster, parseRule, procScreen, getDataThread, updateVariables
 from rt_main import ARR_CONFIG, ARR_CRPT, dbconMaster, getSnapshot, getRptCounting, getRtCounting, is_online, log
-from rt_edit import ARR_SCREEN, root, menus, canvas, mainScreen, frame_option, edit_screen, fullScreen
+from rt_edit import ARR_SCREEN, root, menus, canvas, mainScreen, frame_option, edit_screen, fullScreen, arr_img
 
 # ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
 
@@ -321,7 +321,7 @@ class thSnapshotTimer():
         self.cur=None
         self.daemon = True
         self.thread = threading.Timer(0, self.handle_function)
-        self.arr_img = dict()
+        self.arr_img = arr_img
 
     def handle_function(self):
         self.main_function()
@@ -362,7 +362,8 @@ class thSnapshotTimer():
             self.arr_img[menus[scrn['name']]] = ImageTk.PhotoImage(image=img)
             canvas.itemconfigure(menus[scrn['name']], image=self.arr_img[menus[scrn['name']]])
 
-        canvas.photo = self.arr_img
+        if self.arr_img:
+            canvas.photo = self.arr_img
 
    
     def start(self):

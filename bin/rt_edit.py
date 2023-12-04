@@ -25,6 +25,7 @@ oWin = None
 eWin = None
 geometry = root.geometry()
 fullscrntag = False
+arr_img = dict()
 
 ARR_CONFIG = loadConfig()
 ARR_SCREEN = loadTemplate(ARR_CONFIG['template'])
@@ -60,7 +61,7 @@ def fullScreen(e):
         root.attributes("-fullscreen", False)    
 
 def mainScreen():
-    global ARR_CONFIG, root, canvas
+    global ARR_CONFIG, root, canvas, arr_img
     # screen_width = root.winfo_screenwidth()
     # screen_height = root.winfo_screenheight()
     arr_img = dict()
@@ -446,7 +447,7 @@ def updateEntry(e):
 
     listFont = {
         'fontfamily':['simhei', 'arial', 'fangsong', 'simsun', 'gulim', 'batang', 'ds-digital','bauhaus 93', 'HP Simplified' ],
-        'fontshape': ['normal', 'bold', 'italic'],
+        'fontshape': ['normal', 'bold'],
         'fgcolor':   ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink'],
         'bgcolor':   ['white', 'black', 'orange', 'blue', 'red', 'green', 'purple', 'grey', 'yellow', 'pink','transparent'],
         'align':     ['left', 'right', 'center']

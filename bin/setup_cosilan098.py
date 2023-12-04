@@ -209,33 +209,33 @@ def makeLink(): # windows only
     with open(fname, "w") as f:
         f.write(rootdrive + "\n")
         f.write("cd \"" + _ROOT_DIR + "\\bin\"\n")
-        f.write("python3.exe monitor.py\n")
+        f.write("..\PYTHON3\python3.exe monitor.py\n")
 
     fname = _ROOT_DIR + "\\update.bat"
     with open(fname, "w") as f:
         f.write("@echo off\n")
         f.write("cd bin\n")
-        f.write("python3.exe update.py -W\n")
+        f.write("..\PYTHON3\python3.exe update.py -W\n")
         # f.write("pause\n")
 
     fname = _ROOT_DIR + "\\bin\\start.bat"
     with open(fname, "w") as f:
         f.write(rootdrive + "\n")
         f.write("cd \"" + _ROOT_DIR + "\\bin\"\n")
-        f.write("python3.exe update.py\n")
-        f.write("python3.exe startBI.py\n")
+        f.write("..\PYTHON3\python3.exe update.py\n")
+        f.write("..\PYTHON3\python3.exe startBI.py\n")
 
     fname = _ROOT_DIR + "\\backupDB.bat" 
     with open(fname, "w") as f:
         f.write(rootdrive + "\n")
         f.write("cd \"" + _ROOT_DIR + "\\bin\"\n")
-        f.write("python3.exe sysdaemon.py backup\n")
+        f.write("..\PYTHON3\python3.exe sysdaemon.py backup\n")
 
     fname = _ROOT_DIR + "\\RtScreen.bat" 
     with open(fname, "w") as f:
         f.write(rootdrive + "\n")
         f.write("cd \"" + _ROOT_DIR + "\\bin\"\n")
-        f.write("python3.exe rtScreen.py\n")
+        f.write("..\PYTHON3\python3.exe rtScreen.py\n")
 
     # fname = _ROOT_DIR + "\\repairDB.bat" 
     # with open(fname, "w") as f:
@@ -783,6 +783,52 @@ def register_auto_start(flag):
     
     key.Close()
 
+
+def nginxConf():
+    conf_str = """
+worker_processes  1;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   __base_dir__\html;
+            index  index.php index.html index.htm;
+        }
+
+        error_page  404              /404.html;
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   __base_dir__\html;
+        }
+
+        location ~ \.php$ {
+            root           __base_dir__\html;
+			fastcgi_pass   127.0.0.1:9000;
+
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+    }
+
+}
+"""
+    conf_str = conf_str.replace("__base_dir__", _ROOT_DIR)
+    fname = "%s\\NGINX\\conf\\nginx.conf" %_ROOT_DIR
+    print (fname)
+    with open(fname, "w") as f:
+        f.write(conf_str)
+
 def systemDatetime():
     lt = time.localtime()
     gt = time.gmtime()
@@ -809,6 +855,7 @@ def startInstall():
     patchLanguage()
     patchWebConfig()
     makeLink()
+    nginxConf()
     configVars("software.mysql.root_pw", MYSQL['PASS'])
     configVars("software.mysql.path", MYSQL['PATH'])
     configVars("software.mysql.port", MYSQL['PORT'])
@@ -848,6 +895,7 @@ def startUpdate():
         patchWebConfig()
         makeLink()
         postMYSQL()
+        nginxConf()
         btnStart['state'] = "normal"
 
     
